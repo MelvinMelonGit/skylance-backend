@@ -2,7 +2,7 @@
 
 namespace skylance_backend.Controllers
 {
-    public class HomeController : Controller
+    public class Controller : Controller
     {
         public IActionResult Index()
         {
