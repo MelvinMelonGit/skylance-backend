@@ -24,6 +24,7 @@ public class SkylanceDbContext : DbContext
     public DbSet<City> Cities { get; set; }
     public DbSet<Country> Countries { get; set; }
     public DbSet<Employee> Employees { get; set; }
+    public DbSet<EmployeeSession> EmployeeSessions { get; set; }
     public DbSet<FlightBookingDetail> FlightBookingDetails { get; set; }
     public DbSet<FlightDetail> FlightDetails { get; set; }
     public DbSet<Notification> Notifications { get; set; }
