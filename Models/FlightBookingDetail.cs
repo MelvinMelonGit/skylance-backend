@@ -14,4 +14,14 @@ public class FlightBookingDetail
     [Key]
     [MaxLength(255)]
     public string Id { get; set; }
+    
+    [ForeignKey("FlightDetailId")]
+    public virtual FlightDetail FlightDetail { get; set; }
+    
+    [ForeignKey("BookingDetailId")]
+    public virtual BookingDetail BookingDetail { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public string TravelPurpose { get; set; }
 }

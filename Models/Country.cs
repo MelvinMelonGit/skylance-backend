@@ -14,4 +14,16 @@ public class Country
     [Key]
     [MaxLength(255)]
     public string Id { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string Name { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public string CountryCode { get; set; }
+    
+    [Required]
+    [MaxLength(10)]
+    public int MobileCode { get; set; }
 }

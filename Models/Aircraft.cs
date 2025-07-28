@@ -12,20 +12,26 @@ public class Aircraft
     }
     
     [Key]
+    [MaxLength(255)]
     public string Id { get; set; }
     
     [Required]
+    [MaxLength(255)]
     public string Airline { get; set; }
     
     [Required]
+    [MaxLength(50)]
     public string FlightNumber { get; set; }
     
     [Required]
+    [MaxLength(50)]
     public string AircraftBrand { get; set; }
     
     [Required]
+    [MaxLength(255)]
     public string AircraftModel { get; set; }
     
     [Required]
+    [MaxLength(10)]
     public int SeatCapacity { get; set; }
 }

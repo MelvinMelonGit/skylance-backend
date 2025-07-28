@@ -14,4 +14,11 @@ public class EmployeeSession
     [Key]
     [MaxLength(255)]
     public string Id { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public DateTime SessionDateTime { get; set; }
+    
+    [ForeignKey("EmployeeId")]
+    public virtual Employee Employee { get; set; }
 }

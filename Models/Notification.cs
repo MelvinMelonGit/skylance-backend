@@ -14,4 +14,20 @@ public class Notification
     [Key]
     [MaxLength(255)]
     public string Id { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public virtual OverbookingDetail OverbookingDetail { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string Message { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string NotificationType { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public string NotificationStatus { get; set; }
 }

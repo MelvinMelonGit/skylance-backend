@@ -14,4 +14,34 @@ public class BookingDetail
     [Key]
     [MaxLength(255)]
     public string Id { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string BookingReferenceNumber { get; set; }
+    
+    [ForeignKey("AppUserId")]
+    public virtual AppUser AppUser { get; set; }
+
+    [ForeignKey("FlightDetailId")]
+    public virtual FlightDetail FlightDetail { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public double FareAmount { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public double BaggageAllowance { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public string SelectedSeat { get; set; }
+    
+    [Required]
+    [MaxLength(10)]
+    public bool RequireSpecialAssistance { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public string BookingStatus { get; set; }
 }

@@ -14,4 +14,19 @@ public class Airport
     [Key]
     [MaxLength(255)]
     public string Id { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public string IATACode { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string Name { get; set; }
+    
+    [ForeignKey("CityId")]
+    public virtual City City { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string TimeZone { get; set; }
 }

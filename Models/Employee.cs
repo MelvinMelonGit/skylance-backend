@@ -14,4 +14,36 @@ public class Employee
     [Key]
     [MaxLength(255)]
     public string Id { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string Username { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string Email { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string Password { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string FirstName { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string LastName { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public string Rank { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string Position { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public string EmployeeNumber { get; set; }
 }

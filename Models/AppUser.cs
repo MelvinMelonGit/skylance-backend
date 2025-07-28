@@ -24,11 +24,11 @@ public class AppUser
     public string Password { get; set; }
     
     [Required]
-    [MaxLength(10)]
+    [MaxLength(50)]
     public string Salutation { get; set; }
     
     [Required]
-    [MaxLength(10)]
+    [MaxLength(50)]
     public string Gender { get; set; }
     
     [Required]
@@ -50,7 +50,7 @@ public class AppUser
     public string PhoneNumber { get; set; }
     
     [Required]
-    [MaxLength(20)]
+    [MaxLength(50)]
     public string MembershipTier { get; set; }
     
     [Required]
