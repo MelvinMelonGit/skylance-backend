@@ -27,5 +27,5 @@ public class Aircraft
     public required string AircraftModel { get; set; }
 
     [Required]
-    public required int SeatCapacity { get; set; }
+    public required int? SeatCapacity { get; set; }
 }
