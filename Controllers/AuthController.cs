@@ -57,6 +57,9 @@ public class AuthController : ControllerBase
     [HttpGet("secret")]
     public IActionResult Secret() => Ok("Super secret protected data");
     
+    [HttpGet("not-secret")]
+    public IActionResult NotSecret() => Ok("Not Super secret protected data");
+    
     private bool IsValidUser(string email, string password)
     {
         // Simple hardcoded check for example only
