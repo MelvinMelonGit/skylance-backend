@@ -6,7 +6,7 @@ using skylance_backend.Models;
 namespace skylance_backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
     private readonly SkylanceDbContext _dbContext;
