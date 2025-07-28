@@ -13,4 +13,19 @@ public class Aircraft
     
     [Key]
     public string Id { get; set; }
+    
+    [Required]
+    public string Airline { get; set; }
+    
+    [Required]
+    public string FlightNumber { get; set; }
+    
+    [Required]
+    public string AircraftBrand { get; set; }
+    
+    [Required]
+    public string AircraftModel { get; set; }
+    
+    [Required]
+    public int SeatCapacity { get; set; }
 }
