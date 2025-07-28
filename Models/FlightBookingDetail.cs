@@ -6,14 +6,9 @@ namespace skylance_backend.Models;
 [Table("FlightBookingDetails")]
 public class FlightBookingDetail
 {
-    public FlightBookingDetail()
-    {
-        Id = Guid.NewGuid().ToString();
-    }
-    
     [Key]
     [MaxLength(255)]
-    public string Id { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
     
     [Required]
     [ForeignKey("FlightDetailId")]
