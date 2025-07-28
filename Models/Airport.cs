@@ -6,5 +6,11 @@ namespace skylance_backend.Models;
 [Table("Airports")]
 public class Airport
 {
+    public Airport()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
     
+    [Key]
+    public string Id { get; set; }
 }

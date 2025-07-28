@@ -6,5 +6,11 @@ namespace skylance_backend.Models;
 [Table("Cities")]
 public class City
 {
+    public City()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
     
+    [Key]
+    public string Id { get; set; }
 }

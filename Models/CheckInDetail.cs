@@ -6,5 +6,11 @@ namespace skylance_backend.Models;
 [Table("CheckInDetails")]
 public class CheckInDetail
 {
+    public CheckInDetail()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
     
+    [Key]
+    public string Id { get; set; }
 }

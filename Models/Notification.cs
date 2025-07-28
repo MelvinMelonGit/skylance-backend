@@ -6,5 +6,11 @@ namespace skylance_backend.Models;
 [Table("Notifications")]
 public class Notification
 {
+    public Notification()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
     
+    [Key]
+    public string Id { get; set; }
 }

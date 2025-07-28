@@ -12,24 +12,31 @@ public class AppUser
     }
 
     [Key]
+    [MaxLength(255)]
     public string Id { get; set; }
 
     [Required]
+    [MaxLength(255)]
     public string Email { get; set; }
     
     [Required]
+    [MaxLength(255)]
     public string Password { get; set; }
     
     [Required]
+    [MaxLength(10)]
     public string Salutation { get; set; }
     
     [Required]
+    [MaxLength(10)]
     public string Gender { get; set; }
     
     [Required]
+    [MaxLength(255)]
     public string FirstName { get; set; }
     
     [Required]
+    [MaxLength(255)]
     public string LastName { get; set; }
     
     [ForeignKey("CountryId")]
@@ -39,15 +46,19 @@ public class AppUser
     public virtual Country MobileCode { get; set; }
     
     [Required]
+    [MaxLength(255)]
     public string PhoneNumber { get; set; }
     
     [Required]
+    [MaxLength(20)]
     public string MembershipTier { get; set; }
     
     [Required]
+    [MaxLength(255)]
     public string MembershipNumber { get; set; }
     
     [Required]
+    [MaxLength(255)]
     public string PassportNumber { get; set; }
     
     [Required]
