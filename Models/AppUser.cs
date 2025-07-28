@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace skylance_backend.Models;
 
+[Table("AppUsers")]
 public class AppUser
 {
     public AppUser()
