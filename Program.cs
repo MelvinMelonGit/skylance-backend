@@ -25,6 +25,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseMiddleware<AuthMiddleware>();
+
 app.MapControllers();
 
 initDB(); // this must be run before app.Run();
