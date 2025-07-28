@@ -39,10 +39,10 @@ public class AppUser
     [MaxLength(255)]
     public string LastName { get; set; }
     
-    [ForeignKey("CountryId")]
+    [ForeignKey("NationalityId")]
     public virtual Country Nationality { get; set; }
     
-    [ForeignKey("CountryId")]
+    [ForeignKey("MobileCodeId")]
     public virtual Country MobileCode { get; set; }
     
     [Required]
