@@ -15,29 +15,27 @@ public class CheckInDetail
     [MaxLength(255)]
     public string Id { get; set; }
     
+    [Required]
     [ForeignKey("AppUserId")]
-    public virtual AppUser AppUser { get; set; }
+    public virtual required AppUser AppUser { get; set; }
     
+    [Required]
     [ForeignKey("FlightBookingDetailId")]
-    public virtual FlightBookingDetail FlightBookingDetail { get; set; }
+    public virtual required FlightBookingDetail FlightBookingDetail { get; set; }
     
     [Required]
-    [MaxLength(255)]
-    public DateTime CheckInTime { get; set; }
+    public required DateTime CheckInTime { get; set; }
     
     [Required]
-    [MaxLength(255)]
-    public DateTime BoardingTime { get; set; }
+    public required DateTime BoardingTime { get; set; }
     
     [Required]
     [MaxLength(50)]
-    public string SeatNumber { get; set; }
+    public required string SeatNumber { get; set; }
     
     [Required]
-    [MaxLength(10)]
-    public int Gate { get; set; }
+    public required int Gate { get; set; }
     
     [Required]
-    [MaxLength(10)]
-    public int Terminal { get; set; }
+    public required int Terminal { get; set; }
 }

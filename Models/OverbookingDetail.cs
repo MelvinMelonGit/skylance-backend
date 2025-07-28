@@ -15,17 +15,17 @@ public class OverbookingDetail
     [MaxLength(255)]
     public string Id { get; set; }
     
+    [Required]
     [ForeignKey("OldBookingDetailId")]
-    public virtual BookingDetail OldBookingDetail { get; set; }
+    public virtual required BookingDetail OldBookingDetail { get; set; }
     
+    [Required]
     [ForeignKey("NewBookingDetailId")]
-    public virtual BookingDetail NewBookingDetail { get; set; }
+    public virtual required BookingDetail NewBookingDetail { get; set; }
     
     [Required]
-    [MaxLength(10)]
-    public bool IsRebooking { get; set; }
+    public required bool IsRebooking { get; set; }
     
     [Required]
-    [MaxLength(50)]
-    public double FinalCompensationAmount { get; set; }
+    public required double FinalCompensationAmount { get; set; }
 }

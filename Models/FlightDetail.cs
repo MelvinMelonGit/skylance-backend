@@ -15,36 +15,34 @@ public class FlightDetail
     [MaxLength(255)]
     public string Id { get; set; }
     
+    [Required]
     [ForeignKey("AircraftId")]
-    public virtual Aircraft Aircraft { get; set; }
+    public virtual required Aircraft Aircraft { get; set; }
     
+    [Required]
     [ForeignKey("OriginAirportId")]
-    public virtual Airport OriginAirport { get; set; }
+    public virtual required Airport OriginAirport { get; set; }
     
+    [Required]
     [ForeignKey("DestinationAirportId")]
-    public virtual Airport DestinationAirport { get; set; }
+    public virtual required Airport DestinationAirport { get; set; }
     
     [Required]
-    [MaxLength(255)]
-    public DateTime DepartureTime { get; set; }
+    public required DateTime DepartureTime { get; set; }
     
     [Required]
-    [MaxLength(255)]
-    public DateTime ArrivalTime { get; set; }
+    public required DateTime ArrivalTime { get; set; }
     
     [Required]
-    [MaxLength(10)]
-    public bool IsHoliday { get; set; }
+    public required bool IsHoliday { get; set; }
     
     [Required]
     [MaxLength(50)]
-    public string FlightStatus { get; set; }
+    public required string FlightStatus { get; set; }
     
     [Required]
-    [MaxLength(10)]
-    public int CheckInCount { get; set; }
+    public required int CheckInCount { get; set; }
     
     [Required]
-    [MaxLength(10)]
-    public int SeatsSold { get; set; }
+    public required int SeatsSold { get; set; }
 }

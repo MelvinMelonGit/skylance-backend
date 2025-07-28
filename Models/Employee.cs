@@ -17,33 +17,33 @@ public class Employee
     
     [Required]
     [MaxLength(255)]
-    public string Username { get; set; }
+    public required string Username { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string Email { get; set; }
+    public required string Email { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string Password { get; set; }
+    public required string Password { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string FirstName { get; set; }
+    public required string FirstName { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string LastName { get; set; }
+    public required string LastName { get; set; }
     
     [Required]
     [MaxLength(50)]
-    public string Rank { get; set; }
+    public required string Rank { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string Position { get; set; }
+    public required string Position { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string EmployeeNumber { get; set; }
+    public required string EmployeeNumber { get; set; }
 }

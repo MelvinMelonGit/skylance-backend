@@ -17,13 +17,12 @@ public class Country
     
     [Required]
     [MaxLength(255)]
-    public string Name { get; set; }
+    public required string Name { get; set; }
     
     [Required]
     [MaxLength(50)]
-    public string CountryCode { get; set; }
+    public required string CountryCode { get; set; }
     
     [Required]
-    [MaxLength(10)]
-    public int MobileCode { get; set; }
+    public required int MobileCode { get; set; }
 }

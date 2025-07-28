@@ -15,10 +15,11 @@ public class City
     [MaxLength(255)]
     public string Id { get; set; }
     
+    [Required]
     [ForeignKey("CountryId")]
-    public virtual Country Country { get; set; }
+    public virtual required Country Country { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 }

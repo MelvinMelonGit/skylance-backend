@@ -17,8 +17,9 @@ public class AppUserSession
     
     [Required]
     [MaxLength(255)]
-    public DateTime SessionDateTime { get; set; }
+    public required DateTime SessionDateTime { get; set; }
     
+    [Required]
     [ForeignKey("AppUserId")]
-    public virtual AppUser AppUser { get; set; }
+    public virtual required AppUser AppUser { get; set; }
 }

@@ -17,17 +17,17 @@ public class Notification
     
     [Required]
     [MaxLength(255)]
-    public virtual OverbookingDetail OverbookingDetail { get; set; }
+    public virtual required OverbookingDetail OverbookingDetail { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string Message { get; set; }
+    public required string Message { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string NotificationType { get; set; }
+    public required string NotificationType { get; set; }
     
     [Required]
     [MaxLength(50)]
-    public string NotificationStatus { get; set; }
+    public required string NotificationStatus { get; set; }
 }

@@ -17,16 +17,17 @@ public class Airport
     
     [Required]
     [MaxLength(50)]
-    public string IATACode { get; set; }
+    public required string IataCode { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string Name { get; set; }
+    public required string Name { get; set; }
     
+    [Required]
     [ForeignKey("CityId")]
-    public virtual City City { get; set; }
+    public virtual required City City { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string TimeZone { get; set; }
+    public required string TimeZone { get; set; }
 }
