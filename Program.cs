@@ -1,6 +1,11 @@
+using skylance_backend.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Inject our database context into DI-container
+builder.Services.AddDbContext<SkylanceDbContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -22,4 +27,19 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+initDB(); // this must be run before app.Run();
+
 app.Run();
+
+// init our database
+void initDB()
+{
+// create the environment to retrieve our database context
+    using (var scope = app.Services.CreateScope())
+    {
+// get database context from DI-container
+        var ctx = scope.ServiceProvider.GetRequiredService<SkylanceDbContext>();
+        if (!ctx.Database.CanConnect())
+            ctx.Database.EnsureCreated(); // create database
+    }
+}
