@@ -12,5 +12,6 @@ public class Employee
     }
     
     [Key]
+    [MaxLength(255)]
     public string Id { get; set; }
 }

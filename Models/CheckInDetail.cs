@@ -12,5 +12,6 @@ public class CheckInDetail
     }
     
     [Key]
+    [MaxLength(255)]
     public string Id { get; set; }
 }

@@ -12,5 +12,6 @@ public class FlightBookingDetail
     }
     
     [Key]
+    [MaxLength(255)]
     public string Id { get; set; }
 }
