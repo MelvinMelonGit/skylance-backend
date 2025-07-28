@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using skylance_backend.Attributes;
 using skylance_backend.Data;
 
+namespace skylance_backend.Middlewares;
+
 public class AuthMiddleware
 {
     private readonly RequestDelegate _next;

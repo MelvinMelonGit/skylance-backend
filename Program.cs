@@ -1,4 +1,5 @@
 using skylance_backend.Data;
+using skylance_backend.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
