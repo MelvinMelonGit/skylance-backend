@@ -9,11 +9,11 @@ namespace skylance_backend.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly SkylanceDbContext _dbContext;
+    private readonly SkylanceDbContext _db;
 
-    public AuthController(SkylanceDbContext dbContext)
+    public AuthController(SkylanceDbContext db)
     {
-        _dbContext = dbContext;
+        _db = db;
     }
     
     [HttpPost("login")]
@@ -23,7 +23,7 @@ public class AuthController : ControllerBase
         if (IsValidUser(request.Email, request.Password))
         {
             // 1. Validate user (basic example)
-            var user = _dbContext.AppUsers
+            var user = _db.AppUsers
                  .FirstOrDefault(u => u.Email == request.Email && u.Password == request.Password);
 
              if (user == null)
@@ -40,8 +40,8 @@ public class AuthController : ControllerBase
                  SessionExpiry = DateTime.UtcNow.AddHours(1)
              };
 
-             _dbContext.AppUserSessions.Add(session);
-             _dbContext.SaveChanges();
+             _db.AppUserSessions.Add(session);
+             _db.SaveChanges();
 
             return Ok(new
             {
@@ -51,6 +51,47 @@ public class AuthController : ControllerBase
         }
 
         return Unauthorized();
+    }
+    
+    [HttpPost("register")]
+    public IActionResult Register([FromBody] RegisterRequestDTO dto)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        // Check for duplicate email synchronously
+        if (_db.AppUsers.Any(u => u.Email == dto.Email))
+            return Conflict("Email already registered.");
+
+        // Lookup related Country entities synchronously
+        var nationality = _db.Countries.Find(dto.NationalityId);
+        var mobileCode = _db.Countries.Find(dto.MobileCodeId);
+
+        if (nationality == null || mobileCode == null)
+            return BadRequest("Invalid nationality or mobile code.");
+
+        var newUser = new AppUser
+        {
+            Email = dto.Email,
+            Password = dto.Password,  // Remember to hash passwords in real apps
+            Salutation = dto.Salutation,
+            Gender = dto.Gender,
+            FirstName = dto.FirstName,
+            LastName = dto.LastName,
+            Nationality = nationality,
+            MobileCode = mobileCode,
+            MobileNumber = dto.MobileNumber,
+            MembershipTier = dto.MembershipTier,
+            MembershipNumber = dto.MembershipNumber,
+            PassportNumber = dto.PassportNumber,
+            PassportExpiry = dto.PassportExpiry,
+            DateOfBirth = dto.DateOfBirth
+        };
+
+        _db.AppUsers.Add(newUser);
+        _db.SaveChanges();  // Synchronous save
+
+        return CreatedAtAction(nameof(Register), new { id = newUser.Id }, newUser);
     }
     
     [ProtectedRoute]

@@ -44,7 +44,7 @@ public class AppUser
     
     [Required]
     [MaxLength(255)]
-    public required string PhoneNumber { get; set; }
+    public required string MobileNumber { get; set; }
     
     [Required]
     [MaxLength(50)]
