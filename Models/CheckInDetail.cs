@@ -6,12 +6,31 @@ namespace skylance_backend.Models;
 [Table("CheckInDetails")]
 public class CheckInDetail
 {
-    public CheckInDetail()
-    {
-        Id = Guid.NewGuid().ToString();
-    }
-    
     [Key]
     [MaxLength(255)]
-    public string Id { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+    
+    [Required]
+    [ForeignKey("AppUserId")]
+    public virtual required AppUser AppUser { get; set; }
+    
+    [Required]
+    [ForeignKey("FlightBookingDetailId")]
+    public virtual required FlightBookingDetail FlightBookingDetail { get; set; }
+    
+    [Required]
+    public required DateTime CheckInTime { get; set; }
+    
+    [Required]
+    public required DateTime BoardingTime { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public required string SeatNumber { get; set; }
+    
+    [Required]
+    public required int Gate { get; set; }
+    
+    [Required]
+    public required int Terminal { get; set; }
 }
