@@ -8,11 +8,10 @@ public class EmployeeSession
 {
     [Key]
     [MaxLength(255)]
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public required string Id { get; set; }
     
     [Required]
-    [MaxLength(255)]
-    public required DateTime SessionDateTime { get; set; }
+    public required DateTime SessionExpiry { get; set; }
     
     [Required]
     [ForeignKey("EmployeeId")]

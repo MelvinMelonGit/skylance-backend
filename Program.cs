@@ -1,8 +1,10 @@
 using skylance_backend.Data;
+using skylance_backend.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient<MLService>();
 
 // Inject our database context into DI-container
 builder.Services.AddDbContext<SkylanceDbContext>();
@@ -24,6 +26,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<AuthMiddleware>();
 
 app.MapControllers();
 
