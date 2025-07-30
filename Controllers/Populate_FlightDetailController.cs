@@ -35,7 +35,8 @@ namespace skylance_backend.Controllers
                     IsHoliday = false,
                     FlightStatus = "Scheduled",
                     CheckInCount = 120,
-                    SeatsSold = 140
+                    SeatsSold = 140,
+                    Distance=6200
                 },
 
                 new FlightDetail
@@ -48,7 +49,8 @@ namespace skylance_backend.Controllers
                     IsHoliday = true,
                     FlightStatus = "Scheduled",
                     CheckInCount = 80,
-                    SeatsSold = 85
+                    SeatsSold = 85,
+                    Distance=5300
                 },
 
                 new FlightDetail
@@ -61,7 +63,8 @@ namespace skylance_backend.Controllers
                     IsHoliday = false,
                     FlightStatus = "Delayed",
                     CheckInCount = 100,
-                    SeatsSold = 110
+                    SeatsSold = 110,
+                    Distance=4500
                 },
 
                 new FlightDetail
@@ -74,7 +77,8 @@ namespace skylance_backend.Controllers
                     IsHoliday = false,
                     FlightStatus = "Cancelled",
                     CheckInCount = 0,
-                    SeatsSold = 0
+                    SeatsSold = 0,
+                    Distance=7800
                 },
 
                 new FlightDetail {
@@ -86,17 +90,19 @@ namespace skylance_backend.Controllers
                     IsHoliday = true,
                     FlightStatus = "Scheduled",
                     CheckInCount = 130,
-                    SeatsSold = 145
+                    SeatsSold = 145,
+                    Distance=6200
                 },
             };
 
-                db.FlightDetails.AddRange(flightDetailList);
-                db.SaveChanges();
+            db.FlightDetails.AddRange(flightDetailList);
+            db.SaveChanges();
 
-                return Ok("Flight Details seeded successfully.");
+            return Ok("Flight Details seeded successfully.");
         }
     }
 }
+
 
 
 
