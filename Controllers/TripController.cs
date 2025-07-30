@@ -1,32 +1,52 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using skylance_backend.Enums;
+using skylance_backend.Service_Layer;
 
 namespace skylance_backend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class TripController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    private readonly ITripService _tripService;
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public TripController(ITripService tripService)
     {
-        _logger = logger;
+        _tripService = tripService;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    // GET: api/trips/{flightDetailsId}
+    [HttpGet("{flightDetailsId}")]
+    public async Task<IActionResult> GetTripDetails(Guid flightDetailsId)
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+        var tripDetails = await _tripService.GetTripDetailsAsync(flightDetailsId);
+        if (tripDetails == null)
+            return NotFound();
+
+        return Ok(tripDetails);
     }
+
+    // GET: api/trips/{flightDetailsId}/checkin/validate
+    [HttpGet("{flightDetailsId}/checkin/validate")]
+    public async Task<IActionResult> ValidateCheckIn(Guid flightDetailsId)
+    {
+        var result = await _tripService.ValidateCheckInAsync(flightDetailsId);
+
+        return result switch
+        {
+            CheckInValidationResult.Allowed => Ok("Proceed to confirm check-in."),
+            CheckInValidationResult.FlightDeparted => BadRequest("Flight already departed."),
+            CheckInValidationResult.FlightFullyCheckedIn => Redirect("/rebooking"),
+            _ => BadRequest("Unknown error.")
+        };
+    }
+
+    [HttpPost("{flightDetailsId}/checkin/confirm")]
+    public async Task<IActionResult> ConfirmCheckIn(Guid flightDetailsId)
+    {
+        var result = await _tripService.ConfirmCheckInAsync(flightDetailsId);
+        return result ? Ok("Checked in successfully.") : BadRequest("Check-in failed.");
+    }
+
 }
