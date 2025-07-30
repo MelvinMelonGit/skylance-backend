@@ -44,5 +44,15 @@ public class SkylanceDbContext : DbContext
             .HasOne(f => f.DestinationAirport)
             .WithMany()
             .HasForeignKey("DestinationAirportId");
+
+        modelBuilder.Entity<AppUser>()
+            .HasOne(f => f.Nationality)
+            .WithMany()
+            .HasForeignKey("NationalityId");
+
+        modelBuilder.Entity<AppUser>()
+            .HasOne(f => f.MobileCode)
+            .WithMany()
+            .HasForeignKey("MobileCodeId");
     }
 }
