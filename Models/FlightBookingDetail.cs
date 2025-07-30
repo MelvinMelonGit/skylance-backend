@@ -21,4 +21,22 @@ public class FlightBookingDetail
     [Required]
     [MaxLength(50)]
     public required string TravelPurpose { get; set; }
+
+    [Required]
+    public required double BaggageAllowance { get; set; }
+
+    [Required]
+    [MaxLength(50)]
+    public required string SelectedSeat { get; set; }
+
+    [Required]
+    public required bool RequireSpecialAssistance { get; set; }
+
+    [Required]
+    [MaxLength(50)]
+    public required string BookingStatus { get; set; }
+
+    [Required]
+    [MaxLength(50)]
+    public required int Fareamount { get; set; }
 }
