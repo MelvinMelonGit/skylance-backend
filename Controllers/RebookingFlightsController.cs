@@ -45,4 +45,8 @@ namespace skylance_backend.Controllers
             return flightDetail;
         }
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

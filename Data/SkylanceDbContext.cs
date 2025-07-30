@@ -44,6 +44,7 @@ public class SkylanceDbContext : DbContext
             .HasOne(f => f.DestinationAirport)
             .WithMany()
             .HasForeignKey("DestinationAirportId");
+<<<<<<< Updated upstream
 
         modelBuilder.Entity<AppUser>()
             .HasOne(u => u.Nationality)
@@ -54,5 +55,7 @@ public class SkylanceDbContext : DbContext
             .HasOne(u => u.MobileCode)
             .WithMany()
             .HasForeignKey("MobileCodeId");
+=======
+>>>>>>> Stashed changes
     }
 }
