@@ -12,11 +12,11 @@ public class OverbookingDetail
     
     [Required]
     [ForeignKey("OldBookingDetailId")]
-    public virtual required BookingDetail OldBookingDetail { get; set; }
+    public virtual required FlightBookingDetail OldBookingDetail { get; set; }
     
     [Required]
     [ForeignKey("NewBookingDetailId")]
-    public virtual required BookingDetail NewBookingDetail { get; set; }
+    public virtual required FlightBookingDetail NewBookingDetail { get; set; }
     
     [Required]
     public required bool IsRebooking { get; set; }
