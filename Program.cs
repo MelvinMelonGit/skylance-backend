@@ -4,6 +4,7 @@ using skylance_backend.Middlewares;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient<MLService>();
 
 // Inject our database context into DI-container
 builder.Services.AddDbContext<SkylanceDbContext>();
