@@ -5,15 +5,12 @@ namespace skylance_backend.Data;
 
 public class SkylanceDbContext : DbContext
 {
-    public SkylanceDbContext() {}
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-        optionsBuilder.UseMySql(
-            // provides database connection-string
-            "server=localhost;user=root;password=password;database=skylance;",
-            new MySqlServerVersion(new Version(8, 0, 36))
-        );
-        optionsBuilder.UseLazyLoadingProxies();
-    }
+    public SkylanceDbContext() { }
+
+    public SkylanceDbContext(DbContextOptions<SkylanceDbContext> options)
+        : base(options) { }
+
+
     // our database tables
     public DbSet<Aircraft> Aircraft { get; set; }
     public DbSet<Airport> Airports { get; set; }
@@ -29,4 +26,23 @@ public class SkylanceDbContext : DbContext
     public DbSet<FlightDetail> FlightDetails { get; set; }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<OverbookingDetail> OverbookingDetails { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // relationships
+        modelBuilder.Entity<FlightDetail>()
+            .HasOne(f => f.Aircraft)
+            .WithMany()
+            .HasForeignKey("AircraftId");
+
+        modelBuilder.Entity<FlightDetail>()
+            .HasOne(f => f.OriginAirport)
+            .WithMany()
+            .HasForeignKey("OriginAirportId");
+
+        modelBuilder.Entity<FlightDetail>()
+            .HasOne(f => f.DestinationAirport)
+            .WithMany()
+            .HasForeignKey("DestinationAirportId");
+    }
 }
