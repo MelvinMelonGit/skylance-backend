@@ -22,8 +22,8 @@ namespace skylance_backend.Controllers
         public async Task<ActionResult<AppUser>> GetAppUserDetail(string id)
         {
             var appUserDetail = await _context.AppUsers
-                .Include(f => f.Nationality)
-                .Include(f => f.MobileCode)
+                .Include(u => u.Nationality)
+                .Include(u => u.MobileCode)
                 .FirstOrDefaultAsync(f => f.Id == id);
 
             if (appUserDetail == null)

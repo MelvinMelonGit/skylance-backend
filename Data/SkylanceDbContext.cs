@@ -46,12 +46,12 @@ public class SkylanceDbContext : DbContext
             .HasForeignKey("DestinationAirportId");
 
         modelBuilder.Entity<AppUser>()
-            .HasOne(f => f.Nationality)
+            .HasOne(u => u.Nationality)
             .WithMany()
             .HasForeignKey("NationalityId");
 
         modelBuilder.Entity<AppUser>()
-            .HasOne(f => f.MobileCode)
+            .HasOne(u => u.MobileCode)
             .WithMany()
             .HasForeignKey("MobileCodeId");
     }
