@@ -22,14 +22,20 @@ namespace skylance_backend.Controllers
                 return BadRequest("Data already seeded.");
 
             var appUsers = db.AppUsers.ToDictionary(a => a.Email, a => a);
-            var fligthDetails = db.FlightDetails.ToDictionary(f => f.Aircraft, f => f);
 
             List<BookingDetail> bookingDetailsList = new List<BookingDetail>
             {
-                BookingReferenceNumber = "G66666",
-                FareAmount = 
+                new BookingDetail
+                {
+                    BookingReferenceNumber = "G66666",
+                    AppUser = appUsers["teng@gmail.com"]
+                }
+            };
 
-            }
+                db.BookingDetails.AddRange(bookingDetailsList);
+                db.SaveChanges();
+
+                return Ok("Booking Details seeded successfully.");
         }
     }
 }
