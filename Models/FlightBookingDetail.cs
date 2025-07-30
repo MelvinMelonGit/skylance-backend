@@ -6,12 +6,37 @@ namespace skylance_backend.Models;
 [Table("FlightBookingDetails")]
 public class FlightBookingDetail
 {
-    public FlightBookingDetail()
-    {
-        Id = Guid.NewGuid().ToString();
-    }
-    
     [Key]
     [MaxLength(255)]
-    public string Id { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+    
+    [Required]
+    [ForeignKey("FlightDetailId")]
+    public virtual required FlightDetail FlightDetail { get; set; }
+    
+    [Required]
+    [ForeignKey("BookingDetailId")]
+    public virtual required BookingDetail BookingDetail { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public required string TravelPurpose { get; set; }
+
+    [Required]
+    public required double BaggageAllowance { get; set; }
+
+    [Required]
+    [MaxLength(50)]
+    public required string SelectedSeat { get; set; }
+
+    [Required]
+    public required bool RequireSpecialAssistance { get; set; }
+
+    [Required]
+    [MaxLength(50)]
+    public required string BookingStatus { get; set; }
+
+    [Required]
+    [MaxLength(50)]
+    public required int Fareamount { get; set; }
 }

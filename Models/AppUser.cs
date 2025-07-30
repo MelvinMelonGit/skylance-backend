@@ -6,64 +6,61 @@ namespace skylance_backend.Models;
 [Table("AppUsers")]
 public class AppUser
 {
-    public AppUser()
-    {
-        Id = Guid.NewGuid().ToString();
-    }
-
     [Key]
     [MaxLength(255)]
-    public string Id { get; set; }
-
-    [Required]
-    [MaxLength(255)]
-    public string Email { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
     
     [Required]
     [MaxLength(255)]
-    public string Password { get; set; }
-    
-    [Required]
-    [MaxLength(10)]
-    public string Salutation { get; set; }
-    
-    [Required]
-    [MaxLength(10)]
-    public string Gender { get; set; }
+    public required string Email { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string FirstName { get; set; }
+    public required string Password { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public required string Salutation { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public required string Gender { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string LastName { get; set; }
+    public required string FirstName { get; set; }
     
+    [Required]
+    [MaxLength(255)]
+    public required string LastName { get; set; }
+    
+    [Required]
     [ForeignKey("NationalityId")]
-    public virtual Country Nationality { get; set; }
+    public virtual required Country Nationality { get; set; }
     
+    [Required]
     [ForeignKey("MobileCodeId")]
-    public virtual Country MobileCode { get; set; }
+    public virtual required Country MobileCode { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string PhoneNumber { get; set; }
+    public required string MobileNumber { get; set; }
     
     [Required]
-    [MaxLength(20)]
-    public string MembershipTier { get; set; }
-    
-    [Required]
-    [MaxLength(255)]
-    public string MembershipNumber { get; set; }
+    [MaxLength(50)]
+    public required string MembershipTier { get; set; }
     
     [Required]
     [MaxLength(255)]
-    public string PassportNumber { get; set; }
+    public required string MembershipNumber { get; set; }
     
     [Required]
-    public DateOnly PassportExpiry { get; set; }
+    [MaxLength(255)]
+    public required string PassportNumber { get; set; }
     
     [Required]
-    public DateOnly DateOfBirth { get; set; }
+    public required DateOnly PassportExpiry { get; set; }
+    
+    [Required]
+    public required DateOnly DateOfBirth { get; set; }
 }

@@ -6,12 +6,14 @@ namespace skylance_backend.Models;
 [Table("EmployeeSessions")]
 public class EmployeeSession
 {
-    public EmployeeSession()
-    {
-        Id = Guid.NewGuid().ToString();
-    }
-    
     [Key]
     [MaxLength(255)]
-    public string Id { get; set; }
+    public required string Id { get; set; }
+    
+    [Required]
+    public required DateTime SessionExpiry { get; set; }
+    
+    [Required]
+    [ForeignKey("EmployeeId")]
+    public virtual required Employee Employee { get; set; }
 }

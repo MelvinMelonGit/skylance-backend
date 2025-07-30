@@ -6,26 +6,26 @@ namespace skylance_backend.Models;
 [Table("Aircraft")]
 public class Aircraft
 {
-    public Aircraft()
-    {
-        Id = Guid.NewGuid().ToString();
-    }
-    
     [Key]
-    public string Id { get; set; }
-    
+    [MaxLength(255)]
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+
     [Required]
-    public string Airline { get; set; }
-    
+    [MaxLength(255)]
+    public required string Airline { get; set; }
+
     [Required]
-    public string FlightNumber { get; set; }
-    
+    [MaxLength(50)]
+    public required string FlightNumber { get; set; }
+
     [Required]
-    public string AircraftBrand { get; set; }
-    
+    [MaxLength(50)]
+    public required string AircraftBrand { get; set; }
+
     [Required]
-    public string AircraftModel { get; set; }
-    
+    [MaxLength(255)]
+    public required string AircraftModel { get; set; }
+
     [Required]
-    public int SeatCapacity { get; set; }
+    public required int SeatCapacity { get; set; }
 }

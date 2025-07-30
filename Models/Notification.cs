@@ -6,12 +6,23 @@ namespace skylance_backend.Models;
 [Table("Notifications")]
 public class Notification
 {
-    public Notification()
-    {
-        Id = Guid.NewGuid().ToString();
-    }
-    
     [Key]
     [MaxLength(255)]
-    public string Id { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+    
+    [Required]
+    [MaxLength(255)]
+    public virtual required OverbookingDetail OverbookingDetail { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public required string Message { get; set; }
+    
+    [Required]
+    [MaxLength(255)]
+    public required string NotificationType { get; set; }
+    
+    [Required]
+    [MaxLength(50)]
+    public required string NotificationStatus { get; set; }
 }
