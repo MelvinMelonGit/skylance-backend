@@ -2,6 +2,7 @@
 using skylance_backend.Data;
 using skylance_backend.Models;
 using skylance_backend.Enum;
+using Castle.Components.DictionaryAdapter.Xml;
 
 namespace skylance_backend.Controllers
 {
@@ -25,7 +26,7 @@ namespace skylance_backend.Controllers
             {
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["0c73462e-5e3f-4477-a16d-443186ac05fe"],
+                    FlightDetail = flightDetails[1],
                     BookingDetail = bookingDetails["G66666"],
                     TravelPurpose = "Business",
                     BaggageAllowance = 35,
@@ -37,7 +38,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["1cfe33b8-b9da-4c32-b9fd-0ead164585d6"],
+                    FlightDetail = flightDetails[2],
                     BookingDetail = bookingDetails["G66688"],
                     TravelPurpose = "Family",
                     BaggageAllowance = 25,
@@ -49,7 +50,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["1d69bbf3-fe80-4a34-ad03-45d845645ace"],
+                    FlightDetail = flightDetails[3],
                     BookingDetail = bookingDetails["J01927"],
                     TravelPurpose = "Leisure",
                     BaggageAllowance = 45,
@@ -61,7 +62,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["2284e6e7-1aef-469c-842d-7f58a1aae6a9"],
+                    FlightDetail = flightDetails[4],
                     BookingDetail = bookingDetails["K78906"],
                     TravelPurpose = "Emergency",
                     BaggageAllowance = 50,
@@ -73,7 +74,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["4dd3c408-6974-453c-b635-b9b2312cb838"],
+                    FlightDetail = flightDetails[5],
                     BookingDetail = bookingDetails["L76543"],
                     TravelPurpose = "Leisure",
                     BaggageAllowance = 25,

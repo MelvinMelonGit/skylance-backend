@@ -40,6 +40,9 @@ public class FlightBookingDetail
     [Required]
     [MaxLength(50)]
     public required int Fareamount { get; set; }
+
+    //[Required]
+    //public required bool CheckinStatus { get; set; }
 }
 
 
