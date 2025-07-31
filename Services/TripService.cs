@@ -4,7 +4,7 @@ using skylance_backend.Enum;
 using skylance_backend.Models;
 using System;
 
-namespace skylance_backend.Service_Layer
+namespace skylance_backend.Services
 {
     public class TripService : ITripService
     {
@@ -15,42 +15,48 @@ namespace skylance_backend.Service_Layer
             _context = context;
         }
 
-        public async Task<TripDetailsDto> GetTripDetailsAsync(Guid flightDetailId)
+        public async Task<TripDetailDTO> GetTripDetailsAsync(string flightBookingId)
         {
-            var flightDetails = await _context.FlightDetails
-                .Include(f => f.Flight)
-                .FirstOrDefaultAsync(f => f.Id == flightDetailId);
+            var flightBooking = await _context.FlightBookingDetails
+                .Include(fb => fb.FlightDetail)
+                .FirstOrDefaultAsync(fb => fb.Id == flightBookingId);
 
-            if (flightDetails == null) return null;
+            if (flightBooking == null) return null;
 
-            return new TripDetailsDto
+            var flight = flightBooking.FlightDetail;
+
+            return new TripDetailDTO
             {
-                FlightNumber = flightDetails.Flight.FlightNumber,
-                OriginAirport = flightDetails.Flight.Origin,
-                DestinationAirport = flightDetails.Flight.Destination,
-                DepartureTime = flightDetails.Flight.DepartureTime,
-                ArrivalTime = flightDetails.Flight.ArrivalTime
+                FlightNumber = flight.Aircraft.FlightNumber,
+                OriginAirportCode = flight.OriginAirport.IataCode,
+                OriginAirportName = flight.OriginAirport.Name,
+                DestinationAirportCode = flight.DestinationAirport.IataCode,
+                DestinationAirportName = flight.DestinationAirport.Name,
+                DepartureTime = flight.DepartureTime,
+                ArrivalTime = flight.ArrivalTime,
+                FlightDuration = flight.ArrivalTime - flight.DepartureTime
             };
         }
 
-        public async Task<CheckInValidationResult> ValidateCheckInAsync(Guid bookingDetailId)
+        public async Task<CheckInValidationResult> ValidateCheckInAsync(string flightBookingId)
         {
-            var booking = await _context.BookingDetails
-                .Include(b => b.flightDetail)
-                .FirstOrDefaultAsync(b => b.Id == bookingDetailId);
+            var flightBooking = await _context.FlightBookingDetails
+                .Include(fb => fb.FlightDetail)
+                .FirstOrDefaultAsync(fb => fb.Id == flightBookingId);
 
-            if (booking == null)
+            if (flightBooking == null)
                 throw new Exception("Booking not found");
 
-            var flight = flightDetail.Flight;
+            var flight = flightBooking.FlightDetail;
 
             if (flight.DepartureTime <= DateTime.UtcNow)
                 return CheckInValidationResult.FlightDeparted;
 
-            var checkedInCount = await _context.FlightDetails
-                .CountAsync(f => f.FlightId == flight.Id && f.Status == "Checked-In");
+            var checkedInCount = await _context.FlightBookingDetails
+                .Where(fb => fb.FlightDetail.Id == flight.Id && fb.BookingStatus == BookingStatus.CheckedIn)
+                .CountAsync();
 
-            var seatCapacity = flight.SeatCapacity;
+            var seatCapacity = flight.Aircraft.SeatCapacity;
 
             if (checkedInCount >= seatCapacity)
                 return CheckInValidationResult.FlightFullyCheckedIn;
@@ -58,21 +64,21 @@ namespace skylance_backend.Service_Layer
             return CheckInValidationResult.Allowed;
         }
 
-        public async Task<bool> ConfirmCheckInAsync(Guid flightDetailsId)
+        public async Task<bool> ConfirmCheckInAsync(string flightBookingId)
         {
-            var flightDetails = await _context.FlightDetails
-                .Include(f => f.Flight)
-                .FirstOrDefaultAsync(f => f.Id == flightDetailsId);
+            var flightBooking = await _context.FlightBookingDetails
+                .Include(fb => fb.FlightDetail)
+                .FirstOrDefaultAsync(fb => fb.Id == flightBookingId);
 
-            if (flightDetails == null || flightDetails.Status == "Checked-In")
+            if (flightBooking == null || flightBooking.BookingStatus == BookingStatus.CheckedIn)
                 return false;
 
-            if (flightDetails.Flight.DepartureTime <= DateTime.UtcNow)
+            if (flightBooking.FlightDetail.DepartureTime <= DateTime.UtcNow)
                 return false;
 
             // (Optional) Check seat availability
 
-            flightDetails.Status = "Checked-In";
+            flightBooking.BookingStatus = BookingStatus.CheckedIn;
             await _context.SaveChangesAsync();
             return true;
         }
