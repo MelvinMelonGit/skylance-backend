@@ -10,15 +10,15 @@ public class FlightBookingDetail
     [Key]
     [MaxLength(255)]
     public string Id { get; set; } = Guid.NewGuid().ToString();
-    
+
     [Required]
     [ForeignKey("FlightDetailId")]
     public virtual required FlightDetail FlightDetail { get; set; }
-    
+
     [Required]
     [ForeignKey("BookingDetailId")]
     public virtual required BookingDetail BookingDetail { get; set; }
-    
+
     [Required]
     [MaxLength(50)]
     public required string TravelPurpose { get; set; }
@@ -44,3 +44,5 @@ public class FlightBookingDetail
     //[Required]
     //public required bool CheckinStatus { get; set; }
 }
+
+

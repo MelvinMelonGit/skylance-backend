@@ -8,7 +8,9 @@ public class FlightDetail
 {
     [Key]
     [MaxLength(255)]
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public int Id { get; set; }
+    //public string Id { get; set; } = Guid.NewGuid().ToString();
+
 
     [Required]
     [ForeignKey("AircraftId")]
