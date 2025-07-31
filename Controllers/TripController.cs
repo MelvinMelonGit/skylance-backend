@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using skylance_backend.Enums;
-using skylance_backend.Service_Layer;
+using skylance_backend.Enum;
+using skylance_backend.Services;
 
 namespace skylance_backend.Controllers;
 
