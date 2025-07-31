@@ -8,6 +8,5 @@ namespace skylance_backend.Services
         Task<TripDetailDTO> GetTripDetailsAsync(string flightBookingId);
         Task<CheckInValidationResult> ValidateCheckInAsync(string flightBookingId);
         Task<bool> ConfirmCheckInAsync(string flightBookingId);
-
     }
 }

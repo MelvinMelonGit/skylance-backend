@@ -2,10 +2,9 @@
 using skylance_backend.Data;
 using skylance_backend.Enum;
 using skylance_backend.Models;
-using skylance_backend.Services;
 using System;
 
-namespace skylance_backend.Service_Layer
+namespace skylance_backend.Services
 {
     public class TripService : ITripService
     {
