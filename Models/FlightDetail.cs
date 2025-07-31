@@ -40,4 +40,14 @@ public class FlightDetail
 
     [Required]
     public required int SeatsSold { get; set; }
+
+    [Required]
+    public required double Distance { get; set; }
+
+    [NotMapped]
+    public double Compensation => Distance / 4;
+
+    [NotMapped]
+    public double RebookingCompensation => 1.5 * Distance / 4;
+
 }
