@@ -1,6 +1,13 @@
-﻿namespace skylance_backend.Services
+﻿using skylance_backend.Enum;
+using skylance_backend.Models;
+
+namespace skylance_backend.Services
 {
     public interface ITripService
     {
+        Task<TripDetailDTO> GetTripDetailsAsync(string flightBookingId);
+        Task<CheckInValidationResult> ValidateCheckInAsync(string flightBookingId);
+        Task<bool> ConfirmCheckInAsync(string flightBookingId);
+
     }
 }

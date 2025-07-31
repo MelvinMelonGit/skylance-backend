@@ -1,3 +1,4 @@
+using skylance_backend.Enum;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -34,9 +35,10 @@ public class FlightBookingDetail
 
     [Required]
     [MaxLength(50)]
-    public required string BookingStatus { get; set; }
+    public required BookingStatus BookingStatus { get; set; }
 
     [Required]
     [MaxLength(50)]
     public required int Fareamount { get; set; }
+
 }
