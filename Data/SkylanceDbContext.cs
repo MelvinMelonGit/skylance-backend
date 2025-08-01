@@ -56,5 +56,39 @@ public class SkylanceDbContext : DbContext
             .WithMany()
             .HasForeignKey("MobileCodeId");
 
+        modelBuilder.Entity<BookingDetail>()
+            .HasOne(u => u.AppUser)
+            .WithMany()
+            .HasForeignKey("AppUserId");
+
+        modelBuilder.Entity<FlightBookingDetail>()
+           .HasOne(u => u.FlightDetail)
+           .WithMany()
+           .HasForeignKey("FlightDetailId");
+
+        modelBuilder.Entity<FlightBookingDetail>()
+           .HasOne(u => u.BookingDetail)
+           .WithMany()
+           .HasForeignKey("BookingDetailId");
+
+        modelBuilder.Entity<CheckInDetail>()
+            .HasOne(u => u.FlightBookingDetail)
+            .WithMany()
+            .HasForeignKey("FlightBookingDetailId");
+
+        modelBuilder.Entity<CheckInDetail>()
+            .HasOne(u => u.AppUser)
+            .WithMany()
+            .HasForeignKey("AppUserId");
+
+        modelBuilder.Entity<OverbookingDetail>()
+            .HasOne(o => o.OldFlightBookingDetail)
+            .WithMany()
+            .HasForeignKey("OldFlightBookingDetailId");
+
+        modelBuilder.Entity<OverbookingDetail>()
+            .HasOne(o => o.NewFlightBookingDetail)
+            .WithMany()
+            .HasForeignKey("NewFlightBookingDetailId");
     }
 }

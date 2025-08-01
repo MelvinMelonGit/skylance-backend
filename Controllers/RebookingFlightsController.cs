@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using skylance_backend.Attributes;
 using skylance_backend.Data;
 using skylance_backend.Models;
 
 namespace skylance_backend.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class RebookingFlightsController : ControllerBase
@@ -17,6 +19,7 @@ namespace skylance_backend.Controllers
         }
 
         // GET: api/Flights
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FlightDetail>>> GetFlightDetails()
         {
@@ -44,13 +47,12 @@ namespace skylance_backend.Controllers
 
             return flightDetail;
         }
+
+       
+
+
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
 }
-=======
-}
->>>>>>> Stashed changes
-=======
-}
->>>>>>> Stashed changes
+
+
