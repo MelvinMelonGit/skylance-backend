@@ -19,39 +19,51 @@ public class TripController : ControllerBase
 
     // GET: api/trips/{flightDetailsId}
     // to display the flight detail page
-    [ProtectedRoute]
-    [HttpGet("{flightDetailsId}")]
-    public async Task<IActionResult> GetTripDetails(Guid flightDetailsId)
-    {
-        var tripDetails = await _tripService.GetTripDetailsAsync(flightDetailsId);
-        if (tripDetails == null)
-            return NotFound();
+    //[ProtectedRoute]
+    [HttpGet("{flightBookingId}")]
+        public async Task<IActionResult> TripDetail(string flightBookingId)
+        {
+            if (string.IsNullOrEmpty(flightBookingId))
+            {
+                return BadRequest("Invalid booking ID.");
+            }
 
-        return Ok(tripDetails);
-    }
+            var tripDetails = await _tripService.GetTripDetailsAsync(flightBookingId);
+
+            if (tripDetails == null)
+            {
+                return NotFound(); // Could also redirect to an error page
+            }
+
+            return Ok(tripDetails); // This will pass the DTO to the Razor view
+        }
+
 
     // GET: api/trips/{flightDetailsId}/checkin/validate
     // to verify if flight is overbooked or not
     // if it is not, then display confirm check in page
     // if it is, then redirect
-    [HttpGet("{flightDetailsId}/checkin/validate")]
-    public async Task<IActionResult> ValidateCheckIn(Guid flightDetailsId)
+    //[ProtectedRoute]
+    [HttpGet("{flightBookingId}/checkin/validate")]
+    public async Task<IActionResult> ValidateCheckIn(string flightBookingId)
     {
-        var result = await _tripService.ValidateCheckInAsync(flightDetailsId);
+        var result = await _tripService.ValidateCheckInAsync(flightBookingId);
 
         return result switch
         {
             CheckInValidationResult.Allowed => Ok("Proceed to confirm check-in."),
+            CheckInValidationResult.AlreadyCheckedIn => BadRequest("You have already checked in."),
             CheckInValidationResult.FlightDeparted => BadRequest("Flight already departed."),
             CheckInValidationResult.FlightFullyCheckedIn => Redirect("/overbooking"),
             _ => BadRequest("Unknown error.")
         };
     }
 
-    [HttpPost("{flightDetailsId}/checkin/confirm")]
-    public async Task<IActionResult> ConfirmCheckIn(Guid flightDetailsId)
+    //[ProtectedRoute]
+    [HttpPost("{flightBookingId}/checkin/confirm")]
+    public async Task<IActionResult> ConfirmCheckIn(string flightBookingId)
     {
-        var result = await _tripService.ConfirmCheckInAsync(flightDetailsId);
+        var result = await _tripService.ConfirmCheckInAsync(flightBookingId);
         return result ? Ok("Checked in successfully.") : BadRequest("Check-in failed.");
     }
 
