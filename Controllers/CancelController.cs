@@ -42,11 +42,8 @@ namespace skylance_backend.Controllers
                 .FirstOrDefault(o => o.OldBookingFlightDetailId == flightBookingDetail.Id.ToString());
             var notification = _db.Notifications
                 .FirstOrDefault(n => n.OverbookingDetail == overbooking);
-            var flightDuringTime = flightBookingDetail.FlightDetail.DepartureTime - flightBookingDetail.FlightDetail.ArrivalTime;
-<<<<<<< Updated upstream
-=======
-            
->>>>>>> Stashed changes
+            var flightDuringTime = flightBookingDetail.FlightDetail.ArrivalTime - flightBookingDetail.FlightDetail.DepartureTime;
+
             return Ok(new
             {
                 flightBookingDetailId = flightBookingDetail.FlightDetail.Id,
@@ -55,11 +52,7 @@ namespace skylance_backend.Controllers
                 FlightDate = flightBookingDetail.FlightDetail.DepartureTime.ToString("yyyy-MM-dd"),
                 FlightDuringTime = flightDuringTime,
                 Aircraft = flightBookingDetail.FlightDetail.Aircraft.Airline,
-<<<<<<< Updated upstream
-                Compensation = overbooking.FinalCompensationAmount
-=======
                 Compensation = overbooking?.FinalCompensationAmount
->>>>>>> Stashed changes
             });
         }
         [HttpPost("excutecancel")]
@@ -68,15 +61,9 @@ namespace skylance_backend.Controllers
             var flightBookingDetail = _db.FlightBookingDetails
             .Include(f => f.BookingDetail)
                 .ThenInclude(b => b.AppUser)
-<<<<<<< Updated upstream
-            .FirstOrDefault(f => f.Id.ToString() == flightBookingDetailId);
-            var overbooking = _db.OverbookingDetails
-                .FirstOrDefault(o => o.OldBookingFlightDetailId == flightBookingDetail.Id.ToString());
-=======
             .FirstOrDefault(f => f.Id == flightBookingDetailId);
             var overbooking = _db.OverbookingDetails
                 .FirstOrDefault(o => o.OldBookingFlightDetailId == flightBookingDetailId);
->>>>>>> Stashed changes
             var notification = _db.Notifications
                .FirstOrDefault(n => n.OverbookingDetail == overbooking);
             if (flightBookingDetail == null)
@@ -89,14 +76,8 @@ namespace skylance_backend.Controllers
             return Ok(new
             {
                 Status = "Success",
-<<<<<<< Updated upstream
-                Message = notification.Message,
-                NotificationStatus = notification.NotificationStatus,
-                NotificationType = notification.NotificationType,
-=======
                 Message = "You have successfully cancelled this flight",
-               
->>>>>>> Stashed changes
+
             });
         }
     }
