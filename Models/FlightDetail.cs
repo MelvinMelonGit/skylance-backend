@@ -11,7 +11,6 @@ public class FlightDetail
     public int Id { get; set; }
     //public string Id { get; set; } = Guid.NewGuid().ToString();
 
-
     [Required]
     [ForeignKey("AircraftId")]
     public virtual required Aircraft Aircraft { get; set; }

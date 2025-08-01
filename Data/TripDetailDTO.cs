@@ -1,4 +1,4 @@
-﻿namespace skylance_backend.Models
+﻿namespace skylance_backend.Data
 {
     public class TripDetailDTO
     {
@@ -13,7 +13,7 @@
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
         public string SeatNumber { get; set; }
-        public string BookingStatus { get; set; }
+        public string Status { get; set; }
         public TimeSpan FlightDuration { get; set; }
         public bool HasCheckedIn { get; set; }
     }
