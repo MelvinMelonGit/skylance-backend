@@ -95,14 +95,13 @@ namespace skylance_backend.Controllers
                 },
             };
 
-            db.FlightDetails.AddRange(flightDetailList);
-            db.SaveChanges();
+                db.FlightDetails.AddRange(flightDetailList);
+                db.SaveChanges();
 
-            return Ok("Flight Details seeded successfully.");
+                return Ok("Flight Details seeded successfully.");
         }
     }
 }
-
 
 
 

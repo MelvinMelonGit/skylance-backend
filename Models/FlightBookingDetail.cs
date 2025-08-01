@@ -18,17 +18,21 @@ public class FlightBookingDetail
     [Required]
     [ForeignKey("BookingDetailId")]
     public virtual required BookingDetail BookingDetail { get; set; }
+<<<<<<< HEAD
 
     [Required]
     [MaxLength(50)]
     public required string TravelPurpose { get; set; }
+=======
+    
+>>>>>>> yaotian
 
     [Required]
     public required double BaggageAllowance { get; set; }
 
     [Required]
     [MaxLength(50)]
-    public required string SelectedSeat { get; set; }
+    public required string SeatNumber { get; set; }
 
     [Required]
     public required bool RequireSpecialAssistance { get; set; }
