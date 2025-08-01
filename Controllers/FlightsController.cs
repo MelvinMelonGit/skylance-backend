@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using skylance_backend.Attributes;
 using skylance_backend.Data;
 using skylance_backend.Enum;
 
@@ -15,9 +16,11 @@ namespace skylance_backend.Controllers
             this.db = db;
         }
 
+        [ProtectedRoute]
         [HttpGet]
         public IActionResult GetUpcomingFlights()
         {
+            /*
             //authenticate the logged in user with the session
             var token = Request.Headers["Session-Token"].ToString();
             var session = db.AppUserSessions
@@ -28,6 +31,7 @@ namespace skylance_backend.Controllers
                 return Unauthorized();
 
             var loggedInUserId = session.AppUser.Id;
+            */
 
             // look for upcoming flights 
             var upcomingFlights = db.FlightBookingDetails
