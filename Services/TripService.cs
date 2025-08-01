@@ -27,6 +27,7 @@ namespace skylance_backend.Services
 
             return new TripDetailDTO
             {
+                Airline = flight.Aircraft.Airline,
                 FlightNumber = flight.Aircraft.FlightNumber,
                 OriginAirportCode = flight.OriginAirport.IataCode,
                 OriginAirportName = flight.OriginAirport.Name,

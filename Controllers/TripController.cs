@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using skylance_backend.Attributes;
 using skylance_backend.Enum;
 using skylance_backend.Services;
 
@@ -17,6 +18,8 @@ public class TripController : ControllerBase
     }
 
     // GET: api/trips/{flightDetailsId}
+    // to display the flight detail page
+    [ProtectedRoute]
     [HttpGet("{flightDetailsId}")]
     public async Task<IActionResult> GetTripDetails(Guid flightDetailsId)
     {
@@ -28,6 +31,9 @@ public class TripController : ControllerBase
     }
 
     // GET: api/trips/{flightDetailsId}/checkin/validate
+    // to verify if flight is overbooked or not
+    // if it is not, then display confirm check in page
+    // if it is, then redirect
     [HttpGet("{flightDetailsId}/checkin/validate")]
     public async Task<IActionResult> ValidateCheckIn(Guid flightDetailsId)
     {
@@ -37,7 +43,7 @@ public class TripController : ControllerBase
         {
             CheckInValidationResult.Allowed => Ok("Proceed to confirm check-in."),
             CheckInValidationResult.FlightDeparted => BadRequest("Flight already departed."),
-            CheckInValidationResult.FlightFullyCheckedIn => Redirect("/rebooking"),
+            CheckInValidationResult.FlightFullyCheckedIn => Redirect("/overbooking"),
             _ => BadRequest("Unknown error.")
         };
     }

@@ -1,4 +1,5 @@
-﻿using skylance_backend.Enum;
+﻿using skylance_backend.Data;
+using skylance_backend.Enum;
 using skylance_backend.Models;
 
 namespace skylance_backend.Services
