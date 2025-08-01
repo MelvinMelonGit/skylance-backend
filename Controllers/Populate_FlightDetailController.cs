@@ -61,7 +61,7 @@ namespace skylance_backend.Controllers
                     DepartureTime = new DateTime(2025, 8, 7, 15, 30, 0),
                     ArrivalTime = new DateTime(2025, 8, 7, 20, 15, 0),
                     IsHoliday = false,
-                    FlightStatus = "Delayed",
+                    FlightStatus = "Landed",
                     CheckInCount = 100,
                     SeatsSold = 110,
                     Distance=4500

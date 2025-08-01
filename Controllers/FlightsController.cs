@@ -16,8 +16,8 @@ namespace skylance_backend.Controllers
             this.db = db;
         }
 
-        [ProtectedRoute]
-        [HttpGet]
+        //[ProtectedRoute]
+        [HttpGet("UpcomingFlights")]
         public IActionResult GetUpcomingFlights()
         {
             /*
@@ -35,15 +35,13 @@ namespace skylance_backend.Controllers
 
             // look for upcoming flights 
             var upcomingFlights = db.FlightBookingDetails
-            .Include(fbd => fbd.FlightDetail)
-            .Include(fbd => fbd.BookingDetail)
-            .Where(fbd =>
-                fbd.BookingDetail.AppUser.Id == loggedInUserId &&
+                .Include(fbd => fbd.FlightDetail)
+                .Where(fbd =>
                 fbd.FlightDetail.DepartureTime > DateTime.Now &&
                 fbd.BookingStatus == BookingStatus.Confirmed)
             .Select(fbd => new
             {
-                FlightNumber = fbd.FlightDetail.Aircraft.FlightNumber, 
+                FlightNumber = fbd.FlightDetail.Aircraft.FlightNumber,
                 Origin = fbd.FlightDetail.OriginAirport.Name,
                 Destination = fbd.FlightDetail.DestinationAirport.Name,
                 DepartureTime = fbd.FlightDetail.DepartureTime,
@@ -52,6 +50,28 @@ namespace skylance_backend.Controllers
             .ToList();
 
             return Ok(upcomingFlights);
+        }
+
+        //[ProtectedRoute]
+        [HttpGet("PastFlights")]
+        public IActionResult GetPastFlights()
+        {
+            // look for past flights
+            var pastFlights = db.FlightBookingDetails
+                .Include(fbd => fbd.FlightDetail)
+                .Where(fbd =>
+                fbd.BookingStatus == BookingStatus.CheckedIn &&
+                fbd.FlightDetail.FlightStatus == "Landed")
+                .Select(fbd => new
+                {
+                    FlightNumber = fbd.FlightDetail.Aircraft.FlightNumber,
+                    Origin = fbd.FlightDetail.OriginAirport.Name,
+                    Destination = fbd.FlightDetail.DestinationAirport.Name,
+                    ArrivalTime = fbd.FlightDetail.ArrivalTime,
+                })
+                .ToList();
+
+                return Ok(pastFlights);
         }
     }
 }
