@@ -33,7 +33,7 @@ namespace skylance_backend.Controllers
                     SelectedSeat = "12F",
                     RequireSpecialAssistance = true,
                     BookingStatus = BookingStatus.Confirmed,
-                    Fareamount = 200
+                    Fareamount = 1200
                 },
 
                 new FlightBookingDetail
@@ -45,7 +45,7 @@ namespace skylance_backend.Controllers
                     SelectedSeat = "10A",
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.CheckedIn,
-                    Fareamount = 200
+                    Fareamount = 2000
                 },
 
                 new FlightBookingDetail
@@ -56,8 +56,8 @@ namespace skylance_backend.Controllers
                     BaggageAllowance = 45,
                     SelectedSeat = "20C",
                     RequireSpecialAssistance = false,
-                    BookingStatus = BookingStatus.Cancelled,
-                    Fareamount = 200
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2300
                 },
 
                 new FlightBookingDetail
@@ -69,7 +69,7 @@ namespace skylance_backend.Controllers
                     SelectedSeat = "13B",
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.Rebooked,
-                    Fareamount = 200
+                    Fareamount = 1700
                 },
 
                 new FlightBookingDetail
@@ -81,7 +81,7 @@ namespace skylance_backend.Controllers
                     SelectedSeat = "28D",
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.Confirmed,
-                    Fareamount = 200
+                    Fareamount = 800
                 }
             };
 
