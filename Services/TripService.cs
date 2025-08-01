@@ -27,7 +27,9 @@ namespace skylance_backend.Services
 
             return new TripDetailDTO
             {
+                BookingReferenceNumber = flightBooking.BookingDetail.BookingReferenceNumber,
                 Airline = flight.Aircraft.Airline,
+                AircraftModel = flight.Aircraft.AircraftModel,
                 FlightNumber = flight.Aircraft.FlightNumber,
                 OriginAirportCode = flight.OriginAirport.IataCode,
                 OriginAirportName = flight.OriginAirport.Name,
@@ -35,7 +37,8 @@ namespace skylance_backend.Services
                 DestinationAirportName = flight.DestinationAirport.Name,
                 DepartureTime = flight.DepartureTime,
                 ArrivalTime = flight.ArrivalTime,
-                FlightDuration = flight.ArrivalTime - flight.DepartureTime
+                FlightDuration = flight.ArrivalTime - flight.DepartureTime,
+                HasCheckedIn = flightBooking.BookingStatus == BookingStatus.CheckedIn
             };
         }
 
@@ -47,6 +50,9 @@ namespace skylance_backend.Services
 
             if (flightBooking == null)
                 throw new Exception("Booking not found");
+
+            if (flightBooking.BookingStatus == BookingStatus.CheckedIn)
+                return CheckInValidationResult.AlreadyCheckedIn;
 
             var flight = flightBooking.FlightDetail;
 
@@ -71,7 +77,7 @@ namespace skylance_backend.Services
                 .Include(fb => fb.FlightDetail)
                 .FirstOrDefaultAsync(fb => fb.Id == flightBookingId);
 
-            if (flightBooking == null || flightBooking.BookingStatus == BookingStatus.CheckedIn)
+            if (flightBooking == null)
                 return false;
 
             if (flightBooking.FlightDetail.DepartureTime <= DateTime.UtcNow)

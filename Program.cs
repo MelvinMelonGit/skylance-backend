@@ -9,6 +9,7 @@ builder.Services.AddHttpClient<MLService>();
 
 // Inject our database context into DI-container
 builder.Services.AddDbContext<SkylanceDbContext>();
+builder.Services.AddScoped<ITripService, TripService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

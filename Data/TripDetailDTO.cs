@@ -2,7 +2,7 @@
 {
     public class TripDetailDTO
     {
-        public string bookingReferenceNumber { get; set; }
+        public string BookingReferenceNumber { get; set; }
         public string FlightNumber { get; set; }
         public string OriginAirportCode { get; set; }
         public string OriginAirportName { get; set; }
@@ -12,8 +12,6 @@
         public string AircraftModel { get; set; }
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
-        public string SeatNumber { get; set; }
-        public string Status { get; set; }
         public TimeSpan FlightDuration { get; set; }
         public bool HasCheckedIn { get; set; }
     }
