@@ -16,7 +16,7 @@ namespace skylance_backend.Controllers
             this.db = db;
         }
 
-        // Helper method to get loggedInUserId from session token
+        // Helper method to get AppUserSession token
         private string? GetLoggedInUserId()
         {
             var token = Request.Headers["Session-Token"].ToString();
@@ -30,7 +30,7 @@ namespace skylance_backend.Controllers
             return session?.AppUser.Id;
         }
 
-        [ProtectedRoute]
+        [ProtectedRoute] // KIV, currently ProtectedRouteAttribute no logic yet
         [HttpGet("UpcomingFlights")]
         public IActionResult GetUpcomingFlights()
         {
@@ -60,7 +60,7 @@ namespace skylance_backend.Controllers
             return Ok(upcomingFlights);
         }
 
-        [ProtectedRoute]
+        [ProtectedRoute] // KIV, currently ProtectedRouteAttribute no logic yet
         [HttpGet("PastFlights")]
         public IActionResult GetPastFlights()
         {
