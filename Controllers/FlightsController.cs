@@ -45,7 +45,7 @@ namespace skylance_backend.Controllers
                 Origin = fbd.FlightDetail.OriginAirport.Name,
                 Destination = fbd.FlightDetail.DestinationAirport.Name,
                 DepartureTime = fbd.FlightDetail.DepartureTime,
-                SelectedSeat = fbd.SelectedSeat
+                SelectedSeat = fbd.SeatNumber
             })
             .ToList();
 

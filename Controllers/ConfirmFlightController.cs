@@ -60,9 +60,9 @@ namespace skylance_backend.Controllers
                     BaggageAllowance = request.BaggageAllowance,
                     SeatNumber = request.SeatNumber,
                     RequireSpecialAssistance = request.RequireSpecialAssistance,
-                    BookingStatus = BookingStatus.Confirmed,
+                    BookingStatus = BookingStatus.CheckedIn,
                     Fareamount = request.Fareamount,
-                    CheckinStatus = true
+                    
                 };
                 await _context.FlightBookingDetails.AddAsync(flightBookingDetail);
 
