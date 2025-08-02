@@ -26,7 +26,7 @@ namespace skylance_backend.Controllers
             {
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["1"],
+                    FlightDetail = flightDetails[1],
                     BookingDetail = bookingDetails["G66666"],
                     BaggageAllowance = 35,
                     SeatNumber = "12F",
@@ -37,7 +37,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["2"],
+                    FlightDetail = flightDetails[2],
                     BookingDetail = bookingDetails["G66688"],
                     BaggageAllowance = 25,
                     SeatNumber = "10A",
@@ -48,7 +48,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["3"],
+                    FlightDetail = flightDetails[3],
                     BookingDetail = bookingDetails["J01927"],
                     BaggageAllowance = 45,
                     SeatNumber = "20C",
@@ -59,7 +59,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["4"],
+                    FlightDetail = flightDetails[4],
                     BookingDetail = bookingDetails["K78906"],
                     BaggageAllowance = 50,
                     SeatNumber = "13B",
@@ -70,7 +70,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails["5"],
+                    FlightDetail = flightDetails[5],
                     BookingDetail = bookingDetails["L76543"],
                     BaggageAllowance = 25,
                     SeatNumber = "28D",

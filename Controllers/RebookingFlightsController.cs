@@ -32,7 +32,7 @@ namespace skylance_backend.Controllers
 
         // GET: api/Flights/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<FlightDetail>> GetFlightDetail(string id)
+        public async Task<ActionResult<FlightDetail>> GetFlightDetail(int id)
         {
             var flightDetail = await _context.FlightDetails
                 .Include(f => f.Aircraft)

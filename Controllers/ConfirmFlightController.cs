@@ -119,7 +119,7 @@ namespace skylance_backend.Controllers
     {
         
         public required string AppUserId { get; set; }
-        public required string FlightDetailId { get; set; }
+        public required int FlightDetailId { get; set; }
         public required double BaggageAllowance { get; set; }
         public required string SeatNumber { get; set; }
         public required bool RequireSpecialAssistance { get; set; }
