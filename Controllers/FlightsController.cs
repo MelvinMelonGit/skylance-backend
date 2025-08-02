@@ -16,6 +16,7 @@ namespace skylance_backend.Controllers
             this.db = db;
         }
 
+        /*
         // Helper method to get AppUserSession token
         private string? GetLoggedInUserId()
         {
@@ -29,21 +30,24 @@ namespace skylance_backend.Controllers
 
             return session?.AppUser.Id;
         }
+        */
 
-        [ProtectedRoute] // KIV, currently ProtectedRouteAttribute no logic yet
+        [ProtectedRoute] 
         [HttpGet("UpcomingFlights")]
         public IActionResult GetUpcomingFlights()
         {
+            /*
             // created loggedInUserId variable to identify the flights with the logged-in user
             var loggedInUserId = GetLoggedInUserId();
             if (loggedInUserId == null)
                 return Unauthorized("Invalid or expired session token.");
+            */
 
             var upcomingFlights = db.FlightBookingDetails
                 .Include(fbd => fbd.FlightDetail)
-                .Include(fbd => fbd.BookingDetail)            
+                //.Include(fbd => fbd.BookingDetail)            
                 .Where(fbd =>
-                fbd.BookingDetail.AppUser.Id == loggedInUserId &&
+                //fbd.BookingDetail.AppUser.Id == loggedInUserId &&
                 fbd.FlightDetail.DepartureTime > DateTime.Now &&
                 fbd.BookingStatus == BookingStatus.Confirmed)
             .Select(fbd => new
@@ -60,24 +64,27 @@ namespace skylance_backend.Controllers
             return Ok(upcomingFlights);
         }
 
-        [ProtectedRoute] // KIV, currently ProtectedRouteAttribute no logic yet
+        [ProtectedRoute]
         [HttpGet("PastFlights")]
         public IActionResult GetPastFlights()
         {
+            /*
             // created loggedInUserId variable to identify the flights with the logged-in user
             var loggedInUserId = GetLoggedInUserId();
             if (loggedInUserId == null)
                 return Unauthorized("Invalid or expired session token.");
+            */
 
             var pastFlights = db.FlightBookingDetails
                 .Include(fbd => fbd.FlightDetail)
                 .Include(fbd => fbd.BookingDetail)
                 .Where(fbd =>
-                fbd.BookingDetail.AppUser.Id == loggedInUserId &&
+                //fbd.BookingDetail.AppUser.Id == loggedInUserId &&
                 fbd.BookingStatus == BookingStatus.CheckedIn &&
                 fbd.FlightDetail.FlightStatus == "Landed")
                 .Select(fbd => new
                 {
+                    FlightBookingDetailId = fbd.Id,
                     FlightNumber = fbd.FlightDetail.Aircraft.FlightNumber,
                     Origin = fbd.FlightDetail.OriginAirport.Name,
                     Destination = fbd.FlightDetail.DestinationAirport.Name,
@@ -89,18 +96,3 @@ namespace skylance_backend.Controllers
         }
     }
 }
-
-
-
-/*
-// created loggedInUserId variable to identify the flights with the logged in user
-var token = Request.Headers["Session-Token"].ToString();
-var session = db.AppUserSessions
-    .Include(s => s.AppUser)
-    .FirstOrDefault(s => s.Id == token && s.SessionExpiry > DateTime.UtcNow);
-
-if (session == null)
-    return Unauthorized();
-
-var loggedInUserId = session.AppUser.Id;
-*/
