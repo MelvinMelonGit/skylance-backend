@@ -4,6 +4,19 @@ using skylance_backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:8081"
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 // Add services to the container.
 
 // Inject our database context into DI-container
@@ -35,6 +48,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Use CORS before routing
+app.UseCors("AllowAll");
 
 initDB(); // this must be run before app.Run();
 
