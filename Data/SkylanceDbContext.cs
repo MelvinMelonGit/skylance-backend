@@ -5,7 +5,6 @@ namespace skylance_backend.Data;
 
 public class SkylanceDbContext : DbContext
 {
-<<<<<<< HEAD
     public SkylanceDbContext() {}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
         optionsBuilder.UseMySql(
@@ -15,14 +14,10 @@ public class SkylanceDbContext : DbContext
         );
         optionsBuilder.UseLazyLoadingProxies();
     }
-=======
-    public SkylanceDbContext() { }
 
     public SkylanceDbContext(DbContextOptions<SkylanceDbContext> options)
         : base(options) { }
-
-
->>>>>>> yaotian
+    
     // our database tables
     public DbSet<Aircraft> Aircraft { get; set; }
     public DbSet<Airport> Airports { get; set; }
