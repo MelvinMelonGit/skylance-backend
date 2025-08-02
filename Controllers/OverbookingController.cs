@@ -36,7 +36,7 @@ namespace skylance_backend.Controllers
                 OldFlightBookingDetail = flightBookingDetail,
                 OldBookingFlightDetailId = flightBookingDetail.Id,
                 NewFlightBookingDetail = null,
-                NewBookingFlightDetailId = "f55bb067-ddb8-4d7b-b8eb-d0ede7155ab5", 
+                NewBookingFlightDetailId = null, 
                 IsRebooking = false,
                 FinalCompensationAmount = compensation
             };
