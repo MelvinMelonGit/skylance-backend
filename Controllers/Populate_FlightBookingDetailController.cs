@@ -26,11 +26,10 @@ namespace skylance_backend.Controllers
             {
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[1],
+                    FlightDetail = flightDetails["1"],
                     BookingDetail = bookingDetails["G66666"],
-                    TravelPurpose = "Business",
                     BaggageAllowance = 35,
-                    SelectedSeat = "12F",
+                    SeatNumber = "12F",
                     RequireSpecialAssistance = true,
                     BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 1200
@@ -38,11 +37,10 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[2],
+                    FlightDetail = flightDetails["2"],
                     BookingDetail = bookingDetails["G66688"],
-                    TravelPurpose = "Family",
                     BaggageAllowance = 25,
-                    SelectedSeat = "10A",
+                    SeatNumber = "10A",
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.CheckedIn,
                     Fareamount = 2000
@@ -50,11 +48,10 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[3],
+                    FlightDetail = flightDetails["3"],
                     BookingDetail = bookingDetails["J01927"],
-                    TravelPurpose = "Leisure",
                     BaggageAllowance = 45,
-                    SelectedSeat = "20C",
+                    SeatNumber = "20C",
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.CheckedIn,
                     Fareamount = 2300
@@ -62,11 +59,10 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[4],
+                    FlightDetail = flightDetails["4"],
                     BookingDetail = bookingDetails["K78906"],
-                    TravelPurpose = "Emergency",
                     BaggageAllowance = 50,
-                    SelectedSeat = "13B",
+                    SeatNumber = "13B",
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.Rebooked,
                     Fareamount = 1700
@@ -74,11 +70,10 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[5],
+                    FlightDetail = flightDetails["5"],
                     BookingDetail = bookingDetails["L76543"],
-                    TravelPurpose = "Leisure",
                     BaggageAllowance = 25,
-                    SelectedSeat = "28D",
+                    SeatNumber = "28D",
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 800
