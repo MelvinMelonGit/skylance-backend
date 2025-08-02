@@ -15,7 +15,7 @@ public class OverbookingDetail
     [ForeignKey("OldFlightBookingDetailId")]
     public virtual required FlightBookingDetail OldFlightBookingDetail { get; set; }
     
-    [Required]
+    
     [ForeignKey("NewFlightBookingDetailId")]
     public virtual required FlightBookingDetail NewFlightBookingDetail { get; set; }
     

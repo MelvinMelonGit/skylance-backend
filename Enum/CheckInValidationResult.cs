@@ -3,6 +3,7 @@
     public enum CheckInValidationResult
     {
         Allowed,
+        AlreadyCheckedIn,
         FlightDeparted,
         FlightFullyCheckedIn
     }

@@ -8,8 +8,8 @@ public class FlightDetail
 {
     [Key]
     [MaxLength(255)]
+ 
     public int Id { get; set; }
-    //public string Id { get; set; } = Guid.NewGuid().ToString();
 
     [Required]
     [ForeignKey("AircraftId")]
@@ -45,10 +45,11 @@ public class FlightDetail
     [Required]
     public required double Distance { get; set; }
 
-    [NotMapped]
+    [NotMapped] 
     public double Compensation => Distance / 4;
 
     [NotMapped]
-    public double RebookingCompensation => 1.5 * Distance / 4;
+    public double RebookingCompensation => 1.5*Distance / 4;
+
 
 }
