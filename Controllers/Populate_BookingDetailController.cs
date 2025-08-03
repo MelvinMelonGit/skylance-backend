@@ -24,7 +24,7 @@ namespace skylance_backend.Controllers
             var appUsers = db.AppUsers.ToDictionary(a => a.Email, a => a);
 
             List<BookingDetail> bookingDetailList = new List<BookingDetail>
-            {
+            {                
                 new BookingDetail {
                     BookingReferenceNumber = "G66666",
                     AppUser = appUsers["teng@gmail.com"]
@@ -48,7 +48,32 @@ namespace skylance_backend.Controllers
                 new BookingDetail {
                     BookingReferenceNumber = "L76543",
                     AppUser = appUsers["leng@gmail.com"]
-                }
+                },
+                
+                new BookingDetail {
+                    BookingReferenceNumber = "H54321",
+                    AppUser = appUsers["teng@gmail.com"]
+                },
+
+                new BookingDetail {
+                    BookingReferenceNumber = "A00835",
+                    AppUser = appUsers["seng@gmail.com"]
+                },
+
+                new BookingDetail {
+                    BookingReferenceNumber = "U24899",
+                    AppUser = appUsers["seng@gmail.com"]
+                },
+
+                new BookingDetail {
+                    BookingReferenceNumber = "H67556",
+                    AppUser = appUsers["leng@gmail.com"]
+                },                
+
+                new BookingDetail {
+                    BookingReferenceNumber = "H37766",
+                    AppUser = appUsers["teng@gmail.com"]
+                },
             };
 
                 db.AddRange(bookingDetailList);
