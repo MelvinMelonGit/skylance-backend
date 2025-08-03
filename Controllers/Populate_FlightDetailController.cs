@@ -25,7 +25,7 @@ namespace skylance_backend.Controllers
             var airports = db.Airports.ToDictionary(ap => ap.IataCode, ap => ap);
 
             List<FlightDetail> flightDetailList = new List<FlightDetail>
-            {
+            {                
                 new FlightDetail {
                     Aircraft = aircrafts["SQ322"],
                     OriginAirport = airports["SIN"],
@@ -93,6 +93,72 @@ namespace skylance_backend.Controllers
                     SeatsSold = 145,
                     Distance=6200
                 },
+                
+                new FlightDetail {
+                    Aircraft = aircrafts["SQ12"],
+                    OriginAirport = airports["SIN"],
+                    DestinationAirport = airports["CBR"],
+                    DepartureTime = new DateTime(2025, 8, 5, 8, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 5, 17, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Scheduled",
+                    CheckInCount = 200,
+                    SeatsSold = 250,
+                    Distance = 6300
+                },
+
+                new FlightDetail {
+                    Aircraft = aircrafts["QF93"],
+                    OriginAirport = airports["CBR"],
+                    DestinationAirport = airports["AUH"],
+                    DepartureTime = new DateTime(2025, 8, 6, 21, 45, 0),
+                    ArrivalTime = new DateTime(2025, 8, 7, 5, 30, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Scheduled",
+                    CheckInCount = 180,
+                    SeatsSold = 220,
+                    Distance = 12000
+                },
+
+                new FlightDetail {
+                    Aircraft = aircrafts["EY101"],
+                    OriginAirport = airports["AUH"],
+                    DestinationAirport = airports["ZRH"],
+                    DepartureTime = new DateTime(2025, 8, 7, 2, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 7, 7, 30, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 400,
+                    SeatsSold = 450,
+                    Distance = 4800
+                },
+
+                new FlightDetail {
+                    Aircraft = aircrafts["LX38"],
+                    OriginAirport = airports["ZRH"],
+                    DestinationAirport = airports["HAN"],
+                    DepartureTime = new DateTime(2025, 8, 8, 13, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 9, 6, 15, 0),
+                    IsHoliday = true,
+                    FlightStatus = "Scheduled",
+                    CheckInCount = 220,
+                    SeatsSold = 230,
+                    Distance = 9200
+                },
+
+                new FlightDetail {
+                    Aircraft = aircrafts["VN50"],
+                    OriginAirport = airports["HAN"],
+                    DestinationAirport = airports["SIN"],
+                    DepartureTime = new DateTime(2025, 8, 9, 11, 30, 0),
+                    ArrivalTime = new DateTime(2025, 8, 9, 14, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Scheduled",
+                    CheckInCount = 200,
+                    SeatsSold = 250,
+                    Distance = 2200
+                }
+
             };
 
                 db.FlightDetails.AddRange(flightDetailList);
