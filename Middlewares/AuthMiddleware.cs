@@ -30,19 +30,28 @@ public class AuthMiddleware
                 await context.Response.WriteAsync("Unauthorized - missing session token");
                 return;
             }
-
+            
             var session = await dbContext.AppUserSessions
                 .Include(s => s.AppUser)
-                .FirstOrDefaultAsync(s => s.Id == token && s.SessionExpiry > DateTime.UtcNow);
+                .FirstOrDefaultAsync(s => s.Id == token);
 
             if (session == null)
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Unauthorized - invalid or expired session token");
+                await context.Response.WriteAsync("Unauthorized - invalid session token");
                 return;
             }
 
-            // Optional: store session or user info in HttpContext.Items if you want to use it later
+            if (session.SessionExpiry <= DateTime.UtcNow)
+            {
+                dbContext.AppUserSessions.Remove(session);
+                await dbContext.SaveChangesAsync();
+
+                context.Response.StatusCode = 401;
+                await context.Response.WriteAsync("Unauthorized - session expired");
+                return;
+            }
+            
             context.Items["AppUserSession"] = session;
         }
 
