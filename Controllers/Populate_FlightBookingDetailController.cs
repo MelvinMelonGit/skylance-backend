@@ -32,10 +32,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[1],
                     BookingDetail = bookingDetails["G66666"],
                     BaggageAllowance = 35,
-                    SeatNumber = "12F",
+                    TravelPurpose = TravelPurpose.Business,
+                    SeatNumber = null,
                     RequireSpecialAssistance = true,
                     BookingStatus = BookingStatus.Confirmed,
-                    Fareamount = 1200
+                    Fareamount = 1200,
+                    Prediction = null
                 },
 
                 new FlightBookingDetail
@@ -43,10 +45,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[2],
                     BookingDetail = bookingDetails["G66688"],
                     BaggageAllowance = 25,
-                    SeatNumber = "10A",
+                    TravelPurpose = TravelPurpose.Emergency,
+                    SeatNumber = null,
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.CheckedIn,
-                    Fareamount = 2000
+                    Fareamount = 2000,
+                    Prediction = null
                 },
 
                 new FlightBookingDetail
@@ -54,10 +58,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[3],
                     BookingDetail = bookingDetails["J01927"],
                     BaggageAllowance = 45,
-                    SeatNumber = "20C",
+                    TravelPurpose = TravelPurpose.Family,
+                    SeatNumber = null,
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.CheckedIn,
-                    Fareamount = 2300
+                    Fareamount = 2300,
+                    Prediction = null
                 },
 
                 new FlightBookingDetail
@@ -65,10 +71,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[4],
                     BookingDetail = bookingDetails["K78906"],
                     BaggageAllowance = 50,
-                    SeatNumber = "13B",
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.Rebooked,
-                    Fareamount = 1700
+                    Fareamount = 1700,
+                    Prediction = null
                 },
 
                 new FlightBookingDetail
@@ -76,10 +84,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[5],
                     BookingDetail = bookingDetails["L76543"],
                     BaggageAllowance = 25,
-                    SeatNumber = "28D",
+                    TravelPurpose = TravelPurpose.Business,
+                    SeatNumber = null,
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.Confirmed,
-                    Fareamount = 800
+                    Fareamount = 800,
+                    Prediction = null
                 },               
 
                  new FlightBookingDetail
@@ -87,10 +97,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[1],
                     BookingDetail = bookingDetails["H54321"],
                     BaggageAllowance = 35,
-                    SeatNumber = "12F",
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
                     RequireSpecialAssistance = true,
                     BookingStatus = BookingStatus.Confirmed,
-                    Fareamount = 1200
+                    Fareamount = 1200,
+                    Prediction = null
                 },
 
                 new FlightBookingDetail
@@ -98,10 +110,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[4],
                     BookingDetail = bookingDetails["H37766"],
                     BaggageAllowance = 25,
-                    SeatNumber = "10A",
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.CheckedIn,
-                    Fareamount = 2000
+                    Fareamount = 2000,
+                    Prediction = null
                 },
 
                 new FlightBookingDetail
@@ -109,10 +123,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[6],
                     BookingDetail = bookingDetails["J01927"],
                     BaggageAllowance = 45,
-                    SeatNumber = "20C",
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.CheckedIn,
-                    Fareamount = 2300
+                    Fareamount = 2300,
+                    Prediction = null
                 },
 
                 new FlightBookingDetail
@@ -120,10 +136,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[4],
                     BookingDetail = bookingDetails["J01927"],
                     BaggageAllowance = 50,
-                    SeatNumber = "13B",
+                    TravelPurpose = TravelPurpose.Business,
+                    SeatNumber = null,
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.Rebooked,
-                    Fareamount = 1700
+                    Fareamount = 1700,
+                    Prediction = null
                 },
 
                 new FlightBookingDetail
@@ -131,10 +149,12 @@ namespace skylance_backend.Controllers
                     FlightDetail = flightDetails[8],
                     BookingDetail = bookingDetails["U24899"],
                     BaggageAllowance = 25,
-                    SeatNumber = "28D",
+                    TravelPurpose = TravelPurpose.Family,
+                    SeatNumber = null,
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.Confirmed,
-                    Fareamount = 800
+                    Fareamount = 800,
+                    Prediction = null
                 }
             };
 
