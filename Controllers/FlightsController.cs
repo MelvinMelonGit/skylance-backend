@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using skylance_backend.Attributes;
 using skylance_backend.Data;
 using skylance_backend.Enum;
+using skylance_backend.Models;
 
 namespace skylance_backend.Controllers
 {
@@ -16,38 +17,30 @@ namespace skylance_backend.Controllers
             this.db = db;
         }
 
-        /*
-        // Helper method to get AppUserSession token
+        //Helper method
         private string? GetLoggedInUserId()
         {
-            var token = Request.Headers["Session-Token"].ToString();
-            if (string.IsNullOrEmpty(token))
+            var session = HttpContext.Items["AppUserSession"] as AppUserSession;
+            if (session == null)
                 return null;
 
-            var session = db.AppUserSessions
-                .Include(s => s.AppUser)
-                .FirstOrDefault(s => s.Id == token && s.SessionExpiry > DateTime.UtcNow);
-
-            return session?.AppUser.Id;
+            return session.AppUser.Id;
         }
-        */
 
-        [ProtectedRoute] 
+        [ProtectedRoute]
         [HttpGet("UpcomingFlights")]
         public IActionResult GetUpcomingFlights()
         {
-            /*
-            // created loggedInUserId variable to identify the flights with the logged-in user
+            // assign the logged-in AppUserId with the helper method (AppUserSession from AuthMiddleware)
             var loggedInUserId = GetLoggedInUserId();
             if (loggedInUserId == null)
-                return Unauthorized("Invalid or expired session token.");
-            */
+                return Unauthorized();
 
             var upcomingFlights = db.FlightBookingDetails
                 .Include(fbd => fbd.FlightDetail)
-                //.Include(fbd => fbd.BookingDetail)            
+                .Include(fbd => fbd.BookingDetail)
                 .Where(fbd =>
-                //fbd.BookingDetail.AppUser.Id == loggedInUserId &&
+                fbd.BookingDetail.AppUser.Id == loggedInUserId &&
                 fbd.FlightDetail.DepartureTime > DateTime.Now &&
                 fbd.BookingStatus == BookingStatus.Confirmed)
             .Select(fbd => new
@@ -68,18 +61,16 @@ namespace skylance_backend.Controllers
         [HttpGet("PastFlights")]
         public IActionResult GetPastFlights()
         {
-            /*
-            // created loggedInUserId variable to identify the flights with the logged-in user
+            // assign the logged-in AppUserId with the helper method (AppUserSession from AuthMiddleware)
             var loggedInUserId = GetLoggedInUserId();
             if (loggedInUserId == null)
-                return Unauthorized("Invalid or expired session token.");
-            */
+                return Unauthorized();
 
             var pastFlights = db.FlightBookingDetails
                 .Include(fbd => fbd.FlightDetail)
                 .Include(fbd => fbd.BookingDetail)
                 .Where(fbd =>
-                //fbd.BookingDetail.AppUser.Id == loggedInUserId &&
+                fbd.BookingDetail.AppUser.Id == loggedInUserId &&
                 fbd.BookingStatus == BookingStatus.CheckedIn &&
                 fbd.FlightDetail.FlightStatus == "Landed")
                 .Select(fbd => new
@@ -92,7 +83,41 @@ namespace skylance_backend.Controllers
                 })
                 .ToList();
 
-                return Ok(pastFlights);
+            return Ok(pastFlights);
         }
     }
 }
+
+
+
+/*
+// Helper method to get AppUserSession token
+private string? GetLoggedInUserId()
+{
+   var token = Request.Headers["Session-Token"].ToString();
+   if (string.IsNullOrEmpty(token))
+       return null;
+
+   var session = db.AppUserSessions
+       .Include(s => s.AppUser)
+       .FirstOrDefault(s => s.Id == token && s.SessionExpiry > DateTime.UtcNow);
+
+   return session?.AppUser.Id;
+}
+*/
+
+
+/*
+// created loggedInUserId variable to identify the flights with the logged-in user
+var loggedInUserId = GetLoggedInUserId();
+if (loggedInUserId == null)
+    return Unauthorized("Invalid or expired session token.");
+*/
+
+
+/*
+// created loggedInUserId variable to identify the flights with the logged-in user
+var loggedInUserId = GetLoggedInUserId();
+if (loggedInUserId == null)
+    return Unauthorized("Invalid or expired session token.");
+*/

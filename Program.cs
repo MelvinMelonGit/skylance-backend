@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using skylance_backend.Data;
+using skylance_backend.Middlewares;
 using skylance_backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +45,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<AuthMiddleware>()
 
 app.UseAuthorization();
 
