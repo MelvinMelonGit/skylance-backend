@@ -43,6 +43,7 @@ public class AuthController : ControllerBase
         return Ok(new
         {
             token,
+            user,
             expires = DateTime.UtcNow.AddHours(1)
         });
     }
