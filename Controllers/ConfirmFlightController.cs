@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Query.Internal;
 using skylance_backend.Data;
 using skylance_backend.Enum;
 using skylance_backend.Models;
@@ -54,9 +55,11 @@ namespace skylance_backend.Controllers
                 };
                 await _context.BookingDetails.AddAsync(bookingDetail);
 
-               
                 double baggageAllowance = Math.Round(15 + _random.NextDouble() * 20, 1);
-                string seatNumber = $"{_random.Next(1, 41)}{(char)('A' + _random.Next(0, 6))}";
+                Seat seat = new Seat
+                {
+                    SeatNumber = $"{_random.Next(1, 41)}{(char)('A' + _random.Next(0, 6))}"
+                };
                 bool requireSpecialAssistance = _random.Next(0, 10) < 2; 
                 int fareAmount = _random.Next(100, 2001); 
                 string gate = _random.Next(1, 51).ToString(); 
@@ -71,7 +74,7 @@ namespace skylance_backend.Controllers
                     FlightDetail = await _context.FlightDetails.FindAsync(request.FlightDetailId),
                     BookingDetail = bookingDetail,
                     BaggageAllowance = baggageAllowance,
-                    SeatNumber = seatNumber, 
+                    SeatNumber = seat, 
                     RequireSpecialAssistance = requireSpecialAssistance,
                     BookingStatus = BookingStatus.CheckedIn,
                     Fareamount = fareAmount,
@@ -86,7 +89,7 @@ namespace skylance_backend.Controllers
                     FlightBookingDetail = flightBookingDetail,
                     CheckInTime = checkInTime,
                     BoardingTime = boardingTime,
-                    SeatNumber = seatNumber, 
+                    SeatNumber = seat, 
                     Gate = gate,
                     Terminal = terminal
                 };
@@ -117,7 +120,7 @@ namespace skylance_backend.Controllers
                     GeneratedValues = new
                     {
                         BaggageAllowance = baggageAllowance,
-                        SeatNumber = seatNumber,
+                        SeatNumber = seat,
                         RequireSpecialAssistance = requireSpecialAssistance,
                         FareAmount = fareAmount,
                         Gate = gate,

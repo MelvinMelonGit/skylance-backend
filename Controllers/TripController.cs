@@ -63,7 +63,7 @@ public class TripController : ControllerBase
             {
                 status = "FlightDeparted"
             }),
-            CheckInValidationResult.FlightFullyCheckedIn => Redirect("/overbooking"),
+            CheckInValidationResult.FlightFullyCheckedIn => Redirect("/overbooking?flightBookingId=flightBookingId"),
             _ => new JsonResult(new
             {
                 status = "Error",
