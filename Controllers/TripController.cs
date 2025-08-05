@@ -51,11 +51,24 @@ public class TripController : ControllerBase
 
         return result switch
         {
-            CheckInValidationResult.Allowed => Ok("Proceed to confirm check-in."),
-            CheckInValidationResult.AlreadyCheckedIn => BadRequest("You have already checked in."),
-            CheckInValidationResult.FlightDeparted => BadRequest("Flight already departed."),
+            CheckInValidationResult.Allowed => new JsonResult(new
+            {
+                status = "Allowed",
+            }),
+            CheckInValidationResult.AlreadyCheckedIn => new JsonResult(new
+            {
+                status = "AlreadyCheckedIn",
+            }),
+            CheckInValidationResult.FlightDeparted => new JsonResult(new
+            {
+                status = "FlightDeparted",
+            }),
             CheckInValidationResult.FlightFullyCheckedIn => Redirect("/overbooking"),
-            _ => BadRequest("Unknown error.")
+            _ => new JsonResult(new
+            {
+                status = "Error",
+                message = "An error has occured."
+            }),
         };
     }
 
