@@ -9,7 +9,11 @@ public class SkylanceDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
         optionsBuilder.UseMySql(
             // provides database connection-string
+<<<<<<< Updated upstream
             "server=localhost;user=root;password=xuanL20010205;database=skylance;",
+=======
+            "server=localhost;user=root;password=Nail1925$$;database=skylance;",
+>>>>>>> Stashed changes
             new MySqlServerVersion(new Version(8, 0, 36))
         );
         optionsBuilder.UseLazyLoadingProxies();
