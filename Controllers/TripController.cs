@@ -21,22 +21,22 @@ public class TripController : ControllerBase
     // to display the flight detail page
     //[ProtectedRoute]
     [HttpGet("{flightBookingId}")]
-        public async Task<IActionResult> TripDetail(string flightBookingId)
+    public async Task<IActionResult> TripDetail(string flightBookingId)
+    {
+        if (string.IsNullOrEmpty(flightBookingId))
         {
-            if (string.IsNullOrEmpty(flightBookingId))
-            {
-                return BadRequest("Invalid booking ID.");
-            }
-
-            var tripDetails = await _tripService.GetTripDetailsAsync(flightBookingId);
-
-            if (tripDetails == null)
-            {
-                return NotFound(); // Could also redirect to an error page
-            }
-
-            return Ok(tripDetails); // This will pass the DTO to the Razor view
+            return BadRequest("Invalid booking ID.");
         }
+
+        var tripDetails = await _tripService.GetTripDetailsAsync(flightBookingId);
+
+        if (tripDetails == null)
+        {
+            return NotFound(); // Could also redirect to an error page
+        }
+
+        return Ok(tripDetails); // This will pass the DTO to the Razor view
+    }
 
 
     // GET: api/trips/{flightDetailsId}/checkin/validate
