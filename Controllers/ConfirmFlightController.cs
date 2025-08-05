@@ -16,12 +16,9 @@ namespace skylance_backend.Controllers
         private readonly Random _random = new Random();
         private readonly ITripService _tripService;
 
-        public ConfirmFlightController(ITripService tripService)
+        public ConfirmFlightController(ITripService tripService, SkylanceDbContext context)
         {
             _tripService = tripService;
-        }
-        public ConfirmFlightController(SkylanceDbContext context)
-        {
             _context = context;
         }
 
