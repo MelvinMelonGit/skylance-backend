@@ -10,9 +10,7 @@ public class SkylanceDbContext : DbContext
         optionsBuilder.UseMySql(
             // provides database connection-string
             "server=localhost;user=root;password=xuanL20010205;database=skylance;",
-=======
-            "server=localhost;user=root;password=Nail1925$$;database=skylance;",
->>>>>>> Stashed changes
+
             new MySqlServerVersion(new Version(8, 0, 36))
         );
         optionsBuilder.UseLazyLoadingProxies();
