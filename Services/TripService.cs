@@ -41,7 +41,8 @@ namespace skylance_backend.Services
                 HasCheckedIn = flightBooking.BookingStatus == BookingStatus.CheckedIn
             };
         }
-
+        // Check if seat has been pre-selected
+        // If not, then assign seat
         public async Task<CheckInValidationResult> ValidateCheckInAsync(string flightBookingId)
         {
             var flightBooking = await _context.FlightBookingDetails
@@ -59,10 +60,11 @@ namespace skylance_backend.Services
             if (flight.DepartureTime <= DateTime.UtcNow)
                 return CheckInValidationResult.FlightDeparted;
 
-            var checkedInCount = await _context.FlightBookingDetails
-                .Where(fb => fb.FlightDetail.Id == flight.Id && fb.BookingStatus == BookingStatus.CheckedIn)
-                .CountAsync();
+            // var checkedInCount = await _context.FlightBookingDetails
+            //    .Where(fb => fb.FlightDetail.Id == flight.Id && fb.BookingStatus == BookingStatus.CheckedIn)
+            //    .CountAsync();
 
+            var checkedInCount = flight.CheckInCount;
             var seatCapacity = flight.Aircraft.SeatCapacity;
 
             if (checkedInCount >= seatCapacity)
@@ -84,9 +86,14 @@ namespace skylance_backend.Services
                 return false;
 
             // (Optional) Check seat availability
+            // if (flightBooking.SelectedSeat == null)
+
+            var checkedInCount = flightBooking.FlightDetail.CheckInCount;
 
             flightBooking.BookingStatus = BookingStatus.CheckedIn;
+            checkedInCount++;
             await _context.SaveChangesAsync();
+
             return true;
         }
     }
