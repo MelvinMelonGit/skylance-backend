@@ -40,10 +40,10 @@ namespace skylance_backend.Controllers
                 .Include(fbd => fbd.FlightDetail)
                 .Include(fbd => fbd.BookingDetail)
                 .Where(fbd =>
-                fbd.BookingDetail.AppUser.Id == loggedInUserId &&
+                fbd.BookingDetail.AppUser.Id == loggedInUserId &&                
                 fbd.FlightDetail.DepartureTime > DateTime.Now &&
-                fbd.BookingStatus == BookingStatus.Confirmed &&
-                fbd.BookingStatus == BookingStatus.CheckedIn)
+                (fbd.BookingStatus == BookingStatus.Confirmed ||
+                fbd.BookingStatus == BookingStatus.CheckedIn))
             .Select(fbd => new
             {
                 FlightBookingDetailId = fbd.Id,
