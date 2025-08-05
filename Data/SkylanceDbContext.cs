@@ -7,12 +7,17 @@ public class SkylanceDbContext : DbContext
 {
     public SkylanceDbContext() {}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-        optionsBuilder.UseMySql(
-            // provides database connection-string
-            "server=localhost;user=root;password=xuanL20010205;database=skylance;",
-            new MySqlServerVersion(new Version(8, 0, 36))
-        );
-        optionsBuilder.UseLazyLoadingProxies();
+        if (!optionsBuilder.IsConfigured)
+        {
+            var connStr = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
+                          ?? "server=localhost;user=root;password=password;database=skylance;";
+
+            optionsBuilder.UseMySql(
+                connStr,
+                new MySqlServerVersion(new Version(8, 0, 36))
+            );
+            optionsBuilder.UseLazyLoadingProxies();
+        }
     }
 
     public SkylanceDbContext(DbContextOptions<SkylanceDbContext> options)
