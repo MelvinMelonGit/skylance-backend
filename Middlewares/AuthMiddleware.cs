@@ -22,26 +22,37 @@ public class AuthMiddleware
 
         if (requiresAuth)
         {
-            var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+            var token = context.Request.Headers["Session-Token"].FirstOrDefault();
 
-            if (string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Bearer "))
+            if (string.IsNullOrEmpty(token))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Unauthorized - missing token");
+                await context.Response.WriteAsync("Unauthorized - missing session token");
                 return;
             }
-
-            var token = authHeader.Substring("Bearer ".Length).Trim();
-
+            
             var session = await dbContext.AppUserSessions
-                .FirstOrDefaultAsync(s => s.Id == token && s.SessionExpiry > DateTime.UtcNow);
+                .Include(s => s.AppUser)
+                .FirstOrDefaultAsync(s => s.Id == token);
 
             if (session == null)
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Unauthorized - invalid or expired token");
+                await context.Response.WriteAsync("Unauthorized - invalid session token");
                 return;
             }
+
+            if (session.SessionExpiry <= DateTime.UtcNow)
+            {
+                dbContext.AppUserSessions.Remove(session);
+                await dbContext.SaveChangesAsync();
+
+                context.Response.StatusCode = 401;
+                await context.Response.WriteAsync("Unauthorized - session expired");
+                return;
+            }
+            
+            context.Items["AppUserSession"] = session;
         }
 
         await _next(context);

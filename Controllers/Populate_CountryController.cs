@@ -23,13 +23,16 @@ namespace skylance_backend.Controllers
                 return BadRequest("Data already seeded.");
 
             List<Country> countryList = new List<Country>
-        {
-            new Country { Name = "Singapore", CountryCode = "SG", MobileCode = 65 },
-            new Country { Name = "Japan", CountryCode = "JP", MobileCode = 81 },
-            new Country { Name = "Malaysia", CountryCode = "MY", MobileCode = 60 },
-            new Country { Name = "South Korea", CountryCode = "KR", MobileCode = 82 },
-            new Country { Name = "Australia", CountryCode = "AU", MobileCode = 61 }
-        };
+            { 
+                new Country { Name = "Singapore", CountryCode = "SG", MobileCode = 65 },
+                new Country { Name = "Japan", CountryCode = "JP", MobileCode = 81 },
+                new Country { Name = "Malaysia", CountryCode = "MY", MobileCode = 60 },
+                new Country { Name = "South Korea", CountryCode = "KR", MobileCode = 82 },
+                new Country { Name = "Australia", CountryCode = "AU", MobileCode = 61 },           
+                new Country { Name = "United Arab Emirates", CountryCode = "AE", MobileCode = 971 },
+                new Country { Name = "Switzerland", CountryCode = "CH", MobileCode = 41 },
+                new Country { Name = "Vietnam", CountryCode = "VN", MobileCode = 84 }
+            };
 
             db.Countries.AddRange(countryList);
 
