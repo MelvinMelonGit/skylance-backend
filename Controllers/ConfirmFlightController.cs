@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using skylance_backend.Data;
 using skylance_backend.Enum;
 using skylance_backend.Models;
+using skylance_backend.Services;
 using System;
 
 namespace skylance_backend.Controllers
@@ -13,7 +14,12 @@ namespace skylance_backend.Controllers
     {
         private readonly SkylanceDbContext _context;
         private readonly Random _random = new Random();
+        private readonly ITripService _tripService;
 
+        public ConfirmFlightController(ITripService tripService)
+        {
+            _tripService = tripService;
+        }
         public ConfirmFlightController(SkylanceDbContext context)
         {
             _context = context;
@@ -56,8 +62,8 @@ namespace skylance_backend.Controllers
                 string seatNumber = $"{_random.Next(1, 41)}{(char)('A' + _random.Next(0, 6))}";
                 bool requireSpecialAssistance = _random.Next(0, 10) < 2; 
                 int fareAmount = _random.Next(100, 2001); 
-                int gate = _random.Next(1, 51); 
-                int terminal = _random.Next(1, 4); 
+                string gate = _random.Next(1, 51).ToString(); 
+                string terminal = _random.Next(1, 4).ToString(); 
                 DateTime checkInTime = DateTime.UtcNow;
                 DateTime boardingTime = checkInTime.AddMinutes(90); 
 
@@ -130,7 +136,32 @@ namespace skylance_backend.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpGet("{flightBookingId}/boardingPass")]
+        public async Task<IActionResult> GetBoardingPass(string checkInId)
+        {
+            if (string.IsNullOrEmpty(checkInId))
+            {
+                return new JsonResult(new
+                {
+                    status = "Invalid"
+                });
+            }
+
+            var boardingPass = await _tripService.GetBoardingPass(checkInId);
+
+            if (boardingPass == null)
+            {
+                return new JsonResult(new
+                {
+                    status = "NotFound"
+                }); // Could also redirect to an error page
+            }
+
+            return new JsonResult(boardingPass);
+        }
     }
+
 
     public class CheckInRequest
     {

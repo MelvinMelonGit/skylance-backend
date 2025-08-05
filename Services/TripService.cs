@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using skylance_backend.Data;
 using skylance_backend.Enum;
 using skylance_backend.Models;
@@ -95,6 +96,31 @@ namespace skylance_backend.Services
             await _context.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<BoardingPassDTO> GetBoardingPass(string checkInId)
+        {
+            var boardingPass = await _context.CheckInDetails
+                .Include(bp => bp.FlightBookingDetail)
+                .FirstOrDefaultAsync(bp => bp.Id == checkInId);
+
+            if (boardingPass == null) return null;
+
+            var flight = boardingPass.FlightBookingDetail.FlightDetail;
+
+            return new BoardingPassDTO
+            {
+                Airline = flight.Aircraft.Airline,
+                FlightNumber = flight.Aircraft.FlightNumber,
+                OriginAirportCode = flight.OriginAirport.IataCode,
+                OriginAirportName = flight.OriginAirport.Name,
+                DestinationAirportCode = flight.DestinationAirport.IataCode,
+                DestinationAirportName = flight.DestinationAirport.Name,
+                BoardingTime = boardingPass.CheckInTime,
+                Seat = boardingPass.SeatNumber,
+                Gate = boardingPass.Gate,
+                Terminal = boardingPass.Terminal
+            };
         }
     }
 }

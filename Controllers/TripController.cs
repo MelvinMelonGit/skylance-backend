@@ -53,15 +53,15 @@ public class TripController : ControllerBase
         {
             CheckInValidationResult.Allowed => new JsonResult(new
             {
-                status = "Allowed",
+                status = "Allowed"
             }),
             CheckInValidationResult.AlreadyCheckedIn => new JsonResult(new
             {
-                status = "AlreadyCheckedIn",
+                status = "AlreadyCheckedIn"
             }),
             CheckInValidationResult.FlightDeparted => new JsonResult(new
             {
-                status = "FlightDeparted",
+                status = "FlightDeparted"
             }),
             CheckInValidationResult.FlightFullyCheckedIn => Redirect("/overbooking"),
             _ => new JsonResult(new
