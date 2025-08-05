@@ -46,7 +46,7 @@ namespace skylance_backend.Controllers
 
             return Ok(new
             {
-                OverbookingId = overbooking.Id,
+                OverbookingDetailId = overbooking.Id,
                 FinalCompensationAmount = overbooking.FinalCompensationAmount,
                 User = new
                 {
