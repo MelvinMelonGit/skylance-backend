@@ -86,8 +86,25 @@ namespace skylance_backend.Services
             if (flightBooking.FlightDetail.DepartureTime <= DateTime.UtcNow)
                 return false;
 
-            // (Optional) Check seat availability
-            // if (flightBooking.SelectedSeat == null)
+            // Check seat availability
+            if (flightBooking.SeatNumber == null)
+            {
+                // Get all unassigned seats for this flight
+                var availableSeats = await _context.Seats
+                    .Where(s => s.FlightDetail.Id == flightBooking.FlightDetail.Id && !s.IsAssigned)
+                    .ToListAsync();
+
+                if (!availableSeats.Any())
+                    return false; // no seat available, cannot check in
+
+                // Pick one at random
+                var random = new Random();
+                var selectedSeat = availableSeats[random.Next(availableSeats.Count)];
+
+                // Assign to passenger
+                flightBooking.SeatNumber = selectedSeat;
+                selectedSeat.IsAssigned = true; // mark seat as taken
+            }
 
             var checkedInCount = flightBooking.FlightDetail.CheckInCount;
 

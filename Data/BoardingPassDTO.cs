@@ -1,4 +1,6 @@
-﻿namespace skylance_backend.Data
+﻿using skylance_backend.Models;
+
+namespace skylance_backend.Data
 {
     public class BoardingPassDTO
     {
@@ -11,7 +13,7 @@
         public string AircraftModel { get; set; }
         public DateTime BoardingTime { get; set; }
         public string Gate { get; set; }
-        public string Seat { get; set; }
+        public Seat Seat { get; set; }
         public string Terminal { get; set; }
     }
 }
