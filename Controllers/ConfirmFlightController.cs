@@ -42,7 +42,7 @@ namespace skylance_backend.Controllers
 
             try
             {
-                // 创建 BookingDetail
+               
                 var bookingDetail = new BookingDetail
                 {
                     Id = Guid.NewGuid().ToString(),
