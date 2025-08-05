@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using skylance_backend.Data;
 using skylance_backend.Enum;
 using skylance_backend.Models;
@@ -41,7 +42,8 @@ namespace skylance_backend.Services
                 HasCheckedIn = flightBooking.BookingStatus == BookingStatus.CheckedIn
             };
         }
-
+        // Check if seat has been pre-selected
+        // If not, then assign seat
         public async Task<CheckInValidationResult> ValidateCheckInAsync(string flightBookingId)
         {
             var flightBooking = await _context.FlightBookingDetails
@@ -59,10 +61,11 @@ namespace skylance_backend.Services
             if (flight.DepartureTime <= DateTime.UtcNow)
                 return CheckInValidationResult.FlightDeparted;
 
-            var checkedInCount = await _context.FlightBookingDetails
-                .Where(fb => fb.FlightDetail.Id == flight.Id && fb.BookingStatus == BookingStatus.CheckedIn)
-                .CountAsync();
+            // var checkedInCount = await _context.FlightBookingDetails
+            //    .Where(fb => fb.FlightDetail.Id == flight.Id && fb.BookingStatus == BookingStatus.CheckedIn)
+            //    .CountAsync();
 
+            var checkedInCount = flight.CheckInCount;
             var seatCapacity = flight.Aircraft.SeatCapacity;
 
             if (checkedInCount >= seatCapacity)
@@ -84,10 +87,40 @@ namespace skylance_backend.Services
                 return false;
 
             // (Optional) Check seat availability
+            // if (flightBooking.SelectedSeat == null)
+
+            var checkedInCount = flightBooking.FlightDetail.CheckInCount;
 
             flightBooking.BookingStatus = BookingStatus.CheckedIn;
+            checkedInCount++;
             await _context.SaveChangesAsync();
+
             return true;
+        }
+
+        public async Task<BoardingPassDTO> GetBoardingPass(string checkInId)
+        {
+            var boardingPass = await _context.CheckInDetails
+                .Include(bp => bp.FlightBookingDetail)
+                .FirstOrDefaultAsync(bp => bp.Id == checkInId);
+
+            if (boardingPass == null) return null;
+
+            var flight = boardingPass.FlightBookingDetail.FlightDetail;
+
+            return new BoardingPassDTO
+            {
+                Airline = flight.Aircraft.Airline,
+                FlightNumber = flight.Aircraft.FlightNumber,
+                OriginAirportCode = flight.OriginAirport.IataCode,
+                OriginAirportName = flight.OriginAirport.Name,
+                DestinationAirportCode = flight.DestinationAirport.IataCode,
+                DestinationAirportName = flight.DestinationAirport.Name,
+                BoardingTime = boardingPass.CheckInTime,
+                Seat = boardingPass.SeatNumber,
+                Gate = boardingPass.Gate,
+                Terminal = boardingPass.Terminal
+            };
         }
     }
 }

@@ -30,11 +30,11 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["SQ322"],
                     OriginAirport = airports["SIN"],
                     DestinationAirport = airports["CBR"],
-                    DepartureTime = new DateTime(2025, 8, 5, 8, 0, 0),
-                    ArrivalTime = new DateTime(2025, 8, 5, 16, 30, 0),
+                    DepartureTime = new DateTime(2025, 8, 20, 8, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 21, 16, 30, 0),
                     IsHoliday = false,
                     FlightStatus = "Scheduled",
-                    CheckInCount = 120,
+                    CheckInCount = 190,
                     SeatsSold = 140,
                     Distance=6200
                 },
@@ -75,7 +75,7 @@ namespace skylance_backend.Controllers
                     DepartureTime = new DateTime(2025, 8, 8, 6, 45, 0),
                     ArrivalTime = new DateTime(2025, 8, 8, 14, 30, 0),
                     IsHoliday = false,
-                    FlightStatus = "Cancelled",
+                    FlightStatus = "Scheduled",
                     CheckInCount = 0,
                     SeatsSold = 0,
                     Distance=7800

@@ -63,7 +63,7 @@ namespace skylance_backend.Controllers
                     RequireSpecialAssistance = false,
                     BookingStatus = BookingStatus.CheckedIn,
                     Fareamount = 2300,
-                    Prediction = null
+                    Prediction = Prediction.No_Show
                 },
 
                 new FlightBookingDetail
@@ -95,7 +95,7 @@ namespace skylance_backend.Controllers
                  new FlightBookingDetail
                 {
                     FlightDetail = flightDetails[1],
-                    BookingDetail = bookingDetails["H54321"],
+                    BookingDetail = bookingDetails["A00835"],
                     BaggageAllowance = 35,
                     TravelPurpose = TravelPurpose.Leisure,
                     SeatNumber = null,
@@ -113,9 +113,9 @@ namespace skylance_backend.Controllers
                     TravelPurpose = TravelPurpose.Leisure,
                     SeatNumber = null,
                     RequireSpecialAssistance = false,
-                    BookingStatus = BookingStatus.CheckedIn,
+                    BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 2000,
-                    Prediction = null
+                    Prediction = Prediction.No_Show
                 },
 
                 new FlightBookingDetail

@@ -29,8 +29,8 @@ public class CheckInDetail
     public required string SeatNumber { get; set; }
     
     [Required]
-    public required int Gate { get; set; }
+    public required string Gate { get; set; }
     
     [Required]
-    public required int Terminal { get; set; }
+    public required string Terminal { get; set; }
 }

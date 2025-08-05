@@ -38,7 +38,7 @@ public class FlightBookingDetail
     [MaxLength(50)]
     public required int Fareamount { get; set; }
 
-    public string? Prediction { get; set; }
+    public Prediction? Prediction { get; set; }
 
 }
 
