@@ -19,6 +19,7 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 
 // Remove duplicate AddDbContext and consolidate with options
+
 builder.Services.AddDbContext<SkylanceDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -34,12 +35,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<SkylanceDbContext>();
-    db.Database.Migrate();
-}
 
 // Use CORS BEFORE routing (and BEFORE Authorization)
 app.UseCors("AllowAll");
@@ -63,21 +58,15 @@ initDB();
 
 app.Run();
 
+// init our database
 void initDB()
 {
+// create the environment to retrieve our database context
     using (var scope = app.Services.CreateScope())
     {
+// get database context from DI-container
         var ctx = scope.ServiceProvider.GetRequiredService<SkylanceDbContext>();
-        try
-        {
-            // Apply any pending migrations on startup (better than EnsureCreated)
-            ctx.Database.Migrate();
-        }
-        catch (Exception ex)
-        {
-            // Log or handle exceptions here if needed
-            Console.WriteLine($"DB Migration error: {ex.Message}");
-            throw;
-        }
+        if (! ctx.Database.CanConnect())
+            ctx.Database.EnsureCreated(); // create database
     }
 }
