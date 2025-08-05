@@ -9,14 +9,15 @@ public class OverbookingDetail
     [Key]
     [MaxLength(255)]
     public string Id { get; set; } = Guid.NewGuid().ToString();
-    
+    public string? OldBookingFlightDetailId { get; set; }
+    public string? NewBookingFlightDetailId { get; set; }
     [Required]
-    [ForeignKey("OldBookingDetailId")]
-    public virtual required BookingDetail OldBookingDetail { get; set; }
+    [ForeignKey("OldFlightBookingDetailId")]
+    public virtual required FlightBookingDetail OldFlightBookingDetail { get; set; }
     
-    [Required]
-    [ForeignKey("NewBookingDetailId")]
-    public virtual required BookingDetail NewBookingDetail { get; set; }
+    
+    [ForeignKey("NewFlightBookingDetailId")]
+    public virtual FlightBookingDetail? NewFlightBookingDetail { get; set; }
     
     [Required]
     public required bool IsRebooking { get; set; }
