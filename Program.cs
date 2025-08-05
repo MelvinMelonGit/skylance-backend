@@ -17,13 +17,13 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
+
+// Remove duplicate AddDbContext and consolidate with options
 builder.Services.AddDbContext<SkylanceDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")),
-        mySqlOptions => mySqlOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)
-    ).UseLazyLoadingProxies()
-);
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+    ).UseLazyLoadingProxies());
 
 builder.Services.AddScoped<ITripService, TripService>();
 
@@ -35,7 +35,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Apply any pending migrations on startup (with retry already configured above)
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<SkylanceDbContext>();
@@ -59,4 +58,26 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Initialize DB with migrations instead of EnsureCreated()
+initDB();
+
 app.Run();
+
+void initDB()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var ctx = scope.ServiceProvider.GetRequiredService<SkylanceDbContext>();
+        try
+        {
+            // Apply any pending migrations on startup (better than EnsureCreated)
+            ctx.Database.Migrate();
+        }
+        catch (Exception ex)
+        {
+            // Log or handle exceptions here if needed
+            Console.WriteLine($"DB Migration error: {ex.Message}");
+            throw;
+        }
+    }
+}
