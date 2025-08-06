@@ -39,7 +39,7 @@ namespace skylance_backend.Controllers
                 return NotFound();
             }
             var overbooking = _db.OverbookingDetails
-                .FirstOrDefault(o => o.OldBookingFlightDetailId == flightBookingDetail.Id.ToString());
+                .FirstOrDefault(o => o.OldFlightBookingDetailId == flightBookingDetail.Id);
             var notification = _db.Notifications
                 .FirstOrDefault(n => n.OverbookingDetail == overbooking);
             var flightDuringTime = flightBookingDetail.FlightDetail.ArrivalTime - flightBookingDetail.FlightDetail.DepartureTime;
@@ -61,9 +61,10 @@ namespace skylance_backend.Controllers
             var flightBookingDetail = _db.FlightBookingDetails
             .Include(f => f.BookingDetail)
                 .ThenInclude(b => b.AppUser)
+            .Include(f => f.FlightDetail)
             .FirstOrDefault(f => f.Id == flightBookingDetailId);
             var overbooking = _db.OverbookingDetails
-                .FirstOrDefault(o => o.OldBookingFlightDetailId == flightBookingDetailId);
+               .FirstOrDefault(o => o.OldFlightBookingDetailId == flightBookingDetailId);
             var notification = _db.Notifications
                .FirstOrDefault(n => n.OverbookingDetail == overbooking);
             if (flightBookingDetail == null)

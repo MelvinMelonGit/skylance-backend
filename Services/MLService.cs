@@ -9,6 +9,7 @@ namespace skylance_backend.Services
     public class MLService
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<MLService> _logger;
         public MLService(HttpClient httpClient) => _httpClient = httpClient;
 
         public async Task<int?> GetPredictionSafeAsync(double[] features)
@@ -31,7 +32,7 @@ namespace skylance_backend.Services
                 // _logger.LogWarning(ex, "ML prediction failed");
                 _logger.LogWarning(ex,
                     "Prediction failed for BookingId={BookingId}. Features={Features}",
-                    booking.Id,
+                    //booking.Id,
                     string.Join(',', features));
                 return null;
             }

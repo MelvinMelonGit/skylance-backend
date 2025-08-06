@@ -22,7 +22,7 @@ namespace skylance_backend.Controllers
         [HttpGet("overbooking")]
         public async Task<IActionResult> GetOverbookingDetail([FromQuery] string flightBookingDetailId)
         {
-            var flightBookingDetail = _db.FlightBookingDetails
+            var flightBookingDetail = await _db.FlightBookingDetails
                 .Include(b => b.FlightDetail)
                 .Include(b => b.BookingDetail)
                     .ThenInclude(x => x.AppUser)
@@ -32,17 +32,18 @@ namespace skylance_backend.Controllers
             {
                 return NotFound();
             }
+            var distance = flightBookingDetail.FlightDetail.Distance;
             double compensation = CalculateCompensation(flightBookingDetail.FlightDetail.Distance);
          
             var overbooking = new OverbookingDetail
             {
                 Id = Guid.NewGuid().ToString(),
                 OldFlightBookingDetail = flightBookingDetail,
-                OldBookingFlightDetailId = flightBookingDetail.Id,
+                OldFlightBookingDetailId = flightBookingDetail.Id,
                 NewFlightBookingDetail = null,
-                NewBookingFlightDetailId = null, 
+                NewFlightBookingDetailId = null, 
                 IsRebooking = false,
-                FinalCompensationAmount = _compensation.CalculateCompensationAsync(flightBookingDetailId)
+                FinalCompensationAmount =await  _compensation.CalculateCompensationAsync(flightBookingDetailId)
             };
 
             await _db.OverbookingDetails.AddAsync(overbooking);
