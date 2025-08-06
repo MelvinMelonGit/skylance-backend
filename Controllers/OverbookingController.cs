@@ -17,7 +17,7 @@ namespace skylance_backend.Controllers
             _db = db;
         }
         [HttpGet("overbooking")]
-        public async Task<IActionResult> GetOverbookingDetail(string flightBookingDetailId)
+        public async Task<IActionResult> GetOverbookingDetail([FromQuery] string flightBookingDetailId)
         {
             var flightBookingDetail = _db.FlightBookingDetails
                 .Include(b => b.FlightDetail)
