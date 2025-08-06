@@ -43,6 +43,11 @@ namespace skylance_backend.Controllers
         public async Task<IActionResult> ProcessCheckIn([FromBody] CheckInRequest request)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
+            var flightDetail = await _context.FlightDetails.FindAsync(request.FlightDetailId);
+            if (flightDetail == null)
+            {
+                return BadRequest("Invalid flight detail ID");
+            }
 
             try
             {
@@ -58,8 +63,10 @@ namespace skylance_backend.Controllers
                 double baggageAllowance = Math.Round(15 + _random.NextDouble() * 20, 1);
                 Seat seat = new Seat
                 {
-                    SeatNumber = $"{_random.Next(1, 41)}{(char)('A' + _random.Next(0, 6))}"
+                    SeatNumber = $"{_random.Next(1, 41)}{(char)('A' + _random.Next(0, 6))}",
+                    FlightDetail = flightDetail
                 };
+                await _context.Seats.AddAsync(seat); 
                 bool requireSpecialAssistance = _random.Next(0, 10) < 2; 
                 int fareAmount = _random.Next(100, 2001); 
                 string gate = _random.Next(1, 51).ToString(); 

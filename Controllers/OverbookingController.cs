@@ -34,9 +34,9 @@ namespace skylance_backend.Controllers
             {
                 Id = Guid.NewGuid().ToString(),
                 OldFlightBookingDetail = flightBookingDetail,
-                OldBookingFlightDetailId = flightBookingDetail.Id,
+                OldFlightBookingDetailId = flightBookingDetail.Id,
                 NewFlightBookingDetail = null,
-                NewBookingFlightDetailId = null, 
+                NewFlightBookingDetailId = null, 
                 IsRebooking = false,
                 FinalCompensationAmount = compensation
             };
