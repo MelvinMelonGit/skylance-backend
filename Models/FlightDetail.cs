@@ -46,7 +46,7 @@ public class FlightDetail
     [Required]
     public required double Distance { get; set; }
 
-    public required int? NumberOfCrew { get; set; }
+    public int? NumberOfCrew { get; set; }
 
     public Prediction? Prediction { get; set; }     
 
