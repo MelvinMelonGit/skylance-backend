@@ -25,7 +25,7 @@ public class FlightBookingDetail
     public TravelPurpose? TravelPurpose { get; set; }    
 
     [MaxLength(50)]
-    public string? SeatNumber { get; set; }
+    public virtual Seat SeatNumber { get; set; }
 
     [Required]
     public required bool RequireSpecialAssistance { get; set; }
@@ -38,7 +38,7 @@ public class FlightBookingDetail
     [MaxLength(50)]
     public required int Fareamount { get; set; }
 
-    public string? Prediction { get; set; }
+    public Prediction? Prediction { get; set; }
 
 }
 

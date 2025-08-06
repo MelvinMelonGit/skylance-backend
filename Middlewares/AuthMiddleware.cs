@@ -30,10 +30,11 @@ public class AuthMiddleware
                 await context.Response.WriteAsync("Unauthorized - missing session token");
                 return;
             }
+          
             // first check if the token belongs to the AppUserSession
             var session = await dbContext.AppUserSessions
                 .Include(s => s.AppUser)
-                .FirstOrDefaultAsync(s => s.Id == token && s.SessionExpiry > DateTime.UtcNow);
+                .FirstOrDefaultAsync(s => s.Id == token);
 
             if (session != null)
             {

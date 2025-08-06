@@ -43,6 +43,7 @@ public class AuthController : ControllerBase
         return Ok(new
         {
             token,
+            user,
             expires = DateTime.UtcNow.AddHours(1)
         });
     }
@@ -115,4 +116,20 @@ public class AuthController : ControllerBase
 
         return CreatedAtAction(nameof(Register), new { id = newUser.Id }, newUser);
     }
+    
+    [HttpPost("logout")]
+    public IActionResult Logout()
+    {
+        var token = Request.Headers["Session-Token"].ToString();
+        var session = _db.AppUserSessions.FirstOrDefault(s => s.Id == token);
+    
+        if (session != null)
+        {
+            _db.AppUserSessions.Remove(session);
+            _db.SaveChanges();
+        }
+
+        return Ok();
+    }
+
 }
