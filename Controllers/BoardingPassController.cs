@@ -19,7 +19,7 @@ namespace skylance_backend.Controllers
             _context = context;
         }
         [HttpGet("{userId}")]
-        public async Task<IActionResult> GetBoardingPassesByUserId(string userId)
+        public async Task<IActionResult> GetAllBoardingPassboards(string userId)
         {
 
 
@@ -31,7 +31,9 @@ namespace skylance_backend.Controllers
 
             if (!checkInIds.Any())
             {
-                return NotFound(new { status = "NotFound", message = "No bookings found for this user" });
+                return NotFound(new {
+                    message = "No boardingpass found for this user" 
+                });
             }
             var boardingPasses = new List<object>();
             foreach (var checkInId in checkInIds)
