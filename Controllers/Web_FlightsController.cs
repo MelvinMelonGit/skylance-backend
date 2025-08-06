@@ -15,26 +15,10 @@ namespace skylance_backend.Controllers
         {
             this.db = db;
         }
-
-        //Helper method 
-        private string? GetLoggedInEmployeeId()
-        {
-            var empSession = HttpContext.Items["EmployeeSession"] as EmployeeSession;
-            if (empSession == null)
-                return null;
-
-            return empSession.Employee.Id;
-        }
-
-        [ProtectedRoute]
+        
         [HttpGet("AllFlights")]
         public IActionResult GetAllFlights (int page = 1, int pageSize = 4)
-        {
-            // assign the logged-in EmployeeId with the helper method (EmployeeSession from AuthMiddleware)
-            var loggedInUserId = GetLoggedInEmployeeId();
-            if (loggedInUserId == null)
-                return Unauthorized();
-
+        {            
             int totalFlights = db.FlightDetails
                 .Where(f => f.DepartureTime > DateTime.Now)
                 .Count();
