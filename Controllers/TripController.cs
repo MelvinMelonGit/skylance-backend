@@ -71,7 +71,7 @@ public class TripController : ControllerBase
             }),
         };
     }
-
+  /*  
     //[ProtectedRoute]
     [HttpPost("{flightBookingId}/checkin/confirm")]
     public async Task<IActionResult> ConfirmCheckIn(string flightBookingId)
@@ -79,5 +79,5 @@ public class TripController : ControllerBase
         var result = await _tripService.ConfirmCheckInAsync(flightBookingId);
         return result ? Ok("Checked in successfully.") : BadRequest("Check-in failed.");
     }
-
+  */
 }

@@ -36,7 +36,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 190,
                     SeatsSold = 140,
-                    Distance=6200
+                    Distance=6200,
+                    NumberOfCrew = 6,
+                    Prediction = null
                 },
 
                 new FlightDetail
@@ -50,7 +52,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 80,
                     SeatsSold = 85,
-                    Distance=5300
+                    Distance=5300,
+                    NumberOfCrew = 5,
+                    Prediction = null
                 },
 
                 new FlightDetail
@@ -64,7 +68,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Landed",
                     CheckInCount = 100,
                     SeatsSold = 110,
-                    Distance=4500
+                    Distance=4500,
+                    NumberOfCrew = 15,
+                    Prediction = null
                 },
 
                 new FlightDetail
@@ -78,7 +84,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 0,
                     SeatsSold = 0,
-                    Distance=7800
+                    Distance=7800,
+                    NumberOfCrew = 14,
+                    Prediction = null
                 },
 
                 new FlightDetail {
@@ -91,7 +99,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 130,
                     SeatsSold = 145,
-                    Distance=6200
+                    Distance=6200,
+                    NumberOfCrew = 4,
+                    Prediction = null
                 },
                 
                 new FlightDetail {
@@ -104,7 +114,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 200,
                     SeatsSold = 250,
-                    Distance = 6300
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null
                 },
 
                 new FlightDetail {
@@ -117,7 +129,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 180,
                     SeatsSold = 220,
-                    Distance = 12000
+                    Distance = 12000,
+                    NumberOfCrew = 13,
+                    Prediction = null
                 },
 
                 new FlightDetail {
@@ -130,7 +144,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Landed",
                     CheckInCount = 400,
                     SeatsSold = 450,
-                    Distance = 4800
+                    Distance = 4800,
+                    NumberOfCrew = 5,
+                    Prediction = null
                 },
 
                 new FlightDetail {
@@ -143,7 +159,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 220,
                     SeatsSold = 230,
-                    Distance = 9200
+                    Distance = 9200,
+                    NumberOfCrew = 4,
+                    Prediction = null
                 },
 
                 new FlightDetail {
@@ -156,7 +174,9 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 200,
                     SeatsSold = 250,
-                    Distance = 2200
+                    Distance = 2200,
+                    NumberOfCrew = 10,
+                    Prediction = null
                 }
 
             };

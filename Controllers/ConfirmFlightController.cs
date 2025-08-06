@@ -39,10 +39,15 @@ namespace skylance_backend.Controllers
             return appUserDetail;
         }
 
-        [HttpPost("checkin")]
-        public async Task<IActionResult> ProcessCheckIn([FromBody] CheckInRequest request)
+        [HttpPost("CheckinForRebooking")]
+        public async Task<IActionResult> ProcessCheckInForRebooking([FromBody] CheckInRequestForRebooking request)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
+            var flightDetail = await _context.FlightDetails.FindAsync(request.FlightDetailId);
+            if (flightDetail == null)
+            {
+                return BadRequest("Invalid flight detail ID");
+            }
 
             try
             {
@@ -58,8 +63,10 @@ namespace skylance_backend.Controllers
                 double baggageAllowance = Math.Round(15 + _random.NextDouble() * 20, 1);
                 Seat seat = new Seat
                 {
-                    SeatNumber = $"{_random.Next(1, 41)}{(char)('A' + _random.Next(0, 6))}"
+                    SeatNumber = $"{_random.Next(1, 41)}{(char)('A' + _random.Next(0, 6))}",
+                    FlightDetail = flightDetail
                 };
+                await _context.Seats.AddAsync(seat); 
                 bool requireSpecialAssistance = _random.Next(0, 10) < 2; 
                 int fareAmount = _random.Next(100, 2001); 
                 string gate = _random.Next(1, 51).ToString(); 
@@ -108,6 +115,8 @@ namespace skylance_backend.Controllers
                         _context.OverbookingDetails.Update(overbookingDetail);
                     }
                 }
+                flightDetail.CheckInCount+=1;
+                _context.FlightDetails.Update(flightDetail);
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
@@ -137,33 +146,126 @@ namespace skylance_backend.Controllers
             }
         }
 
-        [HttpGet("{flightBookingId}/boardingPass")]
-        public async Task<IActionResult> GetBoardingPass(string checkInId)
+
+        [HttpPost("NormalCheckIn")]
+        public async Task<IActionResult> NormalCheckIn([FromBody] NormalCheckInRequest request)
         {
-            if (string.IsNullOrEmpty(checkInId))
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
             {
-                return new JsonResult(new
+                
+                var flightBookingDetail = await _context.FlightBookingDetails
+                    .Include(fbd => fbd.FlightDetail)
+                    .Include(fbd => fbd.BookingDetail)
+                    .ThenInclude(bd => bd.AppUser)
+                    .FirstOrDefaultAsync(fbd => fbd.Id == request.FlightBookingDetailId);
+
+                if (flightBookingDetail == null)
                 {
-                    status = "Invalid"
+                    return BadRequest("Invalid flight booking detail ID.");
+                }
+
+                
+                if (flightBookingDetail.BookingDetail.AppUser.Id != request.AppUserId)
+                {
+                    return BadRequest("The flight booking does not belong to the provided user.");
+                }
+
+                var flightDetail = flightBookingDetail.FlightDetail;
+                var appUser = flightBookingDetail.BookingDetail.AppUser;
+
+                
+                Seat seat = new Seat
+                {
+                    SeatNumber = $"{_random.Next(1, 41)}{(char)('A' + _random.Next(0, 6))}",
+                    FlightDetail = flightDetail
+                };
+                await _context.Seats.AddAsync(seat);
+
+                
+                flightBookingDetail.SeatNumber = seat;
+                flightBookingDetail.BookingStatus = BookingStatus.CheckedIn;
+                _context.FlightBookingDetails.Update(flightBookingDetail);
+
+                
+                DateTime checkInTime = DateTime.UtcNow;
+                DateTime boardingTime = checkInTime.AddMinutes(90);
+                string gate = _random.Next(1, 51).ToString();
+                string terminal = _random.Next(1, 4).ToString();
+
+                
+                var checkInDetail = new CheckInDetail
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    AppUser = appUser,
+                    FlightBookingDetail = flightBookingDetail,
+                    CheckInTime = checkInTime,
+                    BoardingTime = boardingTime,
+                    SeatNumber = seat,
+                    Gate = gate,
+                    Terminal = terminal
+                };
+                await _context.CheckInDetails.AddAsync(checkInDetail);
+
+                
+                flightDetail.CheckInCount += 1;
+                _context.FlightDetails.Update(flightDetail);
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return Ok(new
+                {
+                    CheckInId = checkInDetail.Id,
+                    SeatNumber = seat.SeatNumber,
+                    Gate = gate,
+                    Terminal = terminal,
+                    CheckInTime = checkInTime,
+                    BoardingTime = boardingTime
                 });
             }
-
-            var boardingPass = await _tripService.GetBoardingPass(checkInId);
-
-            if (boardingPass == null)
+            catch (Exception ex)
             {
-                return new JsonResult(new
-                {
-                    status = "NotFound"
-                }); // Could also redirect to an error page
+                await transaction.RollbackAsync();
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
-
-            return new JsonResult(boardingPass);
         }
+
+
+
+
+
+        /*
+        
+                [HttpGet("{flightBookingId}/boardingPass")]
+                public async Task<IActionResult> GetBoardingPass(string checkInId)
+                {
+                    if (string.IsNullOrEmpty(checkInId))
+                    {
+                        return new JsonResult(new
+                        {
+                            status = "Invalid"
+                        });
+                    }
+
+                    var boardingPass = await _tripService.GetBoardingPass(checkInId);
+
+                    if (boardingPass == null)
+                    {
+                        return new JsonResult(new
+                        {
+                            status = "NotFound"
+                        }); // Could also redirect to an error page
+                    }
+
+                    return new JsonResult(boardingPass);
+                }
+        */
     }
 
 
-    public class CheckInRequest
+    public class CheckInRequestForRebooking
     {
         public required string AppUserId { get; set; }
         public required int FlightDetailId { get; set; }
@@ -171,5 +273,11 @@ namespace skylance_backend.Controllers
      
         public string? OverbookingDetailId { get; set; }
         public double FinalCompensationAmount { get; set; }
+    }
+
+    public class NormalCheckInRequest
+    {
+        public required string AppUserId { get; set; }
+        public required string FlightBookingDetailId { get; set; }
     }
 }
