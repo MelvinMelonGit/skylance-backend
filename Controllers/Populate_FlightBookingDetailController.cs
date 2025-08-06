@@ -48,7 +48,7 @@ namespace skylance_backend.Controllers
                     TravelPurpose = TravelPurpose.Emergency,
                     SeatNumber = null,
                     RequireSpecialAssistance = false,
-                    BookingStatus = BookingStatus.CheckedIn,
+                    BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 2000,
                     Prediction = null
                 },
@@ -61,7 +61,7 @@ namespace skylance_backend.Controllers
                     TravelPurpose = TravelPurpose.Family,
                     SeatNumber = null,
                     RequireSpecialAssistance = false,
-                    BookingStatus = BookingStatus.CheckedIn,
+                    BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 2300,
                     Prediction = Prediction.No_Show
                 },
@@ -74,7 +74,7 @@ namespace skylance_backend.Controllers
                     TravelPurpose = TravelPurpose.Leisure,
                     SeatNumber = null,
                     RequireSpecialAssistance = false,
-                    BookingStatus = BookingStatus.Rebooked,
+                    BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 1700,
                     Prediction = null
                 },
@@ -126,7 +126,7 @@ namespace skylance_backend.Controllers
                     TravelPurpose = TravelPurpose.Leisure,
                     SeatNumber = null,
                     RequireSpecialAssistance = false,
-                    BookingStatus = BookingStatus.CheckedIn,
+                    BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 2300,
                     Prediction = null
                 },
@@ -139,7 +139,7 @@ namespace skylance_backend.Controllers
                     TravelPurpose = TravelPurpose.Business,
                     SeatNumber = null,
                     RequireSpecialAssistance = false,
-                    BookingStatus = BookingStatus.Rebooked,
+                    BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 1700,
                     Prediction = null
                 },
