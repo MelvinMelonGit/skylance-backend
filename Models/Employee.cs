@@ -9,7 +9,11 @@ public class Employee
     [Key]
     [MaxLength(255)]
     public string Id { get; set; } = Guid.NewGuid().ToString();
-    
+
+    [Required]
+    [MaxLength(255)]
+    public required string EmployeeNumber { get; set; }
+
     [Required]
     [MaxLength(255)]
     public required string Username { get; set; }
@@ -38,7 +42,4 @@ public class Employee
     [MaxLength(255)]
     public required string Position { get; set; }
     
-    [Required]
-    [MaxLength(255)]
-    public required string EmployeeNumber { get; set; }
 }
