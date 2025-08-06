@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using skylance_backend.Enum;
 
 namespace skylance_backend.Models;
 
@@ -44,6 +45,8 @@ public class FlightDetail
 
     [Required]
     public required double Distance { get; set; }
+
+    public Prediction? Prediction { get; set; }
 
     [NotMapped] 
     public double Compensation => Distance / 4;
