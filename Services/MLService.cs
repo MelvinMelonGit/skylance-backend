@@ -29,10 +29,10 @@ namespace skylance_backend.Services
             {
                 // log, swallow
                 // _logger.LogWarning(ex, "ML prediction failed");
-                _logger.LogWarning(ex,
+                /*_logger.LogWarning(ex,
                     "Prediction failed for BookingId={BookingId}. Features={Features}",
                     booking.Id,
-                    string.Join(',', features));
+                    string.Join(',', features));*/
                 return null;
             }
         }
