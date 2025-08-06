@@ -46,7 +46,35 @@ public class AuthController : ControllerBase
             expires = DateTime.UtcNow.AddHours(1)
         });
     }
-    
+
+    [HttpPost("login/employee")]
+    public IActionResult EmployeeLogin([FromBody] EmployeeLoginRequestDTO request)
+    {
+        var employee = _db.Employees
+            .FirstOrDefault(e => e.EmployeeNumber == request.EmployeeNumber && e.Password == request.Password);
+
+        if (employee == null)
+            return Unauthorized("Invalid credentials");
+
+        var token = Guid.NewGuid().ToString();
+
+        var empSession = new EmployeeSession
+        {
+            Id = token,
+            Employee = employee,
+            SessionExpiry = DateTime.UtcNow.AddHours(1)
+        };
+
+        _db.EmployeeSessions.Add(empSession);
+        _db.SaveChanges();
+
+        return Ok(new
+        {
+            token,
+            expires = empSession.SessionExpiry
+        });
+    }
+
     [HttpPost("register")]
     public IActionResult Register([FromBody] RegisterRequestDTO dto)
     {
