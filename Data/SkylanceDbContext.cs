@@ -5,8 +5,8 @@ namespace skylance_backend.Data;
 
 public class SkylanceDbContext : DbContext
 {
-    public SkylanceDbContext() {}
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
         optionsBuilder.UseMySql(
             // provides database connection-string
             "server=localhost;user=root;password=Nail1925$$;database=skylance;",
@@ -33,6 +33,7 @@ public class SkylanceDbContext : DbContext
     public DbSet<FlightDetail> FlightDetails { get; set; }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<OverbookingDetail> OverbookingDetails { get; set; }
+    public DbSet<Seat> Seats { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -97,5 +98,10 @@ public class SkylanceDbContext : DbContext
             .HasOne(o => o.NewFlightBookingDetail)
             .WithMany()
             .HasForeignKey("NewFlightBookingDetailId");
+
+        modelBuilder.Entity<Seat>()
+           .HasOne(o => o.FlightDetail)
+           .WithMany()
+           .HasForeignKey("FlightDetailId");
     }
 }
