@@ -22,9 +22,10 @@ public class FlightBookingDetail
     [Required]
     public required double BaggageAllowance { get; set; }
 
-    [Required]
+    public TravelPurpose? TravelPurpose { get; set; }    
+
     [MaxLength(50)]
-    public required string SeatNumber { get; set; }
+    public virtual Seat SeatNumber { get; set; }
 
     [Required]
     public required bool RequireSpecialAssistance { get; set; }
@@ -36,6 +37,8 @@ public class FlightBookingDetail
     [Required]
     [MaxLength(50)]
     public required int Fareamount { get; set; }
+
+    public Prediction? Prediction { get; set; }
 
 }
 

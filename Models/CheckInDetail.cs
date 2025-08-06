@@ -26,11 +26,11 @@ public class CheckInDetail
     
     [Required]
     [MaxLength(50)]
-    public required string SeatNumber { get; set; }
+    public virtual required Seat SeatNumber { get; set; }
     
     [Required]
-    public required int Gate { get; set; }
+    public required string Gate { get; set; }
     
     [Required]
-    public required int Terminal { get; set; }
+    public required string Terminal { get; set; }
 }

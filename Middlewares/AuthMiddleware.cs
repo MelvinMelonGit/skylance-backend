@@ -22,26 +22,46 @@ public class AuthMiddleware
 
         if (requiresAuth)
         {
-            var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+            var token = context.Request.Headers["Session-Token"].FirstOrDefault();
 
-            if (string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Bearer "))
+            if (string.IsNullOrEmpty(token))
             {
                 context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Unauthorized - missing token");
+                await context.Response.WriteAsync("Unauthorized - missing session token");
                 return;
             }
-
-            var token = authHeader.Substring("Bearer ".Length).Trim();
-
+          
+            // first check if the token belongs to the AppUserSession
             var session = await dbContext.AppUserSessions
-                .FirstOrDefaultAsync(s => s.Id == token && s.SessionExpiry > DateTime.UtcNow);
+                .Include(s => s.AppUser)
+                .FirstOrDefaultAsync(s => s.Id == token);
 
-            if (session == null)
+            if (session != null)
             {
-                context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Unauthorized - invalid or expired token");
-                return;
+                context.Items["AppUserSession"] = session;
             }
+            else
+            {
+                // if not, then check if the token belongs to the EmployeeSession 
+                var empSession = await dbContext.EmployeeSessions
+                    .Include(s => s.Employee)
+                    .FirstOrDefaultAsync(s => s.Id == token && s.SessionExpiry > DateTime.UtcNow);
+
+                if (empSession != null)
+                {
+                    context.Items["EmployeeSession"] = empSession;
+                }
+                else
+                {
+                    // if token does not belong to AppUserSession or EmployeeSession, then unauthorized
+                    context.Response.StatusCode = 401;
+                    await context.Response.WriteAsync("Unauthorized - invalid or expired session token");
+                    return;
+                }
+                                  
+            }
+            // Optional: store session or user info in HttpContext.Items if you want to use it later
+            //context.Items["AppUserSession"] = session;
         }
 
         await _next(context);

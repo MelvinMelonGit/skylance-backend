@@ -21,22 +21,22 @@ public class TripController : ControllerBase
     // to display the flight detail page
     //[ProtectedRoute]
     [HttpGet("{flightBookingId}")]
-        public async Task<IActionResult> TripDetail(string flightBookingId)
+    public async Task<IActionResult> TripDetail(string flightBookingId)
+    {
+        if (string.IsNullOrEmpty(flightBookingId))
         {
-            if (string.IsNullOrEmpty(flightBookingId))
-            {
-                return BadRequest("Invalid booking ID.");
-            }
-
-            var tripDetails = await _tripService.GetTripDetailsAsync(flightBookingId);
-
-            if (tripDetails == null)
-            {
-                return NotFound(); // Could also redirect to an error page
-            }
-
-            return Ok(tripDetails); // This will pass the DTO to the Razor view
+            return BadRequest("Invalid booking ID.");
         }
+
+        var tripDetails = await _tripService.GetTripDetailsAsync(flightBookingId);
+
+        if (tripDetails == null)
+        {
+            return NotFound(); // Could also redirect to an error page
+        }
+
+        return Ok(tripDetails); // This will pass the DTO to the Razor view
+    }
 
 
     // GET: api/trips/{flightDetailsId}/checkin/validate
@@ -51,11 +51,24 @@ public class TripController : ControllerBase
 
         return result switch
         {
-            CheckInValidationResult.Allowed => Ok("Proceed to confirm check-in."),
-            CheckInValidationResult.AlreadyCheckedIn => BadRequest("You have already checked in."),
-            CheckInValidationResult.FlightDeparted => BadRequest("Flight already departed."),
-            CheckInValidationResult.FlightFullyCheckedIn => Redirect("/overbooking"),
-            _ => BadRequest("Unknown error.")
+            CheckInValidationResult.Allowed => new JsonResult(new
+            {
+                status = "Allowed"
+            }),
+            CheckInValidationResult.AlreadyCheckedIn => new JsonResult(new
+            {
+                status = "AlreadyCheckedIn"
+            }),
+            CheckInValidationResult.FlightDeparted => new JsonResult(new
+            {
+                status = "FlightDeparted"
+            }),
+            CheckInValidationResult.FlightFullyCheckedIn => Redirect($"/api/Overbooking/overbooking?flightBookingDetailId={flightBookingId}"),
+            _ => new JsonResult(new
+            {
+                status = "Error",
+                message = "An error has occured."
+            }),
         };
     }
 
