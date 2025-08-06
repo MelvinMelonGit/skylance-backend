@@ -4,6 +4,7 @@ using skylance_backend.Data;
 using skylance_backend.Enum;
 using skylance_backend.Models;
 using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace skylance_backend.Services
 {
@@ -73,7 +74,7 @@ namespace skylance_backend.Services
 
             return CheckInValidationResult.Allowed;
         }
-
+/*
         public async Task<bool> ConfirmCheckInAsync(string flightBookingId)
         {
             var flightBooking = await _context.FlightBookingDetails
@@ -106,6 +107,7 @@ namespace skylance_backend.Services
                 selectedSeat.IsAssigned = true; // mark seat as taken
             }
 
+      
             var checkedInCount = flightBooking.FlightDetail.CheckInCount;
 
             flightBooking.BookingStatus = BookingStatus.CheckedIn;
@@ -114,7 +116,7 @@ namespace skylance_backend.Services
 
             return true;
         }
-
+*/
         public async Task<BoardingPassDTO> GetBoardingPass(string checkInId)
         {
             var boardingPass = await _context.CheckInDetails
