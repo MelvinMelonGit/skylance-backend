@@ -9,34 +9,84 @@ namespace skylance_backend.Services
     public class MLService
     {
         private readonly HttpClient _httpClient;
-        public MLService(HttpClient httpClient) => _httpClient = httpClient;
+        private readonly JsonSerializerOptions _jsonOptions;
 
-        public async Task<int?> GetPredictionSafeAsync(double[] features)
+        public MLService(HttpClient httpClient)
         {
-            try
+            _httpClient = httpClient;
+            _jsonOptions = new JsonSerializerOptions
             {
-                // Serialize and Deserialize code
-                var requestBody = JsonSerializer.Serialize(new { features });
-                var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                var resp = await _httpClient.PostAsync("/api/predict", content);
-                resp.EnsureSuccessStatusCode();
-
-                var json = await resp.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<PredictionResult>(json);
-                return result.prediction;
-            }
-            catch (Exception ex)
-            {
-                // log, swallow
-                // _logger.LogWarning(ex, "ML prediction failed");
-                /*_logger.LogWarning(ex,
-                    "Prediction failed for BookingId={BookingId}. Features={Features}",
-                    booking.Id,
-                    string.Join(',', features));*/
-                return null;
-            }
+                PropertyNameCaseInsensitive = true
+            };
         }
 
-        private class PredictionResult { public int prediction { get; set; } }
+        /// Calls POST /predict on the Python service (no body needed beyond empty JSON).
+        /// Returns the number of rows the Python service updated.
+
+        public async Task<BulkResult> CallBulkAsync()
+        {
+            using var content = new StringContent("{}", Encoding.UTF8, "application/json");
+            var resp = await _httpClient.PostAsync("/predict", content);
+            resp.EnsureSuccessStatusCode();
+
+            var json = await resp.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<BulkResult>(json, _jsonOptions)!;
+        }
+
+        /// Calls POST /predict/{bookingId} on the Python service.
+        /// Returns both the booking ID and the single prediction.
+
+        public async Task<SingleResult> CallSingleAsync(string bookingId)
+        {
+            using var content = new StringContent("{}", Encoding.UTF8, "application/json");
+            var resp = await _httpClient.PostAsync($"/predict/{bookingId}", content);
+            resp.EnsureSuccessStatusCode();
+
+            var json = await resp.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<SingleResult>(json, _jsonOptions)!;
+        }
+
+        /// Calls POST /predict_f on the Python service (no body needed beyond empty JSON).
+        /// Returns the number of rows the Python service updated.
+
+        public async Task<BulkResult> CallBulkFlightAsync()
+        {
+            using var content = new StringContent("{}", Encoding.UTF8, "application/json");
+            var resp = await _httpClient.PostAsync("/predict_f", content);
+            resp.EnsureSuccessStatusCode();
+
+            var json = await resp.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<BulkResult>(json, _jsonOptions)!;
+        }
+
+        /// Calls POST /predict_f/{flightId} on the Python service.
+        /// Returns both the flight ID and the single prediction.
+
+        public async Task<SingleFlightResult> CallSingleFlightAsync(int flightId)
+        {
+            using var content = new StringContent("{}", Encoding.UTF8, "application/json");
+            var resp = await _httpClient.PostAsync($"/predict_f/{flightId}", content);
+            resp.EnsureSuccessStatusCode();
+
+            var json = await resp.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<SingleFlightResult>(json, _jsonOptions)!;
+        }
+
+        public class BulkResult
+        {
+            public int updated { get; set; }
+        }
+
+        public class SingleResult
+        {
+            public string booking_id { get; set; }
+            public int prediction { get; set; }
+        }
+
+        public class SingleFlightResult
+        {
+            public int flight_id { get; set; }
+            public float probability { get; set; }
+        }
     }
 }

@@ -1,5 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using skylance_backend.Data;
 using skylance_backend.Services;
+using System;
 using System.Threading.Tasks;
 
 namespace skylance_backend.Controllers
@@ -14,19 +16,32 @@ namespace skylance_backend.Controllers
         {
             _mlService = mlService;
         }
-        // POST /api/prediction
-        [HttpPost]
-        public async Task<IActionResult> Predict([FromBody] double[] features)
-        {
-            var result = await _mlService.GetPredictionSafeAsync(features);
-            if (result == null)
-            {
-                // we logged the failure inside MLService,
-                // return a 503 so the caller knows to ignore/update later
-                return StatusCode(503, new { error = "ML service temporarily unavailable" });
-            }
 
-            return Ok(new { prediction = result });
+
+        /// Triggers the Python service to predict for all un‐predicted bookings.
+        /// Python handles feature extraction, inference, and write‐back.
+
+        /// <returns>{ "updated": int }</returns>
+        [HttpPost("all")]
+        public async Task<IActionResult> PredictAll()
+        {
+            var result = await _mlService.CallBulkAsync();
+            return Ok(new { updated = result.updated });
+        }
+
+        /// Triggers the Python service to predict for a single booking by ID.
+
+        /// <param name="id">Booking ID</param>
+        /// <returns>{ "bookingId": string, "prediction": int }</returns>
+        [HttpPost("{id}")]
+        public async Task<IActionResult> PredictSingle(string id)
+        {
+            var result = await _mlService.CallSingleAsync(id);
+            return Ok(new
+            {
+                bookingId = id,
+                prediction = result.prediction
+            });
         }
     }
 }
