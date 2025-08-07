@@ -43,6 +43,7 @@ builder.Services.AddHttpClient<MLService>((sp, client) =>
 });
 // Register the background worker to catch and update bookings without prediction
 builder.Services.AddHostedService<BookingPredictionWorker>();
+builder.Services.AddHostedService<FlightPredictionWorker>();
 
 builder.Services.AddControllers();
 
