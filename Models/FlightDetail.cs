@@ -50,6 +50,8 @@ public class FlightDetail
 
     public Prediction? Prediction { get; set; }     
 
+    public float? Probability { get; set; }
+
     [NotMapped] 
     public double Compensation => Distance / 4;
 
