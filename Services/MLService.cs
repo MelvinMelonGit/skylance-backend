@@ -46,6 +46,32 @@ namespace skylance_backend.Services
             return JsonSerializer.Deserialize<SingleResult>(json, _jsonOptions)!;
         }
 
+        /// Calls POST /predict_f on the Python service (no body needed beyond empty JSON).
+        /// Returns the number of rows the Python service updated.
+
+        public async Task<BulkResult> CallBulkFlightAsync()
+        {
+            using var content = new StringContent("{}", Encoding.UTF8, "application/json");
+            var resp = await _httpClient.PostAsync("/predict_f", content);
+            resp.EnsureSuccessStatusCode();
+
+            var json = await resp.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<BulkResult>(json, _jsonOptions)!;
+        }
+
+        /// Calls POST /predict_f/{flightId} on the Python service.
+        /// Returns both the flight ID and the single prediction.
+
+        public async Task<SingleFlightResult> CallSingleFlightAsync(int flightId)
+        {
+            using var content = new StringContent("{}", Encoding.UTF8, "application/json");
+            var resp = await _httpClient.PostAsync($"/predict_f/{flightId}", content);
+            resp.EnsureSuccessStatusCode();
+
+            var json = await resp.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<SingleFlightResult>(json, _jsonOptions)!;
+        }
+
         public class BulkResult
         {
             public int updated { get; set; }
@@ -55,6 +81,12 @@ namespace skylance_backend.Services
         {
             public string booking_id { get; set; }
             public int prediction { get; set; }
+        }
+
+        public class SingleFlightResult
+        {
+            public int flight_id { get; set; }
+            public float probability { get; set; }
         }
     }
 }
