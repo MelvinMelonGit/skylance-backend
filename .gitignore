@@ -6,3 +6,4 @@ riderModule.iml
 .idea/
 .vs/
 skylance-backend.csproj.user
+appsettings.json
