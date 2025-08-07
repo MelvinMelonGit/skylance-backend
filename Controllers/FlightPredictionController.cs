@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using skylance_backend.Attributes;
+using skylance_backend.Data;
+using skylance_backend.Models;
 using skylance_backend.Services;
 using System;
 using System.Threading.Tasks;
@@ -10,10 +14,12 @@ namespace skylance_backend.Controllers
     public class FlightPredictionController : ControllerBase
     {
         private readonly MLService _mlService;
+        private readonly SkylanceDbContext _context;
 
-        public FlightPredictionController(MLService mlService)
+        public FlightPredictionController(MLService mlService, SkylanceDbContext context)
         {
             _mlService = mlService;
+            _context = context;
         }
 
 
@@ -42,5 +48,73 @@ namespace skylance_backend.Controllers
                 probability = result.probability
             });
         }
+
+        //Helper method
+        private string? GetLoggedInUserId()
+        {
+            var session = HttpContext.Items["AppUserSession"] as AppUserSession;
+            if (session == null)
+                return null;
+
+            return session.AppUser.Id;
+        }
+
+        /// Triggers the Skylance MySQL DB to get probability for a single flight by ID.
+
+        /// <param name="id">Flight ID</param>
+        /// <returns>{ "flightDetailId": int, "FlightNumber": str, "probability": float }</returns>
+
+        [ProtectedRoute]
+        [HttpGet("show-percentage")]
+        public async Task<IActionResult> GetAllShowPercentages()
+        {
+            // assign the logged-in AppUserId with the helper method (AppUserSession from AuthMiddleware)
+            var loggedInUserId = GetLoggedInUserId();
+            if (loggedInUserId == null)
+                return Unauthorized();
+
+            var list = await _context.FlightDetails
+                // Projection shortcut: project (.Select(...)) to a non-entity type,
+                // EF Core automatically translates any navigation‐property access (e.g. fd.Aircraft.FlightNumber)
+                // into a SQL join under the covers.
+                // project only the two fields that need:
+                .Select(fd => new
+                {
+                    flight = fd.Aircraft.FlightNumber,
+                    predictedShowPercentage = fd.Probability ?? 0f
+                })
+                .ToListAsync();
+
+            return Ok(new
+            {
+                success = true,
+                data = list
+            });
+        }
+
+        [ProtectedRoute]
+        /// GET api/FlightPrediction/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetFlightDetail(int id)
+        {
+            // assign the logged-in AppUserId with the helper method (AppUserSession from AuthMiddleware)
+            var loggedInUserId = GetLoggedInUserId();
+            if (loggedInUserId == null)
+                return Unauthorized();
+
+            var fd = await _context.FlightDetails
+                .Include(f => f.Aircraft)
+                .FirstOrDefaultAsync(f => f.Id == id);
+
+            if (fd == null) return NotFound();
+
+            return Ok(new
+            {
+                flightDetailId = fd.Id,
+                FlightNumber = fd.Aircraft.FlightNumber,
+                probability = fd.Probability
+            });
+        }
     }
 }
+
