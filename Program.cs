@@ -29,6 +29,7 @@ builder.Services.AddDbContext<SkylanceDbContext>(options =>
 builder.Services.AddScoped<ITripService, TripService>();
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<RevenueService>();
 
 // Swagger setup
 builder.Services.AddEndpointsApiExplorer();

@@ -34,6 +34,7 @@ public class SkylanceDbContext : DbContext
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<OverbookingDetail> OverbookingDetails { get; set; }
     public DbSet<Seat> Seats { get; set; }
+    public DbSet<AirlineRevenue> AirlineRevenue { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -103,5 +104,6 @@ public class SkylanceDbContext : DbContext
            .HasOne(o => o.FlightDetail)
            .WithMany()
            .HasForeignKey("FlightDetailId");
+       
     }
 }
