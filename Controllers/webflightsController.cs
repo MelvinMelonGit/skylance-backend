@@ -8,15 +8,15 @@ namespace skylance_backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class Web_FlightsController : ControllerBase
+    public class webflightsController : ControllerBase
     {
         private readonly SkylanceDbContext db;
-        public Web_FlightsController(SkylanceDbContext db)
+        public webflightsController(SkylanceDbContext db)
         {
             this.db = db;
         }
         
-        [HttpGet("AllFlights")]
+        [HttpGet("allflights")]
         public IActionResult GetAllFlights (int page = 1, int pageSize = 4)
         {            
             int totalFlights = db.FlightDetails
@@ -33,11 +33,11 @@ namespace skylance_backend.Controllers
                 .OrderBy(f => f.DepartureTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .Select(f => new Web_FlightsDTO
+                .Select(f => new webflightsDTO
                 {
                     AirlineName = f.Aircraft.Airline,
                     FlightName = f.Aircraft.FlightNumber,
-                    DepartureDate = f.DepartureTime.ToString("yyyy-MM-dd"),
+                    DepartureDate = f.DepartureTime.ToString("s"),
                     ArrivalTime = f.ArrivalTime.ToString("s"),
                     DepartureCity = f.OriginAirport.City.Name,
                     ArrivalCity = f.DestinationAirport.City.Name,
