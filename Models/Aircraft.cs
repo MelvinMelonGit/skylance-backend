@@ -29,6 +29,6 @@ public class Aircraft
     [Required]
     public required int SeatCapacity { get; set; }
 
-    [Required]
-    public virtual ICollection<Seat> Seats { get; set; }
+    //[Required]
+    public virtual ICollection<Seat>? Seats { get; set; }
 }
