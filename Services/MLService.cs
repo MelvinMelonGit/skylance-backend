@@ -18,7 +18,7 @@ namespace skylance_backend.Services
             {
                 PropertyNameCaseInsensitive = true
             };
-
+        }
         /// Calls POST /predict on the Python service (no body needed beyond empty JSON).
         /// Returns the number of rows the Python service updated.
 
