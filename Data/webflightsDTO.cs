@@ -2,7 +2,7 @@
 
 namespace skylance_backend.Data
 {
-    public class Web_FlightsDTO
+    public class webflightsDTO
     {
         public string? AirlineName { get; set; }
         public string? FlightName { get; set; }

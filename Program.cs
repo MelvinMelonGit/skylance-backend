@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using skylance_backend.Data;
 using skylance_backend.Middlewares;
 using skylance_backend.Services;
@@ -27,6 +28,21 @@ builder.Services.AddDbContext<SkylanceDbContext>(options =>
     ).UseLazyLoadingProxies());
 
 builder.Services.AddScoped<ITripService, TripService>();
+
+// Bind the FastApi section to a POCO
+builder.Services.Configure<FastApi>(
+    builder.Configuration.GetSection("FastApi")
+);
+
+// Register MLService, pulling BaseUrl from the bound options
+builder.Services.AddHttpClient<MLService>((sp, client) =>
+{
+    // resolve the options
+    var opts = sp.GetRequiredService<IOptions<FastApi>>().Value;
+    client.BaseAddress = new Uri(opts.BaseUrl);
+});
+// Register the background worker to catch and update bookings without prediction
+builder.Services.AddHostedService<BookingPredictionWorker>();
 
 builder.Services.AddControllers();
 
@@ -70,3 +86,4 @@ void initDB()
             ctx.Database.EnsureCreated(); // create database
     }
 }
+
