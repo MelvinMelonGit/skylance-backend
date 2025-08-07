@@ -7,3 +7,5 @@ riderModule.iml
 .vs/
 skylance-backend.csproj.user
 appsettings.json
+appsettings.json
+Data/SkylanceDbContext.cs
