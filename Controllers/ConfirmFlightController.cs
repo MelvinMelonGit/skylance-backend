@@ -105,10 +105,16 @@ namespace skylance_backend.Controllers
                 if (!string.IsNullOrEmpty(request.OverbookingDetailId))
                 {
                     var overbookingDetail = await _context.OverbookingDetails
-                        .FindAsync(request.OverbookingDetailId);
+                        .Include(od => od.OldFlightBookingDetail)
+                        .FirstOrDefaultAsync(od => od.Id == request.OverbookingDetailId);
 
                     if (overbookingDetail != null)
                     {
+                        if (overbookingDetail.OldFlightBookingDetail != null)
+                        {
+                            overbookingDetail.OldFlightBookingDetail.BookingStatus = BookingStatus.Rebooked;
+                            _context.FlightBookingDetails.Update(overbookingDetail.OldFlightBookingDetail);
+                        }
                         overbookingDetail.NewFlightBookingDetail = flightBookingDetail;
                         overbookingDetail.IsRebooking = true;
                         overbookingDetail.FinalCompensationAmount = request.FinalCompensationAmount;

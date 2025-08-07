@@ -31,8 +31,12 @@ namespace skylance_backend.Controllers
 
             if (!checkInIds.Any())
             {
-                return NotFound(new {
-                    message = "No boardingpass found for this user" 
+                return Ok(new
+                {
+                    status = "Success",
+                    count = 0,
+                    message = "no boarding pass found",
+                    boardingPasses = new List<object>()
                 });
             }
             var boardingPasses = new List<object>();
@@ -47,7 +51,13 @@ namespace skylance_backend.Controllers
 
             if (!boardingPasses.Any())
             {
-                return NotFound(new { status = "NotFound", message = "No boarding passes found" });
+                return Ok(new
+                {
+                    status = "Success",
+                    count = 0,
+                    message = "no boarding pass found",
+                    boardingPasses = new List<object>()
+                });
             }
 
             return Ok(new
