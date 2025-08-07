@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace skylance_backend.Models;
 
-[Table("Charts")]
-public class Charts
+[Table("Chart")]
+public class Chart
     {
     [Key]
     public int Id { get; set; }
