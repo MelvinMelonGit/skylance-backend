@@ -97,7 +97,7 @@ namespace skylance_backend.Controllers
                 },
                 Data = flights.Select(f => new
                 {
-                    flightid = f.Id,
+                    flightid = f.Aircraft.FlightNumber,
                     route = $"{f.OriginAirport.IataCode} → {f.DestinationAirport.IataCode}",
                     departure = f.DepartureTime.ToString("HH:mm"),
                     capacity = f.Aircraft.SeatCapacity,
