@@ -21,16 +21,17 @@ namespace skylance_backend.Services
 
             _db.AirlineRevenue.RemoveRange(_db.AirlineRevenue);
 
-            var bookings = await _db.FlightBookingDetails
+            var flightbookings = await _db.FlightBookingDetails
                 .Include(b => b.FlightDetail)
-                .ThenInclude(f => f.Aircraft)
+                    .ThenInclude(f => f.Aircraft)
+                //.Include(b => b.OverbookingDetails)
                 .Where(b => b.BookingStatus == BookingStatus.Confirmed)
                 .ToListAsync();
 
             var compensations = await _db.OverbookingDetails
                 .ToListAsync();
 
-            var monthlyData = bookings
+            var monthlyData = flightbookings
                 .GroupBy(b => new
                 {
                     AirlineCode = b.FlightDetail.Aircraft.Airline.Substring(0, 2),
@@ -39,18 +40,17 @@ namespace skylance_backend.Services
                     Month = b.FlightDetail.DepartureTime.Month
                 })
                 .Select(g => {
-                    var bookingIds = g.Select(b => b.Id).ToList();
+                    var flightbookingIds = g.Select(b => b.Id).ToList();
                     var totalCompensation = compensations
-                        .Where(c => bookingIds.Contains(c.OldFlightBookingDetailId))
+                        .Where(c => flightbookingIds.Contains(c.OldFlightBookingDetailId))
                         .Sum(c => c.FinalCompensationAmount);
-                    var uniqueTicketsSold = g.Select(b => b.FlightDetail.Id).Distinct().Count();
                     return new AirlineRevenue
                     {
                         Period = $"{g.Key.Year}-{g.Key.Month:00}",
                         PeriodType = "month",
                         AirlineCode = g.Key.AirlineCode,
                         AirlineName = g.Key.AirlineName,
-                        TicketsSold = uniqueTicketsSold,
+                        TicketsSold = g.Count(),
                         Revenue = (decimal)(g.Sum(b => b.Fareamount) - totalCompensation)
                     };
                 })

@@ -21,65 +21,36 @@ namespace skylance_backend.Controllers
 
         [HttpGet]
         [RequestTimeout(30)]
-        public async Task<IActionResult> GetRevenue(string period)
+        public async Task<IActionResult> GetRevenue(string periodType)
         {
 
             await _revenueService.CalculateAndStoreRevenue();
 
-            if (!IsMonthIdentifier(period) && !IsYearIdentifier(period))
+            if (periodType != "month" && periodType != "year")
             {
-                return BadRequest(new
+                return new BadRequestObjectResult(new
                 {
                     success = false,
-                    message = "Invaid Period"
+                    message = "Invalid periodType. Allowed values: 'month' or 'year'"
                 });
             }
-            else if (IsMonthIdentifier(period))
-            {
-                // Convert month abbreviation to number
-                var monthNumber = ConvertMonthAbbreviationToNumber(period);
-                period = $"-{monthNumber}";
-                var revenueData = await _db.AirlineRevenue
-                    .Where(r => r.PeriodType == "month" && r.Period.EndsWith($"-{monthNumber}")) 
-                    .GroupBy(r => r.Period)
-                    .Select(g => new
-                    {
-                        period = g.Key,
-                        revenue = g.Sum(x => x.Revenue)
-                    })
-                    .OrderBy(x => x.period)
-                    .ToListAsync();
-                return Ok(new
+
+            var revenueData = await _db.AirlineRevenue
+                .Where(r => r.PeriodType == periodType)
+                .GroupBy(r => r.Period)
+                .Select(g => new
                 {
-                    success = true,
-                    period = period,
-                    data = revenueData
-                });
-            }
-            else if (IsYearIdentifier(period))
+                    period = g.Key,
+                    revenue = g.Sum(x => x.Revenue)
+                })
+                .OrderBy(x => x.period)
+                .ToListAsync();
+
+            return new OkObjectResult(new
             {
-                period = $"{period}";
-                var revenueData = await _db.AirlineRevenue
-                    .Where(r => r.PeriodType == "year" && r.Period == period) 
-                    .GroupBy(r => r.Period)
-                    .Select(g => new
-                   {
-                     period = g.Key,
-                     revenue = g.Sum(x => x.Revenue)
-                    })
-                    .OrderBy(x => x.period)
-                    .ToListAsync();
-                return Ok(new
-                {
-                    success = true,
-                    period = period,
-                    data = revenueData
-                });
-            }
-            return BadRequest(new
-            {
-                success = false,
-                message = "Unhandled case"
+                success = true,
+                period = periodType,
+                data = revenueData
             });
 
             /*var revenueData = await _db.AirlineRevenue
@@ -99,7 +70,7 @@ namespace skylance_backend.Controllers
 
 
 
-
+        /*
         private bool IsMonthIdentifier(string period)
         {
             var monthNames = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -115,7 +86,7 @@ namespace skylance_backend.Controllers
             var months = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
             var monthIndex = Array.IndexOf(months, month) + 1;
             return monthIndex.ToString("00"); 
-        }
+        }*/
     }
 }
    
