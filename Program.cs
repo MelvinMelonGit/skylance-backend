@@ -46,6 +46,7 @@ builder.Services.AddHostedService<BookingPredictionWorker>();
 builder.Services.AddHostedService<FlightPredictionWorker>();
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<RevenueService>();
 
 // Swagger setup
 builder.Services.AddEndpointsApiExplorer();

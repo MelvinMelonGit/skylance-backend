@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using skylance_backend.Data;
 using skylance_backend.Enum;
+using skylance_backend.Services;
 
 namespace skylance_backend.Controllers
 {
@@ -10,6 +11,7 @@ namespace skylance_backend.Controllers
     public class FlightBookingController : ControllerBase
     {
         private readonly SkylanceDbContext _context;
+        private readonly MLService _mlService;
 
         public FlightBookingController(SkylanceDbContext context)
         {
@@ -41,7 +43,7 @@ namespace skylance_backend.Controllers
                     BookingStatus = f.BookingStatus.ToString(),
                     BaggageAllowance = f.BaggageAllowance.ToString(),
                     BaggageChecked = f.BaggageChecked.ToString(),
-                    SeatNumber = f.SeatNumber.ToString(),
+                    SeatNumber = f.SeatNumber != null ? f.SeatNumber.SeatNumber : null,
                     CheckinStatus = f.BookingStatus == BookingStatus.CheckedIn
                     ? "Checked-In"
                     : f.BookingStatus == BookingStatus.Confirmed
@@ -73,6 +75,62 @@ namespace skylance_backend.Controllers
 
             return Ok(result);
         }
-    }
 
+        [HttpGet("/api/flights/{flightId}/passengers")]
+        public async Task<IActionResult> GetPassengersByFlightId(string flightNumber, [FromQuery] int page = 1, [FromQuery] int pageSize = 5)
+        {
+            if (page <= 0) page = 1;
+            if (pageSize <= 0) pageSize = 5;
+
+            var flight = _context.FlightBookingDetails
+            .Include(f => f.BookingDetail)
+                .ThenInclude(b => b.AppUser)
+            .Include(f => f.FlightDetail)
+                .ThenInclude(fd => fd.Aircraft)
+            .Where(f => f.FlightDetail.Aircraft.FlightNumber == flightNumber && f.BookingDetail != null);
+
+            var totalPassengers = await flight.CountAsync();
+
+            var pagedPassengers = await flight
+                .OrderBy(f => f.SeatNumber)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var passengers = new List<PassengerDetailsDTO>();
+            foreach (var f in pagedPassengers)
+            {
+                var checkin = await _context.CheckInDetails
+                            .FirstOrDefaultAsync(c => c.FlightBookingDetail.Id == f.Id);
+
+                passengers.Add(new PassengerDetailsDTO
+                {
+                    PassengerName = f.BookingDetail.AppUser.FirstName + " " + f.BookingDetail.AppUser.LastName,
+                    SeatNumber = f.SeatNumber != null ? f.SeatNumber.SeatNumber : null,
+                    CheckinStatus = f.BookingStatus == BookingStatus.CheckedIn
+                                ? "Checked-in"
+                                : f.BookingStatus == BookingStatus.Confirmed
+                                    ? "Not Checked-in"
+                                    : "No Show",
+                    MembershipTier = f.BookingDetail?.AppUser?.MembershipTier ?? "",
+                    BookingDate = f.BookingDate,
+                    CheckinTime = checkin?.CheckInTime,
+                    Prediction = f.Prediction?.ToString() ?? "No Prediction",
+                    SpecialRequests = f.SpecialRequest?.ToString() ?? ""
+                });
+            }
+
+            var response = new
+            {
+                status = "success",
+                flightId = flightNumber,
+                page = page,
+                pageSize = pageSize,
+                totalPassengers = totalPassengers,
+                passengers = passengers
+            };
+
+            return Ok(response);
+        }
+    }
 }
