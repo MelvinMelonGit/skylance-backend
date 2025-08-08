@@ -50,28 +50,28 @@ namespace skylance_backend.Controllers
         }
 
         //Helper method
-        private string? GetLoggedInUserId()
-        {
-            var session = HttpContext.Items["AppUserSession"] as AppUserSession;
-            if (session == null)
-                return null;
+        //private string? GetLoggedInUserId()
+        //{
+        //    var empSession = HttpContext.Items["EmployeeSession"] as EmployeeSession;
+        //    if (empSession == null)
+        //        return null;
 
-            return session.AppUser.Id;
-        }
+        //    return empSession.Employee.Id;
+        //}
 
         /// Triggers the Skylance MySQL DB to get probability for a single flight by ID.
 
         /// <param name="id">Flight ID</param>
         /// <returns>{ "flightDetailId": int, "FlightNumber": str, "probability": float }</returns>
 
-        [ProtectedRoute]
+        //[ProtectedRoute]
         [HttpGet("show-percentage")]
         public async Task<IActionResult> GetAllShowPercentages()
         {
-            // assign the logged-in AppUserId with the helper method (AppUserSession from AuthMiddleware)
-            var loggedInUserId = GetLoggedInUserId();
-            if (loggedInUserId == null)
-                return Unauthorized();
+            // assign the logged-in EmployeeId with the helper method (EmployeeSession from AuthMiddleware)
+            //var loggedInUserId = GetLoggedInUserId();
+            //if (loggedInUserId == null)
+            //    return Unauthorized();
 
             var list = await _context.FlightDetails
                 // Projection shortcut: project (.Select(...)) to a non-entity type,
@@ -92,15 +92,15 @@ namespace skylance_backend.Controllers
             });
         }
 
-        [ProtectedRoute]
+        //[ProtectedRoute]
         /// GET api/FlightPrediction/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFlightDetail(int id)
         {
-            // assign the logged-in AppUserId with the helper method (AppUserSession from AuthMiddleware)
-            var loggedInUserId = GetLoggedInUserId();
-            if (loggedInUserId == null)
-                return Unauthorized();
+            // assign the logged-in EmployeeId with the helper method (EmployeeSession from AuthMiddleware)
+            //var loggedInUserId = GetLoggedInUserId();
+            //if (loggedInUserId == null)
+            //    return Unauthorized();
 
             var fd = await _context.FlightDetails
                 .Include(f => f.Aircraft)
