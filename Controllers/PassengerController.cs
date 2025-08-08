@@ -77,7 +77,7 @@ namespace skylance_backend.Controllers
         }
 
         [HttpGet("/api/flights/{flightId}/passengers")]
-        public async Task<IActionResult> GetPassengersByFlightId(string flightId, [FromQuery] int page = 1, [FromQuery] int pageSize = 5)
+        public async Task<IActionResult> GetPassengersByFlightId(string flightNumber, [FromQuery] int page = 1, [FromQuery] int pageSize = 5)
         {
             if (page <= 0) page = 1;
             if (pageSize <= 0) pageSize = 5;
@@ -87,7 +87,7 @@ namespace skylance_backend.Controllers
                 .ThenInclude(b => b.AppUser)
             .Include(f => f.FlightDetail)
                 .ThenInclude(fd => fd.Aircraft)
-            .Where(f => f.FlightDetail.Aircraft.FlightNumber == flightId && f.BookingDetail != null);
+            .Where(f => f.FlightDetail.Aircraft.FlightNumber == flightNumber && f.BookingDetail != null);
 
             var totalPassengers = await flight.CountAsync();
 
@@ -123,7 +123,7 @@ namespace skylance_backend.Controllers
             var response = new
             {
                 status = "success",
-                flightId = flightId,
+                flightId = flightNumber,
                 page = page,
                 pageSize = pageSize,
                 totalPassengers = totalPassengers,
