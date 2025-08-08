@@ -7,6 +7,8 @@
         public string Airline { get; set; }
         public string PassengerName { get; set; }
         public string Class { get; set; }
+        public DateTime BookingDate { get; set; }
+        public DateTime? CheckinTime { get; set; }
         public string MembershipTier { get; set; }
         public DateTime DateOfTravel { get; set; }
         public string BookingStatus { get; set; }
@@ -22,5 +24,6 @@
         public string ArrivalCity { get; set; }
         public string SpecialRequests { get; set; }
         public string BoardingStatus { get; set; }
+        public string Prediction {get; set;}
     }
 }
