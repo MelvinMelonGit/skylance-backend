@@ -76,7 +76,7 @@ namespace skylance_backend.Controllers
             return Ok(result);
         }
 
-        [HttpGet("/api/flights/{flightId}/passengers")]
+        [HttpGet("{flightNumber}/passengers")]
         public async Task<IActionResult> GetPassengersByFlightId(string flightNumber, [FromQuery] int page = 1, [FromQuery] int pageSize = 5)
         {
             if (page <= 0) page = 1;
