@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using skylance_backend.Data;
 using skylance_backend.Models;
 using skylance_backend.Services;
+using System.Globalization;
 namespace skylance_backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RevenueController : ControllerBase
+    public class RevenueController : Controller
     {
         private readonly SkylanceDbContext _db;
         private readonly RevenueService _revenueService;
@@ -21,100 +22,82 @@ namespace skylance_backend.Controllers
 
         [HttpGet]
         [RequestTimeout(30)]
-        public async Task<IActionResult> GetRevenue(string period)
+        public async Task<IActionResult> GetRevenue(string periodType)
         {
 
             await _revenueService.CalculateAndStoreRevenue();
 
-            if (!IsMonthIdentifier(period) && !IsYearIdentifier(period))
+            if (periodType != "month" && periodType != "year")
             {
-                return BadRequest(new
+                return new BadRequestObjectResult(new
                 {
                     success = false,
-                    message = "Invaid Period"
+                    message = "Invalid periodType. Allowed values: 'month' or 'year'"
                 });
             }
-            else if (IsMonthIdentifier(period))
+
+            var revenueData = periodType == "month"? await GetMonthlyRevenueData(): await GetYearlyRevenueData();
+
+            return Ok(new
             {
-                // Convert month abbreviation to number
-                var monthNumber = ConvertMonthAbbreviationToNumber(period);
-                period = $"-{monthNumber}";
-                var revenueData = await _db.AirlineRevenue
-                    .Where(r => r.PeriodType == "month" && r.Period.EndsWith($"-{monthNumber}")) 
-                    .GroupBy(r => r.Period)
-                    .Select(g => new
-                    {
-                        period = g.Key,
-                        revenue = g.Sum(x => x.Revenue)
-                    })
-                    .OrderBy(x => x.period)
-                    .ToListAsync();
-                return Ok(new
-                {
-                    success = true,
-                    period = period,
-                    data = revenueData
-                });
-            }
-            else if (IsYearIdentifier(period))
-            {
-                period = $"{period}";
-                var revenueData = await _db.AirlineRevenue
-                    .Where(r => r.PeriodType == "year" && r.Period == period) 
-                    .GroupBy(r => r.Period)
-                    .Select(g => new
-                   {
-                     period = g.Key,
-                     revenue = g.Sum(x => x.Revenue)
-                    })
-                    .OrderBy(x => x.period)
-                    .ToListAsync();
-                return Ok(new
-                {
-                    success = true,
-                    period = period,
-                    data = revenueData
-                });
-            }
-            return BadRequest(new
-            {
-                success = false,
-                message = "Unhandled case"
+                success = true,
+                periodType = periodType,
+                data = revenueData
             });
 
-            /*var revenueData = await _db.AirlineRevenue
-                    .Where(r => r.Period == period&&r.Period.EndsWith(period))
-                    .GroupBy(r => r.Period)
-                    .Select(g => new
-                    {
-                        period = g.Key,
-                        revenue = g.Sum(x => x.Revenue)
-                    })
-                    .OrderBy(x => x.period)
-                    .ToListAsync();*/
-
+            
 
         }
 
-
-
-
-
-        private bool IsMonthIdentifier(string period)
+        private async Task<object> GetMonthlyRevenueData()
         {
-            var monthNames = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-            return monthNames.Contains(period);
+            DateTime today = DateTime.Today; 
+            DateTime startDate = today.AddMonths(-5);
+            string startPeriod = startDate.ToString("yyyy-MM");
+            var monthlyData = await _db.AirlineRevenue
+                .Where(r => r.PeriodType == "month" &&r.Period.CompareTo(startPeriod) >= 0)
+                .Select(r => new {
+                    r.Period,
+                    r.Revenue
+                })
+                .AsNoTracking() 
+                .ToListAsync(); 
+
+            var result = monthlyData
+                .GroupBy(r => new {
+                    Year = r.Period.Substring(0, 4),   
+                    Month = int.Parse(r.Period.Substring(5, 2)) 
+                })
+                .Select(g => new {
+                    YearMonth = g.Key, 
+                    Period = $"{CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(g.Key.Month)}",
+                    Revenue = g.Sum(x => x.Revenue)
+                })
+                .OrderByDescending(x => x.YearMonth.Year)    
+                .ThenByDescending(x => x.YearMonth.Month)   
+                .Take(6)
+                .Select(x => new {
+                    year =x.YearMonth.Year,
+                    period = x.Period,
+                    Revenue = x.Revenue
+                })
+                .ToList();
+
+            return result;
         }
 
-        private bool IsYearIdentifier(string period)
+        private async Task<object> GetYearlyRevenueData()
         {
-            return int.TryParse(period, out int year) && year >= 2000 ;
-        }
-        private string ConvertMonthAbbreviationToNumber(string month)
-        {
-            var months = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-            var monthIndex = Array.IndexOf(months, month) + 1;
-            return monthIndex.ToString("00"); 
+            return await _db.AirlineRevenue
+                 .Where(r => r.PeriodType == "year") 
+                 .GroupBy(r => r.Period)             
+                 .Select(g => new
+                 {
+                     period = g.Key,
+                     revenue = g.Sum(x => x.Revenue) 
+                 })
+                 .OrderByDescending(x => x.period) 
+                 .ToListAsync();
         }
     }
 }
