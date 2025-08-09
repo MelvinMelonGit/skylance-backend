@@ -84,7 +84,7 @@ namespace skylance_backend.Controllers
             }
 
             // return actual showPercentage and noShowPercentage to gauge show
-            return Ok(new
+            var result = new
             {
                 // check calculation whether is for 'month' or 'year'
                 range = range.ToLower(),
@@ -97,6 +97,13 @@ namespace skylance_backend.Controllers
                 // actual show and no show percentage
                 showPercentage = showPct,
                 noShowPercentage = Math.Round(100.0 - showPct, 2)
+            };
+
+
+            return Ok(new
+            {
+                success = true,
+                data = new[] { result }
             });
         }
     }
