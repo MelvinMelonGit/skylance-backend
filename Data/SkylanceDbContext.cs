@@ -9,7 +9,7 @@ public class SkylanceDbContext : DbContext
     {
         optionsBuilder.UseMySql(
             // provides database connection-string
-
+          
             "server=localhost;user=root;password=password;database=skylance;",
 
             new MySqlServerVersion(new Version(8, 0, 36))
@@ -112,8 +112,8 @@ public class SkylanceDbContext : DbContext
 
         modelBuilder.Entity<TicketSale>()
            .HasOne(o => o.Aircraft)
-           .WithMany(a => a.TicketSales)
-           .HasForeignKey(o => o.AircraftId);
+           .WithMany()
+           .HasForeignKey("AircraftId");
 
     }
 }
