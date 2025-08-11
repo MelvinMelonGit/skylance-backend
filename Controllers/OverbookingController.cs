@@ -12,12 +12,12 @@ namespace skylance_backend.Controllers
     public class OverbookingController : Controller
     {
         private readonly SkylanceDbContext _db;
-        private readonly CompensationService _compensation;
 
-        public OverbookingController(SkylanceDbContext db,CompensationService compensation)
+
+        public OverbookingController(SkylanceDbContext db)
         {
             _db = db;
-            _compensation = compensation;   
+
         }
         [HttpGet("overbooking")]
         public async Task<IActionResult> GetOverbookingDetail([FromQuery] string flightBookingDetailId)
@@ -43,7 +43,7 @@ namespace skylance_backend.Controllers
                 NewFlightBookingDetail = null,
                 NewFlightBookingDetailId = null, 
                 IsRebooking = false,
-                FinalCompensationAmount =await  _compensation.CalculateCompensationAsync(flightBookingDetailId)
+                FinalCompensationAmount =CalculateCompensation(distance)
             };
 
             await _db.OverbookingDetails.AddAsync(overbooking);
