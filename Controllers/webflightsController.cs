@@ -9,11 +9,11 @@ namespace skylance_backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class webflightsController : ControllerBase
+    public class Web_FlightsController : ControllerBase
     {
         private readonly SkylanceDbContext db;
         private readonly Random _random = new Random();
-        public webflightsController(SkylanceDbContext db)
+        public Web_FlightsController(SkylanceDbContext db)
         {
             this.db = db;
         }
@@ -34,7 +34,7 @@ namespace skylance_backend.Controllers
                 .OrderBy(f => f.DepartureTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .Select(f => new webflightsDTO
+                .Select(f => new Web_FlightsDTO
                 {
                     AirlineName = f.Aircraft.Airline,
                     FlightName = f.Aircraft.FlightNumber,
