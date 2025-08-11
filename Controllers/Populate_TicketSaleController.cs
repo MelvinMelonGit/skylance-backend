@@ -28,7 +28,7 @@ namespace skylance_backend.Controllers
                     Id = 1,
                     Aircraft = aircraft["JL1"],
                     SaleDate = new DateTime(2025, 8, 20, 8, 0, 0),
-                    Sales = 4000
+                    Sales = 2000
                 },
 
                 new TicketSale {
@@ -42,28 +42,28 @@ namespace skylance_backend.Controllers
                     Id = 3,
                     Aircraft = aircraft["JL1"],
                     SaleDate = new DateTime(2025, 10, 20, 8, 0, 0),
-                    Sales = 4000
+                    Sales = 1000
                 },
 
                 new TicketSale {
                     Id = 4,
                     Aircraft = aircraft["KE85"],
                     SaleDate = new DateTime(2025, 8, 20, 8, 0, 0),
-                    Sales = 4000
+                    Sales = 3000
                 },
 
                 new TicketSale {
                     Id = 5,
                     Aircraft = aircraft["KE85"],
                     SaleDate = new DateTime(2025, 9, 20, 8, 0, 0),
-                    Sales = 4000
+                    Sales = 1000
                 },
 
                 new TicketSale {
                     Id = 6,
                     Aircraft = aircraft["KE85"],
                     SaleDate = new DateTime(2025, 10, 20, 8, 0, 0),
-                    Sales = 4000
+                    Sales = 2000
                 },
 
                 new TicketSale {
@@ -77,14 +77,14 @@ namespace skylance_backend.Controllers
                     Id = 8,
                     Aircraft = aircraft["SQ322"],
                     SaleDate = new DateTime(2025, 9, 20, 8, 0, 0),
-                    Sales = 4000
+                    Sales = 3500
                 },
 
                 new TicketSale {
                     Id = 9,
                     Aircraft = aircraft["SQ322"],
                     SaleDate = new DateTime(2025, 10, 20, 8, 0, 0),
-                    Sales = 4000
+                    Sales = 2500
                 },
             };
 
