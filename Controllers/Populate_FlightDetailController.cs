@@ -589,7 +589,246 @@ namespace skylance_backend.Controllers
                     Prediction = null,
                     Probability = null
                   },
-
+                    new FlightDetail {                           // flightDetails[34]         
+                    Aircraft = aircrafts["AR1324"],                     // Flight for Jul 2024
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["SIN"],
+                    DepartureTime = new DateTime(2024, 7, 7, 12, 0, 0),
+                    ArrivalTime = new DateTime(2024, 7, 7, 18, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 235,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 13200,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                     new FlightDetail {                           // flightDetails[35]                                      
+                    Aircraft = aircrafts["IB6424"],                     // Flight for Jun 2024
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["ICN"],
+                    DepartureTime = new DateTime(2024, 6, 17, 22, 30, 0),
+                    ArrivalTime = new DateTime(2024, 6, 18, 6, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 230,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 18000,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                      new FlightDetail {                           // flightDetails[36]                                    
+                    Aircraft = aircrafts["SQ24"],                       // Flight for Aug 2024
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2024, 8, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2024, 8, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                     new FlightDetail {                           // flightDetails[37]                          
+                    Aircraft = aircrafts["EY123"],                      // Flight for Jul 2023
+                    OriginAirport = airports["AUH"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2023, 7, 19, 9, 30, 0),
+                    ArrivalTime = new DateTime(2023, 7, 19, 14, 45, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 290,
+                    OverbookingCount = 0,
+                    SeatsSold = 310,
+                    Distance = 4640,
+                    NumberOfCrew = 14,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[38]  
+                    Aircraft = aircrafts["AF23"],                       // Flight for Jun 2023
+                    OriginAirport = airports["FRA"],
+                    DestinationAirport = airports["GRU"],
+                    DepartureTime = new DateTime(2023, 6, 17, 16, 30, 0),
+                    ArrivalTime = new DateTime(2023, 6, 17, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 240,
+                    OverbookingCount = 0,
+                    SeatsSold = 250,
+                    Distance = 9350,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[39]                                    
+                    Aircraft = aircrafts["SQ23"],                       // Flight for Jun 2023
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2023, 6, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2023, 6, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[40]                                      
+                    Aircraft = aircrafts["IB6422"],                     // Flight for May 2022
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["ICN"],
+                    DepartureTime = new DateTime(2022, 5, 17, 22, 30, 0),
+                    ArrivalTime = new DateTime(2022, 5, 18, 6, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 230,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 18000,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[41]  
+                    Aircraft = aircrafts["AF22"],                       // Flight for Jun 2022
+                    OriginAirport = airports["FRA"],
+                    DestinationAirport = airports["GRU"],
+                    DepartureTime = new DateTime(2022, 6, 17, 16, 30, 0),
+                    ArrivalTime = new DateTime(2022, 6, 17, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 240,
+                    OverbookingCount = 0,
+                    SeatsSold = 250,
+                    Distance = 9350,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[42]                                    
+                    Aircraft = aircrafts["SQ22"],                       // Flight for Jun 2022
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2022, 6, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2022, 6, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[43]                                      
+                    Aircraft = aircrafts["IB6421"],                     // Flight for May 2021
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["ICN"],
+                    DepartureTime = new DateTime(2021, 5, 17, 22, 30, 0),
+                    ArrivalTime = new DateTime(2021, 5, 18, 6, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 230,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 18000,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[44]  
+                    Aircraft = aircrafts["AF21"],                       // Flight for Jun 2021
+                    OriginAirport = airports["FRA"],
+                    DestinationAirport = airports["GRU"],
+                    DepartureTime = new DateTime(2021, 6, 17, 16, 30, 0),
+                    ArrivalTime = new DateTime(2021, 6, 17, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 240,
+                    OverbookingCount = 0,
+                    SeatsSold = 250,
+                    Distance = 9350,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[45]                                    
+                    Aircraft = aircrafts["SQ21"],                       // Flight for Jun 2021
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2021, 6, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2021, 6, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[46]                                      
+                    Aircraft = aircrafts["IB6420"],                     // Flight for May 2020
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["ICN"],
+                    DepartureTime = new DateTime(2020, 5, 17, 22, 30, 0),
+                    ArrivalTime = new DateTime(2020, 5, 18, 6, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 230,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 18000,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[47]  
+                    Aircraft = aircrafts["AF20"],                       // Flight for Jun 2020
+                    OriginAirport = airports["FRA"],
+                    DestinationAirport = airports["GRU"],
+                    DepartureTime = new DateTime(2020, 6, 17, 16, 30, 0),
+                    ArrivalTime = new DateTime(2020, 6, 17, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 240,
+                    OverbookingCount = 0,
+                    SeatsSold = 250,
+                    Distance = 9350,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[48]                                    
+                    Aircraft = aircrafts["SQ20"],                       // Flight for Jun 2020
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2020, 6, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2020, 6, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
             };
 
                 db.FlightDetails.AddRange(flightDetailList);

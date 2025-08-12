@@ -328,6 +328,247 @@ namespace skylance_backend.Controllers
                     Class = Class.Economy,
                     SpecialRequest = null
                 },
+                   //Zhuoxuan added
+                   new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[27],                    // past flight (beng@gmail.com for Elsie Bong)
+                    BookingDetail = bookingDetails["J01927"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Family,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2300,
+                    Prediction = Prediction.No_Show,
+                    Class =  Class.PremiumEconomy,
+                    SpecialRequest = SpecialRequest.Diabetic
+                },
+
+                   new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[26],                    // past flight (leng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67556"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2300,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                   new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[34],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67524"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1900,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[35],                    // past flight (teng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H37724"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2000,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[36],                    // past flight (leng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["U24824"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2200,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[37],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67523"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2700,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[38],                    // past flight (teng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H37723"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2600,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[39],                    // past flight (leng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["U24823"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2500,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[40],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67522"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2000,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[41],                    // past flight (teng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H37722"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2100,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[42],                    // past flight (leng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["U24822"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2300,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[43],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67521"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1900,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[44],                    // past flight (teng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H37721"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1700,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[45],                    // past flight (leng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["U24821"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1700,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[46],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67520"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2100,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[47],                    // past flight (teng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H37720"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2000,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[48],                    // past flight (leng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["U24820"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1900,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
 
             };
 
