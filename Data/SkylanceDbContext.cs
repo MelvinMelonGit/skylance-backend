@@ -112,8 +112,7 @@ public class SkylanceDbContext : DbContext
 
         modelBuilder.Entity<TicketSale>()
            .HasOne(o => o.Aircraft)
-           .WithMany(a => a.TicketSales)
-           .HasForeignKey(o => o.AircraftId);
-
+           .WithMany()
+           .HasForeignKey("AircraftId");
     }
 }

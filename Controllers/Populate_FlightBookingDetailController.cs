@@ -30,7 +30,7 @@ namespace skylance_backend.Controllers
             {                
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[1],
+                    FlightDetail = flightDetails[12],
                     BookingDetail = bookingDetails["G66666"],
                     BaggageAllowance = 35,
                     TravelPurpose = TravelPurpose.Business,
@@ -43,7 +43,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[2],
+                    FlightDetail = flightDetails[13],
                     BookingDetail = bookingDetails["G66688"],
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Emergency,
@@ -56,7 +56,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[3],
+                    FlightDetail = flightDetails[14],
                     BookingDetail = bookingDetails["J01927"],
                     BaggageAllowance = 45,
                     TravelPurpose = TravelPurpose.Family,
@@ -69,7 +69,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[4],
+                    FlightDetail = flightDetails[15],
                     BookingDetail = bookingDetails["K78906"],
                     BaggageAllowance = 50,
                     TravelPurpose = TravelPurpose.Leisure,
@@ -353,7 +353,7 @@ namespace skylance_backend.Controllers
                 },
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[25],                    // past flight (leng@gmail.com for Rocky Lim)     
+                    FlightDetail = flightDetails[24],                    // past flight (leng@gmail.com for Rocky Lim)     
                     BookingDetail = bookingDetails["A00835"],
                     BaggageAllowance = 45,
                     TravelPurpose = TravelPurpose.Leisure,

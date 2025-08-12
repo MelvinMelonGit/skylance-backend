@@ -48,46 +48,6 @@ namespace skylance_backend.Controllers
             
 
         }
-        /*
-       private async Task<object> GetMonthlyRevenueData()
-       {
-           DateTime today = DateTime.Today;
-           DateTime startDate = today.AddMonths(-5);
-
-           var requiredMonths = Enumerable.Range(0, 6)
-               .Select(offset => today.AddMonths(-offset))
-               .Select(date => date.ToString("yyyy-MM"))
-               .ToList();
-
-           var monthlyData = await _db.AirlineRevenue
-               .Where(r => r.PeriodType == "month" && requiredMonths.Contains(r.Period))
-               .Select(r => new {
-                   r.Period,
-                   r.Revenue
-               })
-               .AsNoTracking()
-               .ToListAsync();
-           var result = requiredMonths
-               .Select(period => new {
-                   Year = period.Substring(0, 4),
-                   Month = int.Parse(period.Substring(5, 2)),
-                   Period = period
-               })
-               .GroupJoin(monthlyData,
-                   period => period.Period,
-                   data => data.Period,
-                   (period, data) => new {
-                       period.Year,
-                       MonthName = CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(period.Month),
-                       Revenue = data.Sum(x => x.Revenue) 
-                   })
-               .OrderByDescending(x => x.Year)
-               .ThenByDescending(x => x.MonthName)
-               .ToList();
-
-           return result;
-       }
-           */
         private async Task<object> GetMonthlyRevenueData()
        {
            DateTime today = DateTime.Today; 
@@ -114,7 +74,7 @@ namespace skylance_backend.Controllers
                })
                .OrderByDescending(x => x.YearMonth.Year)    
                .ThenByDescending(x => x.YearMonth.Month)   
-               //.Take(6)
+               .Take(6)
                .Select(x => new {
                    year =x.YearMonth.Year,
                    period = x.Period,
