@@ -8,12 +8,12 @@ using System;
 namespace skylance_backend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class webflightsController : ControllerBase
+    [Route("api/webflights")]
+    public class Web_FlightsController : ControllerBase
     {
         private readonly SkylanceDbContext db;
         private readonly Random _random = new Random();
-        public webflightsController(SkylanceDbContext db)
+        public Web_FlightsController(SkylanceDbContext db)
         {
             this.db = db;
         }
@@ -22,7 +22,7 @@ namespace skylance_backend.Controllers
         public IActionResult GetAllFlights(int page = 1, int pageSize = 4)
         {
             int totalFlights = db.FlightDetails
-                .Where(f => f.DepartureTime > DateTime.Now)
+                //.Where(f => f.DepartureTime > DateTime.Now)   
                 .Count();
 
             var flights = db.FlightDetails
@@ -30,12 +30,11 @@ namespace skylance_backend.Controllers
                 .Include(f => f.OriginAirport)
                     .ThenInclude(a => a.City)
                 .Include(f => f.DestinationAirport)
-                    .ThenInclude(a => a.City)
-                .Where(f => f.DepartureTime > DateTime.Now)
+                    .ThenInclude(a => a.City)                
                 .OrderBy(f => f.DepartureTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .Select(f => new webflightsDTO
+                .Select(f => new Web_FlightsDTO
                 {
                     AirlineName = f.Aircraft.Airline,
                     FlightName = f.Aircraft.FlightNumber,
@@ -73,7 +72,8 @@ namespace skylance_backend.Controllers
                 .Include(f => f.Aircraft)
                 .Include(f => f.OriginAirport)
                 .Include(f => f.DestinationAirport)
-                .Where(f => f.CheckInCount < f.Aircraft.SeatCapacity);
+                .Where(f => f.CheckInCount < f.Aircraft.SeatCapacity &&
+                f.DepartureTime > DateTime.Now);
 
             var totalItems = await query.CountAsync();
             var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);

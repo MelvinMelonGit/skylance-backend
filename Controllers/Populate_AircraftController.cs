@@ -34,7 +34,17 @@ namespace skylance_backend.Controllers
                 new Aircraft { Airline = "Qantas", FlightNumber = "QF93", AircraftBrand = "Boeing", AircraftModel = "787-9 Dreamliner", SeatCapacity = 236 },
                 new Aircraft { Airline = "Etihad Airways", FlightNumber = "EY101", AircraftBrand = "Airbus", AircraftModel = "A380", SeatCapacity = 496 },
                 new Aircraft { Airline = "Swiss International Air Lines", FlightNumber = "LX38", AircraftBrand = "Boeing", AircraftModel = "777-300ER", SeatCapacity = 340 },
-                new Aircraft { Airline = "Vietnam Airlines", FlightNumber = "VN50", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 305 }
+                new Aircraft { Airline = "Vietnam Airlines", FlightNumber = "VN50", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 305 },
+                new Aircraft { Airline = "Korean Air", FlightNumber = "KE621", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 300 },
+                new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ26", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 320 },
+                new Aircraft { Airline = "KLM Royal Dutch Airlines", FlightNumber = "KL605", AircraftBrand = "Boeing", AircraftModel = "777-300ER", SeatCapacity = 408 },
+                new Aircraft { Airline = "Japan Airlines", FlightNumber = "JL37", AircraftBrand = "Boeing", AircraftModel = "787-9 Dreamliner", SeatCapacity = 300 },
+                new Aircraft { Airline = "Aerolineas Argentinas", FlightNumber = "AR1301", AircraftBrand = "Boeing", AircraftModel = "737-800", SeatCapacity = 162 },
+                new Aircraft { Airline = "Iberia", FlightNumber = "IB6401", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 348 },
+                new Aircraft { Airline = "Air France", FlightNumber = "AF83", AircraftBrand = "Boeing", AircraftModel = "777-300ER", SeatCapacity = 296 },
+                new Aircraft { Airline = "British Airways", FlightNumber = "BA283", AircraftBrand = "Airbus", AircraftModel = "A380-800", SeatCapacity = 469 },
+                new Aircraft { Airline = "Lufthansa", FlightNumber = "LH492", AircraftBrand = "Boeing", AircraftModel = "747-8", SeatCapacity = 364 },
+                new Aircraft { Airline = "LATAM Airlines Brasil", FlightNumber = "LA8070", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 339 }
             };
 
             db.Aircraft.AddRange(aircraftList);

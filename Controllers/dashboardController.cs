@@ -20,13 +20,15 @@ namespace skylance_backend.Controllers
         {
             try
             {
-                // active flights now                
+                // active flights now
+                var startTime = new DateTime(2025, 8, 11, 14, 0, 0);
+                var endTime = new DateTime(2025, 8, 11, 15, 0, 0);
                 var activeFlightsNow = db.FlightDetails
-                    .Count(f => f.DepartureTime <= DateTime.Now && f.ArrivalTime >= DateTime.Now);
+                    .Count(f => f.DepartureTime <= startTime && f.ArrivalTime >= endTime);
 
                 // active flights yesterday as of now
                 var activeFlightsYesterdayNow = db.FlightDetails
-                    .Count(f => f.DepartureTime <= DateTime.Now.AddDays(-1) && f.ArrivalTime >= DateTime.Now.AddDays(-1));
+                    .Count(f => f.DepartureTime <= startTime.AddDays(-1) && f.ArrivalTime >= endTime.AddDays(-1));
 
                 // active flights - percentage change 
                 double trendActiveFlights;
@@ -43,14 +45,14 @@ namespace skylance_backend.Controllers
                 var overbookedFlightsToday = db.FlightDetails
                     .Include(f => f.Aircraft)
                     .Where(f => f.DepartureTime.Date == DateTime.Today &&
-                    f.SeatsSold > f.Aircraft.SeatCapacity)
+                    f.OverbookingCount > 0)
                     .Count();
 
                 // overbooked flights yesterday
                 var overbookedFlightsYesterday = db.FlightDetails
                     .Include(f => f.Aircraft)
                     .Where(f => f.DepartureTime.Date == DateTime.Today.AddDays(-1) &&
-                    f.SeatsSold > f.Aircraft.SeatCapacity)
+                    f.OverbookingCount > 0)
                     .Count();
 
                 // overbooked flights - percentage change
