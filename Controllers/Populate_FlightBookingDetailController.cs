@@ -29,7 +29,7 @@ namespace skylance_backend.Controllers
             {                
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[1],
+                    FlightDetail = flightDetails[1],                    // overbooked flight (teng@gmail.com for John Smith)
                     BookingDetail = bookingDetails["G66666"],
                     BaggageAllowance = 35,
                     TravelPurpose = TravelPurpose.Business,
@@ -44,7 +44,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[2],
+                    FlightDetail = flightDetails[2],                    // overbooked flight (seng@gmail.com for Linda Too)
                     BookingDetail = bookingDetails["G66688"],
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Emergency,
@@ -59,7 +59,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[3],
+                    FlightDetail = flightDetails[3],                    // normal flight for check-in (beng@gmail.com for Elsie Bong)
                     BookingDetail = bookingDetails["J01927"],
                     BaggageAllowance = 45,
                     TravelPurpose = TravelPurpose.Family,
@@ -75,7 +75,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[4],
+                    FlightDetail = flightDetails[10],                    // normal flight for check-in (meng@gmail.com for Mary Poppins)
                     BookingDetail = bookingDetails["K78906"],
                     BaggageAllowance = 50,
                     TravelPurpose = TravelPurpose.Leisure,
@@ -90,7 +90,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[5],
+                    FlightDetail = flightDetails[5],                    // overbooked flight (leng@gmail.com for Rocky Lim)
                     BookingDetail = bookingDetails["L76543"],
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Business,
@@ -99,13 +99,13 @@ namespace skylance_backend.Controllers
                     BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 800,
                     Prediction = null,
-                    Class = Class.Business,
+                    Class = Class.PremiumEconomy,
                     SpecialRequest = SpecialRequest.Wheelchair
                 },               
 
-                 new FlightBookingDetail
-                {
-                    FlightDetail = flightDetails[1],
+                 new FlightBookingDetail                                
+            {
+                    FlightDetail = flightDetails[9],                    // overbooked flight (seng@gmail.com for Linda Too)
                     BookingDetail = bookingDetails["A00835"],
                     BaggageAllowance = 35,
                     TravelPurpose = TravelPurpose.Leisure,
@@ -114,14 +114,14 @@ namespace skylance_backend.Controllers
                     BookingStatus = BookingStatus.Confirmed,
                     Fareamount = 1200,
                     Prediction = null,
-                    Class = Class.First,
+                    Class = Class.Economy,
                     SpecialRequest = null
                 },
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[4],
-                    BookingDetail = bookingDetails["H37766"],
+                    FlightDetail = flightDetails[4],                    // normal flight for check-in (teng@gmail.com for John Smith)
+                    BookingDetail = bookingDetails["H37766"],               
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Leisure,
                     SeatNumber = null,
@@ -135,8 +135,8 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[6],
-                    BookingDetail = bookingDetails["J01927"],
+                    FlightDetail = flightDetails[6],                    // normal flight for check-in (leng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67556"],
                     BaggageAllowance = 45,
                     TravelPurpose = TravelPurpose.Leisure,
                     SeatNumber = null,
@@ -150,8 +150,8 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[4],
-                    BookingDetail = bookingDetails["J01927"],
+                    FlightDetail = flightDetails[7],                    // overbooked flight (teng@gmail.com for John Smith)
+                    BookingDetail = bookingDetails["H54321"],
                     BaggageAllowance = 50,
                     TravelPurpose = TravelPurpose.Business,
                     SeatNumber = null,
@@ -165,7 +165,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[8],
+                    FlightDetail = flightDetails[8],                    // normal flight for check-in (seng@gmail.com for Linda Too)
                     BookingDetail = bookingDetails["U24899"],
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Family,
@@ -176,7 +176,158 @@ namespace skylance_backend.Controllers
                     Prediction = null,
                     Class = Class.Economy,
                     SpecialRequest = null
-                }
+                },
+
+                 new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[16],                    // past flight (teng@gmail.com for John Smith)
+                    BookingDetail = bookingDetails["G66666"],
+                    BaggageAllowance = 35,
+                    TravelPurpose = TravelPurpose.Business,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = true,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1200,
+                    Prediction = null,
+                    Class = Class.First,
+                    SpecialRequest = SpecialRequest.AisleSeat
+                },
+
+                  new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[17],                    // past flight (teng@gmail.com for John Smith)
+                    BookingDetail = bookingDetails["H37766"],
+                    BaggageAllowance = 35,
+                    TravelPurpose = TravelPurpose.Business,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = true,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1200,
+                    Prediction = null,
+                    Class = Class.First,
+                    SpecialRequest = SpecialRequest.AisleSeat
+                },
+
+                  new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[18],                    // past flight (meng@gmail.com for Mary Poppins)
+                    BookingDetail = bookingDetails["K78906"],
+                    BaggageAllowance = 50,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1700,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = SpecialRequest.UMNR
+                },
+
+                  new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[19],                    // past flight (meng@gmail.com for Mary Poppins)
+                    BookingDetail = bookingDetails["K78906"],
+                    BaggageAllowance = 50,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1700,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = SpecialRequest.UMNR
+                },
+
+                  new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[33],                    // past flight (meng@gmail.com for Mary Poppins)
+                    BookingDetail = bookingDetails["K78906"],
+                    BaggageAllowance = 50,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1700,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = SpecialRequest.UMNR
+                },
+
+                  new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[31],                    // past flight (seng@gmail.com for Linda Too)
+                    BookingDetail = bookingDetails["A00835"],
+                    BaggageAllowance = 25,
+                    TravelPurpose = TravelPurpose.Family,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 800,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
+                  new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[32],                    // past flight (beng@gmail.com for Elsie Bong)
+                    BookingDetail = bookingDetails["J01927"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Family,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2300,
+                    Prediction = Prediction.No_Show,
+                    Class =  Class.PremiumEconomy,
+                    SpecialRequest = SpecialRequest.Diabetic
+                },
+
+                  new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[30],                    // past flight (beng@gmail.com for Elsie Bong)
+                    BookingDetail = bookingDetails["J01927"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Family,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2300,
+                    Prediction = Prediction.No_Show,
+                    Class =  Class.PremiumEconomy,
+                    SpecialRequest = SpecialRequest.Diabetic
+                },
+
+                  new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[29],                    // past flight (beng@gmail.com for Elsie Bong)
+                    BookingDetail = bookingDetails["J01927"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Family,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2300,
+                    Prediction = Prediction.No_Show,
+                    Class =  Class.PremiumEconomy,
+                    SpecialRequest = SpecialRequest.Diabetic
+                },
+
+                   new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[28],                    // past flight (leng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67556"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2300,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
             };
 
                 db.AddRange(flightBookingDetailList);
