@@ -72,7 +72,8 @@ namespace skylance_backend.Controllers
                 .Include(f => f.Aircraft)
                 .Include(f => f.OriginAirport)
                 .Include(f => f.DestinationAirport)
-                .Where(f => f.CheckInCount < f.Aircraft.SeatCapacity);
+                .Where(f => f.CheckInCount < f.Aircraft.SeatCapacity &&
+                f.DepartureTime > DateTime.Now);
 
             var totalItems = await query.CountAsync();
             var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
@@ -99,6 +100,7 @@ namespace skylance_backend.Controllers
                     flightid = f.Aircraft.FlightNumber,
                     route = $"{f.OriginAirport.IataCode} → {f.DestinationAirport.IataCode}",
                     departure = f.DepartureTime.ToString("HH:mm"),
+                    overbookingCount = f.OverbookingCount,
                     capacity = f.Aircraft.SeatCapacity,
                     booked = f.SeatsSold,
                     checkedIn = f.CheckInCount,
