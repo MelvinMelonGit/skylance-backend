@@ -27,7 +27,7 @@ namespace skylance_backend.Controllers
             {     
                 new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ322", AircraftBrand = "Boeing", AircraftModel = "737 Max", SeatCapacity = 180 },
                 new Aircraft { Airline = "Japan Airlines", FlightNumber = "JL1", AircraftBrand = "Airbus", AircraftModel = "A320 Neo", SeatCapacity = 150 },
-                new Aircraft { Airline = "Malaysia Airlines", FlightNumber = "MH1", AircraftBrand = "Boeing", AircraftModel = "787 Dreamliner", SeatCapacity = 242 },
+                new Aircraft { Airline = "Malaysia Airlines", FlightNumber = "MH1", AircraftBrand = "Boeing", AircraftModel = "787 Dreamliner", SeatCapacity = 200 },
                 new Aircraft { Airline = "Korean Air", FlightNumber = "KE85", AircraftBrand = "Airbus", AircraftModel = "A350", SeatCapacity = 325 },
                 new Aircraft { Airline = "Qantas", FlightNumber = "QF1", AircraftBrand = "Embraer", AircraftModel = "E195", SeatCapacity = 120 },            
                 new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ12", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 303 },
