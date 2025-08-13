@@ -202,9 +202,9 @@ namespace skylance_backend.Controllers
                 new FlightDetail {
                     Aircraft = aircrafts["KE621"],
                     OriginAirport = airports["ICN"],
-                    DestinationAirport = airports["SIN"],
-                    DepartureTime = new DateTime(2025, 8, 11, 13, 30, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2025, 8, 11, 18, 0, 0),      // arriving after 11 Aug 15:00
+                    DestinationAirport = airports["SIN"],                   // For dashboard summary -
+                    DepartureTime = new DateTime(2025, 8, 14, 8, 00, 0),  // departed before 14 Aug 08:15
+                    ArrivalTime = new DateTime(2025, 8, 14, 18, 15, 0),      // arriving after 14 Aug 09:15
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -219,9 +219,9 @@ namespace skylance_backend.Controllers
                 new FlightDetail {
                     Aircraft = aircrafts["SQ26"],
                     OriginAirport = airports["SIN"],
-                    DestinationAirport = airports["ZRH"],
-                    DepartureTime = new DateTime(2025, 8, 11, 7, 0, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2025, 8, 11, 16, 30, 0),      // arriving after 11 Aug 15:00
+                    DestinationAirport = airports["ZRH"],                     // For dashboard summary -
+                    DepartureTime = new DateTime(2025, 8, 14, 7, 0, 0),       // departed before 14 Aug 08:15
+                    ArrivalTime = new DateTime(2025, 8, 14, 16, 30, 0),      // arriving after 14 Aug 09:15
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -236,9 +236,9 @@ namespace skylance_backend.Controllers
                 new FlightDetail {
                     Aircraft = aircrafts["JL37"],
                     OriginAirport = airports["SIN"],
-                    DestinationAirport = airports["ICN"],
-                    DepartureTime = new DateTime(2025, 8, 11, 8, 45, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2025, 8, 11, 17, 30, 0),      // arriving after 11 Aug 15:00
+                    DestinationAirport = airports["ICN"],                  // For dashboard summary -
+                    DepartureTime = new DateTime(2025, 8, 14, 5, 45, 0),  // departed before 14 Aug 08:15
+                    ArrivalTime = new DateTime(2025, 8, 14, 17, 30, 0),      // arriving after 14 Aug 09:15
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -251,11 +251,11 @@ namespace skylance_backend.Controllers
                 },
 
                 new FlightDetail {
-                    Aircraft = aircrafts["JL37"],
+                    Aircraft = aircrafts["AF20"],
                     OriginAirport = airports["NRT"],
-                    DestinationAirport = airports["HAN"],
-                    DepartureTime = new DateTime(2025, 8, 11, 6, 15, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2025, 8, 11, 20, 00, 0),      // arriving after 11 Aug 15:00
+                    DestinationAirport = airports["HAN"],                   // For dashboard summary -
+                    DepartureTime = new DateTime(2025, 8, 14, 6, 15, 0),  // departed before 14 Aug 08:15
+                    ArrivalTime = new DateTime(2025, 8, 14, 20, 00, 0),      // arriving after 14 Aug 09:15
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -270,9 +270,9 @@ namespace skylance_backend.Controllers
                  new FlightDetail {
                     Aircraft = aircrafts["JL1"],
                     OriginAirport = airports["AUH"],
-                    DestinationAirport = airports["KUL"],
-                    DepartureTime = new DateTime(2025, 8, 11, 13, 45, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2025, 8, 11, 22, 00, 0),      // arriving after 11 Aug 15:00
+                    DestinationAirport = airports["KUL"],                   // For dashboard summary -
+                    DepartureTime = new DateTime(2025, 8, 14, 7, 45, 0),  // departed before 14 Aug 08:15
+                    ArrivalTime = new DateTime(2025, 8, 14, 20, 00, 0),      // arriving after 14 Aug 09:15
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -288,8 +288,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["QF1"],
                     OriginAirport = airports["CBR"],
                     DestinationAirport = airports["AUH"],
-                    DepartureTime = new DateTime(2025, 8, 10, 8, 45, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2025, 8, 10, 16, 0, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
+                    DepartureTime = new DateTime(2025, 8, 13, 6, 45, 0),   // departed before 13 Aug 08:15 (14 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 13, 16, 0, 0),      // arriving after 13 Aug 09:15 (14 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 160,
@@ -305,8 +305,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["KL605"],
                     OriginAirport = airports["NRT"],
                     DestinationAirport = airports["HAN"],
-                    DepartureTime = new DateTime(2025, 8, 10, 11, 00, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2025, 8, 10, 19, 30, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
+                    DepartureTime = new DateTime(2025, 8, 13, 7, 00, 0),   // departed before 13 Aug 08:15 (14 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 13, 14, 30, 0),      // arriving after 13 Aug 09:15 (14 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 180,
@@ -322,8 +322,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["EY101"],
                     OriginAirport = airports["ZRH"],
                     DestinationAirport = airports["SIN"],
-                    DepartureTime = new DateTime(2025, 8, 10, 10, 15, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2025, 8, 10, 17, 25, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
+                    DepartureTime = new DateTime(2025, 8, 13, 6, 15, 0),   // departed before 13 Aug 08:15 (14 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 13, 17, 25, 0),      // arriving after 13 Aug 09:15 (14 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 230,
@@ -339,8 +339,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["JL1"],
                     OriginAirport = airports["ICN"],
                     DestinationAirport = airports["CBR"],
-                    DepartureTime = new DateTime(2025, 8, 10, 10, 15, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2025, 8, 10, 17, 25, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
+                    DepartureTime = new DateTime(2025, 8, 13, 4, 15, 0),   // departed before 13 Aug 08:15 (14 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 13, 13, 25, 0),      // arriving after 13 Aug 09:15 (14 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 230,
@@ -829,6 +829,143 @@ namespace skylance_backend.Controllers
                     Prediction = null,
                     Probability = null
                   },
+
+                new FlightDetail {                              // flightDetails[49] 
+                    Aircraft = aircrafts["IB6422"],               // For dashboard summary - Today's flight, 14 Aug 2025
+                    OriginAirport = airports["MAD"],
+                    DestinationAirport = airports["ZRH"],
+                    DepartureTime = new DateTime(2025, 8, 14, 8, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 14, 17, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "On Time",
+                    CheckInCount = 200,
+                    OverbookingCount = 0,
+                    SeatsSold = 303,
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null,
+                    Probability = null
+                },
+
+                 new FlightDetail {                              // flightDetails[50] 
+                    Aircraft = aircrafts["EY123"],               // For dashboard summary - Today's flight, 14 Aug 2025
+                    OriginAirport = airports["SIN"],
+                    DestinationAirport = airports["ZRH"],
+                    DepartureTime = new DateTime(2025, 8, 14, 9, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 14, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Scheduled",
+                    CheckInCount = 200,
+                    OverbookingCount = 0,
+                    SeatsSold = 303,
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null,
+                    Probability = null
+                },
+
+                 new FlightDetail {                              // flightDetails[51] 
+                    Aircraft = aircrafts["SQ20"],               // For dashboard summary - Today's flight, 14 Aug 2025
+                    OriginAirport = airports["NRT"],
+                    DestinationAirport = airports["SIN"],
+                    DepartureTime = new DateTime(2025, 8, 14, 10, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 14, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "On Time",
+                    CheckInCount = 200,
+                    OverbookingCount = 0,
+                    SeatsSold = 303,
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null,
+                    Probability = null
+                },
+
+                 new FlightDetail {                              // flightDetails[52] 
+                    Aircraft = aircrafts["QF93"],                // For dashboard summary - Today's flight, 14 Aug 2025
+                    OriginAirport = airports["CDG"],
+                    DestinationAirport = airports["KUL"],
+                    DepartureTime = new DateTime(2025, 8, 14, 9, 30, 0),
+                    ArrivalTime = new DateTime(2025, 8, 14, 11, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Scheduled",
+                    CheckInCount = 200,
+                    OverbookingCount = 0,
+                    SeatsSold = 303,
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null,
+                    Probability = null
+                },
+
+                new FlightDetail {                              // flightDetails[53] 
+                    Aircraft = aircrafts["KE621"],               // For dashboard summary - Today's flight, 14 Aug 2025
+                    OriginAirport = airports["GRU"],
+                    DestinationAirport = airports["LHR"],
+                    DepartureTime = new DateTime(2025, 8, 14, 14, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 14, 21, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "On Time",
+                    CheckInCount = 200,
+                    OverbookingCount = 0,
+                    SeatsSold = 303,
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null,
+                    Probability = null
+                },
+
+                new FlightDetail {                              // flightDetails[54] 
+                    Aircraft = aircrafts["AF21"],               // For dashboard summary - Yesterday's flight, 13 Aug 2025
+                    OriginAirport = airports["AMS"],
+                    DestinationAirport = airports["MAD"],
+                    DepartureTime = new DateTime(2025, 8, 13, 9, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 13, 11, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 200,
+                    OverbookingCount = 0,
+                    SeatsSold = 303,
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null,
+                    Probability = null
+                },
+
+                 new FlightDetail {                              // flightDetails[55] 
+                    Aircraft = aircrafts["SQ24"],               // For dashboard summary - Yesterday's flight, 13 Aug 2025
+                    OriginAirport = airports["HAN"],
+                    DestinationAirport = airports["CBR"],
+                    DepartureTime = new DateTime(2025, 8, 13, 9, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 13, 23, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 200,
+                    OverbookingCount = 0,
+                    SeatsSold = 303,
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null,
+                    Probability = null
+                },
+
+                  new FlightDetail {                              // flightDetails[56] 
+                    Aircraft = aircrafts["JL37"],               // For dashboard summary - Yesterday's flight, 13 Aug 2025
+                    OriginAirport = airports["LHR"],
+                    DestinationAirport = airports["KUL"],
+                    DepartureTime = new DateTime(2025, 8, 13, 10, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 13, 18, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 200,
+                    OverbookingCount = 0,
+                    SeatsSold = 303,
+                    Distance = 6300,
+                    NumberOfCrew = 22,
+                    Prediction = null,
+                    Probability = null
+                },
+
             };
 
                 db.FlightDetails.AddRange(flightDetailList);
