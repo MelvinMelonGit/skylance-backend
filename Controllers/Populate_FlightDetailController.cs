@@ -17,8 +17,8 @@ namespace skylance_backend.Controllers
         [HttpPost]
         public IActionResult Populate()
         {
-            /*if (db.FlightDetails.Any())
-                return BadRequest("Data already seeded.");*/
+            if (db.FlightDetails.Any())
+                return BadRequest("Data already seeded.");
 
             var aircrafts = db.Aircraft.ToDictionary(ac => ac.FlightNumber, ac => ac);
 

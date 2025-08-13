@@ -4,7 +4,6 @@ using skylance_backend.Models;
 using skylance_backend.Enum;
 using Castle.Components.DictionaryAdapter.Xml;
 
-// For Joshua to add on his new records
 namespace skylance_backend.Controllers
 {
     [ApiController]
