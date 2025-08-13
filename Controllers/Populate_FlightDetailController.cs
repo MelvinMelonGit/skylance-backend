@@ -17,8 +17,8 @@ namespace skylance_backend.Controllers
         [HttpPost]
         public IActionResult Populate()
         {
-            /*if (db.FlightDetails.Any())
-                return BadRequest("Data already seeded.");*/
+            if (db.FlightDetails.Any())
+                return BadRequest("Data already seeded.");
 
             var aircrafts = db.Aircraft.ToDictionary(ac => ac.FlightNumber, ac => ac);
 
@@ -34,9 +34,9 @@ namespace skylance_backend.Controllers
                     ArrivalTime = new DateTime(2025, 8, 21, 16, 30, 0),
                     IsHoliday = false,
                     FlightStatus = "Scheduled",
-                    CheckInCount = 181,
+                    CheckInCount = 180,
                     OverbookingCount = 0,
-                    SeatsSold = 140,
+                    SeatsSold = 190,
                     Distance=6200,
                     NumberOfCrew = 6,
                     Prediction = null,
@@ -52,9 +52,9 @@ namespace skylance_backend.Controllers
                     ArrivalTime = new DateTime(2025, 8, 16, 22, 0, 0),
                     IsHoliday = true,
                     FlightStatus = "Scheduled",
-                    CheckInCount = 151,
+                    CheckInCount = 150,
                     OverbookingCount = 0,
-                    SeatsSold = 85,
+                    SeatsSold = 165,
                     Distance=5300,
                     NumberOfCrew = 5,
                     Prediction = null,
@@ -70,9 +70,9 @@ namespace skylance_backend.Controllers
                     ArrivalTime = new DateTime(2025, 8, 17, 20, 15, 0),
                     IsHoliday = false,
                     FlightStatus = "Scheduled",
-                    CheckInCount = 100,
+                    CheckInCount = 193,
                     OverbookingCount = 0,
-                    SeatsSold = 110,
+                    SeatsSold = 200,
                     Distance=4500,
                     NumberOfCrew = 15,
                     Prediction = null,
@@ -88,9 +88,9 @@ namespace skylance_backend.Controllers
                     ArrivalTime = new DateTime(2025, 9, 9, 14, 30, 0),
                     IsHoliday = false,
                     FlightStatus = "Scheduled",
-                    CheckInCount = 300,
+                    CheckInCount = 316,
                     OverbookingCount = 0,
-                    SeatsSold = 0,
+                    SeatsSold = 325,
                     Distance=7800,
                     NumberOfCrew = 14,
                     Prediction = null,
@@ -105,9 +105,9 @@ namespace skylance_backend.Controllers
                     ArrivalTime = new DateTime(2025, 8, 18, 16, 45, 0),
                     IsHoliday = true,
                     FlightStatus = "Scheduled",
-                    CheckInCount = 130,
+                    CheckInCount = 120,
                     OverbookingCount = 0,
-                    SeatsSold = 145,
+                    SeatsSold = 128,
                     Distance=6200,
                     NumberOfCrew = 4,
                     Prediction = null,
@@ -124,7 +124,7 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 200,
                     OverbookingCount = 0,
-                    SeatsSold = 250,
+                    SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
                     Prediction = null,
@@ -139,9 +139,9 @@ namespace skylance_backend.Controllers
                     ArrivalTime = new DateTime(2025, 8, 18, 21, 30, 0),
                     IsHoliday = false,
                     FlightStatus = "Scheduled",
-                    CheckInCount = 237,
+                    CheckInCount = 236,
                     OverbookingCount = 0,
-                    SeatsSold = 220,
+                    SeatsSold = 245,
                     Distance = 12000,
                     NumberOfCrew = 13,
                     Prediction = null,
@@ -158,7 +158,7 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 400,
                     OverbookingCount = 0,
-                    SeatsSold = 450,
+                    SeatsSold = 496,
                     Distance = 4800,
                     NumberOfCrew = 5,
                     Prediction = null,
@@ -175,7 +175,7 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 340,
                     OverbookingCount = 1,
-                    SeatsSold = 230,
+                    SeatsSold = 350,
                     Distance = 9200,
                     NumberOfCrew = 4,
                     Prediction = null,
@@ -192,7 +192,7 @@ namespace skylance_backend.Controllers
                     FlightStatus = "Scheduled",
                     CheckInCount = 295,
                     OverbookingCount = 0,
-                    SeatsSold = 250,
+                    SeatsSold = 305,
                     Distance = 2200,
                     NumberOfCrew = 10,
                     Prediction = null,
@@ -220,8 +220,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["SQ26"],
                     OriginAirport = airports["SIN"],
                     DestinationAirport = airports["ZRH"],
-                    DepartureTime = new DateTime(2019, 8, 11, 7, 0, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2019, 8, 11, 16, 30, 0),      // arriving after 11 Aug 15:00
+                    DepartureTime = new DateTime(2025, 8, 11, 7, 0, 0),  // departed before 11 Aug 14:00
+                    ArrivalTime = new DateTime(2025, 8, 11, 16, 30, 0),      // arriving after 11 Aug 15:00
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -237,8 +237,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["JL37"],
                     OriginAirport = airports["SIN"],
                     DestinationAirport = airports["ICN"],
-                    DepartureTime = new DateTime(2020, 8, 11, 8, 45, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2020, 8, 11, 17, 30, 0),      // arriving after 11 Aug 15:00
+                    DepartureTime = new DateTime(2025, 8, 11, 8, 45, 0),  // departed before 11 Aug 14:00
+                    ArrivalTime = new DateTime(2025, 8, 11, 17, 30, 0),      // arriving after 11 Aug 15:00
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -254,8 +254,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["JL37"],
                     OriginAirport = airports["NRT"],
                     DestinationAirport = airports["HAN"],
-                    DepartureTime = new DateTime(2020, 8, 11, 6, 15, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2020, 8, 11, 20, 00, 0),      // arriving after 11 Aug 15:00
+                    DepartureTime = new DateTime(2025, 8, 11, 6, 15, 0),  // departed before 11 Aug 14:00
+                    ArrivalTime = new DateTime(2025, 8, 11, 20, 00, 0),      // arriving after 11 Aug 15:00
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -271,8 +271,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["JL1"],
                     OriginAirport = airports["AUH"],
                     DestinationAirport = airports["KUL"],
-                    DepartureTime = new DateTime(2024, 8, 11, 13, 45, 0),  // departed before 11 Aug 14:00
-                    ArrivalTime = new DateTime(2024, 8, 11, 22, 00, 0),      // arriving after 11 Aug 15:00
+                    DepartureTime = new DateTime(2025, 8, 11, 13, 45, 0),  // departed before 11 Aug 14:00
+                    ArrivalTime = new DateTime(2025, 8, 11, 22, 00, 0),      // arriving after 11 Aug 15:00
                     IsHoliday = false,
                     FlightStatus = "In-Flight",
                     CheckInCount = 150,
@@ -288,8 +288,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["QF1"],
                     OriginAirport = airports["CBR"],
                     DestinationAirport = airports["AUH"],
-                    DepartureTime = new DateTime(2024, 8, 10, 8, 45, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2024, 8, 10, 16, 0, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
+                    DepartureTime = new DateTime(2025, 8, 10, 8, 45, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 10, 16, 0, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 160,
@@ -305,8 +305,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["KL605"],
                     OriginAirport = airports["NRT"],
                     DestinationAirport = airports["HAN"],
-                    DepartureTime = new DateTime(2023, 8, 10, 11, 00, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2023, 8, 10, 19, 30, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
+                    DepartureTime = new DateTime(2025, 8, 10, 11, 00, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 10, 19, 30, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 180,
@@ -322,8 +322,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["EY101"],
                     OriginAirport = airports["ZRH"],
                     DestinationAirport = airports["SIN"],
-                    DepartureTime = new DateTime(2022, 8, 10, 10, 15, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2022, 8, 10, 17, 25, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
+                    DepartureTime = new DateTime(2025, 8, 10, 10, 15, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 10, 17, 25, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 230,
@@ -339,8 +339,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["JL1"],
                     OriginAirport = airports["ICN"],
                     DestinationAirport = airports["CBR"],
-                    DepartureTime = new DateTime(2021, 8, 10, 10, 15, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2021, 8, 10, 17, 25, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
+                    DepartureTime = new DateTime(2025, 8, 10, 10, 15, 0),   // departed before 10 Aug 14:00 (11 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 10, 17, 25, 0),      // arriving after 10 Aug 15:00 (11 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 230,
@@ -589,7 +589,246 @@ namespace skylance_backend.Controllers
                     Prediction = null,
                     Probability = null
                   },
-
+                    new FlightDetail {                           // flightDetails[34]         
+                    Aircraft = aircrafts["AR1324"],                     // Flight for Jul 2024
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["SIN"],
+                    DepartureTime = new DateTime(2024, 7, 7, 12, 0, 0),
+                    ArrivalTime = new DateTime(2024, 7, 7, 18, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 235,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 13200,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                     new FlightDetail {                           // flightDetails[35]                                      
+                    Aircraft = aircrafts["IB6424"],                     // Flight for Jun 2024
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["ICN"],
+                    DepartureTime = new DateTime(2024, 6, 17, 22, 30, 0),
+                    ArrivalTime = new DateTime(2024, 6, 18, 6, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 230,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 18000,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                      new FlightDetail {                           // flightDetails[36]                                    
+                    Aircraft = aircrafts["SQ24"],                       // Flight for Aug 2024
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2024, 8, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2024, 8, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                     new FlightDetail {                           // flightDetails[37]                          
+                    Aircraft = aircrafts["EY123"],                      // Flight for Jul 2023
+                    OriginAirport = airports["AUH"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2023, 7, 19, 9, 30, 0),
+                    ArrivalTime = new DateTime(2023, 7, 19, 14, 45, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 290,
+                    OverbookingCount = 0,
+                    SeatsSold = 310,
+                    Distance = 4640,
+                    NumberOfCrew = 14,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[38]  
+                    Aircraft = aircrafts["AF23"],                       // Flight for Jun 2023
+                    OriginAirport = airports["FRA"],
+                    DestinationAirport = airports["GRU"],
+                    DepartureTime = new DateTime(2023, 6, 17, 16, 30, 0),
+                    ArrivalTime = new DateTime(2023, 6, 17, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 240,
+                    OverbookingCount = 0,
+                    SeatsSold = 250,
+                    Distance = 9350,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[39]                                    
+                    Aircraft = aircrafts["SQ23"],                       // Flight for Jun 2023
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2023, 6, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2023, 6, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[40]                                      
+                    Aircraft = aircrafts["IB6422"],                     // Flight for May 2022
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["ICN"],
+                    DepartureTime = new DateTime(2022, 5, 17, 22, 30, 0),
+                    ArrivalTime = new DateTime(2022, 5, 18, 6, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 230,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 18000,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[41]  
+                    Aircraft = aircrafts["AF22"],                       // Flight for Jun 2022
+                    OriginAirport = airports["FRA"],
+                    DestinationAirport = airports["GRU"],
+                    DepartureTime = new DateTime(2022, 6, 17, 16, 30, 0),
+                    ArrivalTime = new DateTime(2022, 6, 17, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 240,
+                    OverbookingCount = 0,
+                    SeatsSold = 250,
+                    Distance = 9350,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[42]                                    
+                    Aircraft = aircrafts["SQ22"],                       // Flight for Jun 2022
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2022, 6, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2022, 6, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[43]                                      
+                    Aircraft = aircrafts["IB6421"],                     // Flight for May 2021
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["ICN"],
+                    DepartureTime = new DateTime(2021, 5, 17, 22, 30, 0),
+                    ArrivalTime = new DateTime(2021, 5, 18, 6, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 230,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 18000,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[44]  
+                    Aircraft = aircrafts["AF21"],                       // Flight for Jun 2021
+                    OriginAirport = airports["FRA"],
+                    DestinationAirport = airports["GRU"],
+                    DepartureTime = new DateTime(2021, 6, 17, 16, 30, 0),
+                    ArrivalTime = new DateTime(2021, 6, 17, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 240,
+                    OverbookingCount = 0,
+                    SeatsSold = 250,
+                    Distance = 9350,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[45]                                    
+                    Aircraft = aircrafts["SQ21"],                       // Flight for Jun 2021
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2021, 6, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2021, 6, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[46]                                      
+                    Aircraft = aircrafts["IB6420"],                     // Flight for May 2020
+                    OriginAirport = airports["EZE"],
+                    DestinationAirport = airports["ICN"],
+                    DepartureTime = new DateTime(2020, 5, 17, 22, 30, 0),
+                    ArrivalTime = new DateTime(2020, 5, 18, 6, 15, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 230,
+                    OverbookingCount = 0,
+                    SeatsSold = 245,
+                    Distance = 18000,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[47]  
+                    Aircraft = aircrafts["AF20"],                       // Flight for Jun 2020
+                    OriginAirport = airports["FRA"],
+                    DestinationAirport = airports["GRU"],
+                    DepartureTime = new DateTime(2020, 6, 17, 16, 30, 0),
+                    ArrivalTime = new DateTime(2020, 6, 17, 20, 0, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 240,
+                    OverbookingCount = 0,
+                    SeatsSold = 250,
+                    Distance = 9350,
+                    NumberOfCrew = 18,
+                    Prediction = null,
+                    Probability = null
+                  },
+                    new FlightDetail {                           // flightDetails[48]                                    
+                    Aircraft = aircrafts["SQ20"],                       // Flight for Jun 2020
+                    OriginAirport = airports["KUL"],
+                    DestinationAirport = airports["FRA"],
+                    DepartureTime = new DateTime(2020, 6, 12, 11, 55, 0),
+                    ArrivalTime = new DateTime(2020, 6, 12, 18, 5, 0),
+                    IsHoliday = false,
+                    FlightStatus = "Landed",
+                    CheckInCount = 300,
+                    OverbookingCount = 0,
+                    SeatsSold = 320,
+                    Distance = 10560,
+                    NumberOfCrew = 16,
+                    Prediction = null,
+                    Probability = null
+                  },
             };
 
                 db.FlightDetails.AddRange(flightDetailList);

@@ -74,6 +74,66 @@ namespace skylance_backend.Controllers
                     BookingReferenceNumber = "H37766",
                     AppUser = appUsers["teng@gmail.com"]
                 },
+                new BookingDetail {
+                    BookingReferenceNumber = "H37724",
+                    AppUser = appUsers["teng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H67524",
+                    AppUser = appUsers["seng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "U24824",
+                    AppUser = appUsers["leng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H37723",
+                    AppUser = appUsers["teng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H67523",
+                    AppUser = appUsers["seng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "U24823",
+                    AppUser = appUsers["leng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H37722",
+                    AppUser = appUsers["teng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H67522",
+                    AppUser = appUsers["seng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "U24822",
+                    AppUser = appUsers["leng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H37721",
+                    AppUser = appUsers["teng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H67521",
+                    AppUser = appUsers["seng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "U24821",
+                    AppUser = appUsers["leng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H37720",
+                    AppUser = appUsers["teng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "H67520",
+                    AppUser = appUsers["seng@gmail.com"]
+                },
+                new BookingDetail {
+                    BookingReferenceNumber = "U24820",
+                    AppUser = appUsers["leng@gmail.com"]
+                },
             };
 
                 db.AddRange(bookingDetailList);

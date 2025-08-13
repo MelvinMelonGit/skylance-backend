@@ -27,7 +27,7 @@ namespace skylance_backend.Controllers
             {     
                 new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ322", AircraftBrand = "Boeing", AircraftModel = "737 Max", SeatCapacity = 180 },
                 new Aircraft { Airline = "Japan Airlines", FlightNumber = "JL1", AircraftBrand = "Airbus", AircraftModel = "A320 Neo", SeatCapacity = 150 },
-                new Aircraft { Airline = "Malaysia Airlines", FlightNumber = "MH1", AircraftBrand = "Boeing", AircraftModel = "787 Dreamliner", SeatCapacity = 242 },
+                new Aircraft { Airline = "Malaysia Airlines", FlightNumber = "MH1", AircraftBrand = "Boeing", AircraftModel = "787 Dreamliner", SeatCapacity = 200 },
                 new Aircraft { Airline = "Korean Air", FlightNumber = "KE85", AircraftBrand = "Airbus", AircraftModel = "A350", SeatCapacity = 325 },
                 new Aircraft { Airline = "Qantas", FlightNumber = "QF1", AircraftBrand = "Embraer", AircraftModel = "E195", SeatCapacity = 120 },            
                 new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ12", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 303 },
@@ -44,7 +44,23 @@ namespace skylance_backend.Controllers
                 new Aircraft { Airline = "Air France", FlightNumber = "AF83", AircraftBrand = "Boeing", AircraftModel = "777-300ER", SeatCapacity = 296 },
                 new Aircraft { Airline = "British Airways", FlightNumber = "BA283", AircraftBrand = "Airbus", AircraftModel = "A380-800", SeatCapacity = 469 },
                 new Aircraft { Airline = "Lufthansa", FlightNumber = "LH492", AircraftBrand = "Boeing", AircraftModel = "747-8", SeatCapacity = 364 },
-                new Aircraft { Airline = "LATAM Airlines Brasil", FlightNumber = "LA8070", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 339 }
+                new Aircraft { Airline = "LATAM Airlines Brasil", FlightNumber = "LA8070", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 339 },
+
+                new Aircraft { Airline = "Aerolineas Argentinas", FlightNumber = "AR1324", AircraftBrand = "Boeing", AircraftModel = "737-800", SeatCapacity = 162 },
+                new Aircraft { Airline = "Iberia", FlightNumber = "IB6424", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 348 },
+                new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ24", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 320 },
+                new Aircraft { Airline = "Etihad Airways", FlightNumber = "EY123", AircraftBrand = "Airbus", AircraftModel = "A380", SeatCapacity = 496 },
+                new Aircraft { Airline = "Air France", FlightNumber = "AF23", AircraftBrand = "Boeing", AircraftModel = "777-300ER", SeatCapacity = 296 },
+                new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ23", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 303 },
+                new Aircraft { Airline = "Iberia", FlightNumber = "IB6422", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 348 },
+                new Aircraft { Airline = "Air France", FlightNumber = "AF22", AircraftBrand = "Boeing", AircraftModel = "777-300ER", SeatCapacity = 296 },
+                new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ22", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 303 },
+                new Aircraft { Airline = "Iberia", FlightNumber = "IB6421", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 348 },
+                new Aircraft { Airline = "Air France", FlightNumber = "AF21", AircraftBrand = "Boeing", AircraftModel = "777-300ER", SeatCapacity = 296 },
+                new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ21", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 303 },
+                new Aircraft { Airline = "Iberia", FlightNumber = "IB6420", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 348 },
+                new Aircraft { Airline = "Air France", FlightNumber = "AF20", AircraftBrand = "Boeing", AircraftModel = "777-300ER", SeatCapacity = 296 },
+                new Aircraft { Airline = "Singapore Airlines", FlightNumber = "SQ20", AircraftBrand = "Airbus", AircraftModel = "A350-900", SeatCapacity = 303 },
             };
 
             db.Aircraft.AddRange(aircraftList);
