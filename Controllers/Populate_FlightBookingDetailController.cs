@@ -360,6 +360,34 @@ namespace skylance_backend.Controllers
                 },
                    new FlightBookingDetail
                 {
+                    FlightDetail = flightDetails[24],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67556"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1900,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                   new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[25],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67556"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1900,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                   new FlightBookingDetail
+                {
                     FlightDetail = flightDetails[34],                    // past flight (seng@gmail.com for Rocky Lim)     
                     BookingDetail = bookingDetails["H67524"],
                     BaggageAllowance = 45,
