@@ -4,7 +4,6 @@ using skylance_backend.Models;
 using skylance_backend.Enum;
 using Castle.Components.DictionaryAdapter.Xml;
 
-// For Joshua to add on his new records
 namespace skylance_backend.Controllers
 {
     [ApiController]
@@ -30,7 +29,7 @@ namespace skylance_backend.Controllers
             {
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[1],                    // overbooked flight (teng@gmail.com for John Smith)
+                    FlightDetail = flightDetails[2],                    // Scenario 3 overbooked flight JL1 (teng@gmail.com for John Smith)
                     BookingDetail = bookingDetails["G66666"],
                     BaggageAllowance = 35,
                     TravelPurpose = TravelPurpose.Business,
@@ -45,7 +44,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[2],                    // overbooked flight (seng@gmail.com for Linda Too)
+                    FlightDetail = flightDetails[9],                    // overbooked flight (seng@gmail.com for Linda Too)
                     BookingDetail = bookingDetails["G66688"],
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Emergency,
@@ -60,7 +59,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[3],                    // normal flight for check-in (beng@gmail.com for Elsie Bong)
+                    FlightDetail = flightDetails[3],                    // Scenario 1 normal flight MH1 for check-in (beng@gmail.com for Elsie Bong)
                     BookingDetail = bookingDetails["J01927"],
                     BaggageAllowance = 45,
                     TravelPurpose = TravelPurpose.Family,
@@ -91,7 +90,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[5],                    // overbooked flight (leng@gmail.com for Rocky Lim)
+                    FlightDetail = flightDetails[2],                    // Scenario 4 overbooked flight JL1 (leng@gmail.com for Rocky Lim)
                     BookingDetail = bookingDetails["L76543"],
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Business,
@@ -106,7 +105,7 @@ namespace skylance_backend.Controllers
 
                  new FlightBookingDetail
             {
-                    FlightDetail = flightDetails[9],                    // overbooked flight (seng@gmail.com for Linda Too)
+                    FlightDetail = flightDetails[3],                    // Scenario 2 normal flight MH1 for check-in (seng@gmail.com for Linda Too)
                     BookingDetail = bookingDetails["A00835"],
                     BaggageAllowance = 35,
                     TravelPurpose = TravelPurpose.Leisure,
