@@ -54,9 +54,9 @@ namespace skylance_backend.Controllers
             return flightDetail;
         }
         /*
-         [HttpGet]
-public async Task<ActionResult<IEnumerable<FlightDetail>>> GetFlightDetails(
-    [FromQuery] int originalFlightId
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<FlightDetail>>> GetFlightDetails(
+        [FromQuery] int originalFlightId
 )
 {
     var currentTime = DateTime.Now;
