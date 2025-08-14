@@ -48,8 +48,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["JL1"],
                     OriginAirport = airports["NRT"],
                     DestinationAirport = airports["SIN"],
-                    DepartureTime = new DateTime(2025, 8, 16, 7, 0, 0),
-                    ArrivalTime = new DateTime(2025, 8, 16, 22, 0, 0),
+                    DepartureTime = new DateTime(2025, 8, 15, 7, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 15, 22, 0, 0),
                     IsHoliday = true,
                     FlightStatus = "Scheduled",
                     CheckInCount = 150,
@@ -286,10 +286,10 @@ namespace skylance_backend.Controllers
 
                  new FlightDetail {                         // flightDetails[16]
                     Aircraft = aircrafts["QF1"],
-                    OriginAirport = airports["CBR"],
-                    DestinationAirport = airports["AUH"],
-                    DepartureTime = new DateTime(2025, 8, 13, 6, 45, 0),   // departed before 13 Aug 08:15 (14 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2025, 8, 13, 16, 0, 0),      // arriving after 13 Aug 09:15 (14 Aug minus 1 day)
+                    OriginAirport = airports["NRT"],
+                    DestinationAirport = airports["SIN"],
+                    DepartureTime = new DateTime(2025, 8, 16, 6, 45, 0),   // departed before 13 Aug 08:15 (14 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 16, 16, 0, 0),      // arriving after 13 Aug 09:15 (14 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 160,
@@ -304,9 +304,9 @@ namespace skylance_backend.Controllers
                  new FlightDetail {                         // flightDetails[17]
                     Aircraft = aircrafts["KL605"],
                     OriginAirport = airports["NRT"],
-                    DestinationAirport = airports["HAN"],
-                    DepartureTime = new DateTime(2025, 8, 13, 7, 00, 0),   // departed before 13 Aug 08:15 (14 Aug minus 1 day)
-                    ArrivalTime = new DateTime(2025, 8, 13, 14, 30, 0),      // arriving after 13 Aug 09:15 (14 Aug minus 1 day)
+                    DestinationAirport = airports["SIN"],
+                    DepartureTime = new DateTime(2025, 8, 15, 14, 00, 0),   // departed before 13 Aug 08:15 (14 Aug minus 1 day)
+                    ArrivalTime = new DateTime(2025, 8, 15, 20, 30, 0),      // arriving after 13 Aug 09:15 (14 Aug minus 1 day)
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 180,
@@ -354,10 +354,10 @@ namespace skylance_backend.Controllers
 
                  new FlightDetail {                                     // Flight for Jan 2025
                     Aircraft = aircrafts["LH492"],
-                    OriginAirport = airports["FRA"],
-                    DestinationAirport = airports["GRU"],
-                    DepartureTime = new DateTime(2025, 1, 9, 11, 30, 0),
-                    ArrivalTime = new DateTime(2025, 1, 9, 14, 15, 0),
+                    OriginAirport = airports["NRT"],
+                    DestinationAirport = airports["SIN"],
+                    DepartureTime = new DateTime(2025, 8, 15, 12, 30, 0),
+                    ArrivalTime = new DateTime(2025, 8, 15, 18, 15, 0),
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 200,
