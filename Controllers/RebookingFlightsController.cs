@@ -53,6 +53,7 @@ namespace skylance_backend.Controllers
 
             return flightDetail;
         }
+<<<<<<< HEAD
         /*   
             [HttpGet]
        public async Task<ActionResult<IEnumerable<FlightDetail>>> GetFlightDetails(
@@ -64,6 +65,19 @@ namespace skylance_backend.Controllers
            .Include(f => f.OriginAirport)
            .Include(f => f.DestinationAirport)
            .FirstOrDefaultAsync(f => f.Id == originalFlightId);
+=======
+        /*
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<FlightDetail>>> GetFlightDetails(
+        [FromQuery] int originalFlightId
+)
+{
+    var currentTime = DateTime.Now;
+    var originalFlight = await _context.FlightDetails
+        .Include(f => f.OriginAirport)
+        .Include(f => f.DestinationAirport)
+        .FirstOrDefaultAsync(f => f.Id == originalFlightId);
+>>>>>>> d235b35dee535f00bbe8671ec1925ca7b3d76ff9
 
        if (originalFlight == null)
        {
