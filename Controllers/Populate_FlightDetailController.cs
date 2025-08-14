@@ -116,10 +116,10 @@ namespace skylance_backend.Controllers
                 
                 new FlightDetail {                          // flightDetails[6] - for normal check-in scenario
                     Aircraft = aircrafts["SQ12"],
-                    OriginAirport = airports["SIN"],
-                    DestinationAirport = airports["CBR"],
-                    DepartureTime = new DateTime(2025, 8, 17, 8, 0, 0),
-                    ArrivalTime = new DateTime(2025, 8, 17, 17, 0, 0),
+                    OriginAirport = airports["NRT"],
+                    DestinationAirport = airports["SIN"],
+                    DepartureTime = new DateTime(2025, 8, 15, 13, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 15, 20, 0, 0),
                     IsHoliday = false,
                     FlightStatus = "Scheduled",
                     CheckInCount = 200,
@@ -868,8 +868,8 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["SQ20"],               // For dashboard summary - Today's flight, 14 Aug 2025
                     OriginAirport = airports["NRT"],
                     DestinationAirport = airports["SIN"],
-                    DepartureTime = new DateTime(2025, 8, 14, 10, 0, 0),
-                    ArrivalTime = new DateTime(2025, 8, 14, 20, 0, 0),
+                    DepartureTime = new DateTime(2025, 8, 15, 10, 0, 0),
+                    ArrivalTime = new DateTime(2025, 8, 15, 20, 0, 0),
                     IsHoliday = false,
                     FlightStatus = "On Time",
                     CheckInCount = 200,
