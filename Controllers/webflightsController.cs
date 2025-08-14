@@ -8,21 +8,36 @@ using System;
 namespace skylance_backend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class webflightsController : ControllerBase
+    [Route("api/webflights")]
+    public class Web_FlightsController : ControllerBase
     {
         private readonly SkylanceDbContext db;
         private readonly Random _random = new Random();
-        public webflightsController(SkylanceDbContext db)
+        public Web_FlightsController(SkylanceDbContext db)
         {
             this.db = db;
         }
 
+        //Helper method
+        private string? GetLoggedInEmployeeId()
+        {
+            var empSession = HttpContext.Items["EmployeeSession"] as EmployeeSession;
+            if (empSession == null)
+                return null;
+
+            return empSession.Employee.Id;
+        }
+
+        [ProtectedRoute]
         [HttpGet("allflights")]
         public IActionResult GetAllFlights(int page = 1, int pageSize = 4)
         {
-            int totalFlights = db.FlightDetails
-                .Where(f => f.DepartureTime > DateTime.Now)
+            // assign the logged-in EmployeeId with the helper method (EmployeeSession from AuthMiddleware)
+            var loggedInEmployeeId = GetLoggedInEmployeeId();
+            if (loggedInEmployeeId == null)
+                return Unauthorized();
+
+            int totalFlights = db.FlightDetails                   
                 .Count();
 
             var flights = db.FlightDetails
@@ -30,12 +45,11 @@ namespace skylance_backend.Controllers
                 .Include(f => f.OriginAirport)
                     .ThenInclude(a => a.City)
                 .Include(f => f.DestinationAirport)
-                    .ThenInclude(a => a.City)
-                .Where(f => f.DepartureTime > DateTime.Now)
+                    .ThenInclude(a => a.City)                
                 .OrderBy(f => f.DepartureTime)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .Select(f => new webflightsDTO
+                .Select(f => new Web_FlightsDTO
                 {
                     AirlineName = f.Aircraft.Airline,
                     FlightName = f.Aircraft.FlightNumber,
@@ -63,17 +77,25 @@ namespace skylance_backend.Controllers
             return Ok(result);
         }
 
-    
+
+        [ProtectedRoute]
         [HttpGet("open-for-checkin")]
         public async Task<ActionResult<object>> GetFlightDetails(
     [FromQuery] int page = 1,
     [FromQuery] int pageSize = 3)
         {
+            // assign the logged-in EmployeeId with the helper method (EmployeeSession from AuthMiddleware)
+            var loggedInEmployeeId = GetLoggedInEmployeeId();
+            if (loggedInEmployeeId == null)
+                return Unauthorized();
+
             var query = db.FlightDetails
                 .Include(f => f.Aircraft)
                 .Include(f => f.OriginAirport)
                 .Include(f => f.DestinationAirport)
-                .Where(f => f.CheckInCount < f.Aircraft.SeatCapacity);
+                .Where(f => f.CheckInCount <= f.Aircraft.SeatCapacity &&
+                f.DepartureTime > DateTime.Now &&
+                f.FlightStatus != "In-Flight");
 
             var totalItems = await query.CountAsync();
             var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
@@ -97,9 +119,10 @@ namespace skylance_backend.Controllers
                 },
                 Data = flights.Select(f => new
                 {
-                    flightid = f.Id,
+                    flightid = f.Aircraft.FlightNumber,
                     route = $"{f.OriginAirport.IataCode} → {f.DestinationAirport.IataCode}",
                     departure = f.DepartureTime.ToString("HH:mm"),
+                    overbookingCount = f.OverbookingCount,
                     capacity = f.Aircraft.SeatCapacity,
                     booked = f.SeatsSold,
                     checkedIn = f.CheckInCount,

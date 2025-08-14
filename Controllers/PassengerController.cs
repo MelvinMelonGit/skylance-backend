@@ -2,23 +2,42 @@
 using Microsoft.EntityFrameworkCore;
 using skylance_backend.Data;
 using skylance_backend.Enum;
+using skylance_backend.Models;
+using skylance_backend.Services;
+using skylance_backend.Attributes;
 
 namespace skylance_backend.Controllers
 {
     [ApiController]
     [Route("api")]
-    public class FlightBookingController : ControllerBase
+    public class PassengerController : ControllerBase
     {
         private readonly SkylanceDbContext _context;
 
-        public FlightBookingController(SkylanceDbContext context)
+        public PassengerController(SkylanceDbContext context)
         {
             _context = context;
         }
 
+        //Helper method
+        private string? GetLoggedInEmployeeId()
+        {
+            var empSession = HttpContext.Items["EmployeeSession"] as EmployeeSession;
+            if (empSession == null)
+                return null;
+
+            return empSession.Employee.Id;
+        }
+
+        [ProtectedRoute]
         [HttpGet("allpassengers")]
         public async Task<IActionResult> GetAllPassengers([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
+            // assign the logged-in EmployeeId with the helper method (EmployeeSession from AuthMiddleware)
+            var loggedInEmployeeId = GetLoggedInEmployeeId();
+            if (loggedInEmployeeId == null)
+                return Unauthorized();
+
             if (page <= 0) page = 1;
             if (pageSize <= 0) pageSize = 10;
 
@@ -34,14 +53,15 @@ namespace skylance_backend.Controllers
                     PassengerId = f.BookingDetail.AppUser.Id,
                     FlightNumber = f.FlightDetail.Aircraft.FlightNumber,
                     Airline = f.FlightDetail.Aircraft.Airline,
+                    BookingDate = f.BookingDate,
                     PassengerName = (f.BookingDetail.AppUser.FirstName) + f.BookingDetail.AppUser.LastName,
-                    Class = f.Class,
+                    Class = f.Class.ToString(),
                     MembershipTier = f.BookingDetail.AppUser.MembershipTier,
                     DateOfTravel = f.FlightDetail.DepartureTime,
                     BookingStatus = f.BookingStatus.ToString(),
                     BaggageAllowance = f.BaggageAllowance.ToString(),
                     BaggageChecked = f.BaggageChecked.ToString(),
-                    SeatNumber = f.SeatNumber.ToString(),
+                    SeatNumber = f.SeatNumber != null ? f.SeatNumber.SeatNumber : null,
                     CheckinStatus = f.BookingStatus == BookingStatus.CheckedIn
                     ? "Checked-In"
                     : f.BookingStatus == BookingStatus.Confirmed
@@ -73,6 +93,70 @@ namespace skylance_backend.Controllers
 
             return Ok(result);
         }
-    }
 
+        [ProtectedRoute]
+        [HttpGet("{flightNumber}/passengers")]
+        public async Task<IActionResult> GetPassengersByFlightId(string flightNumber, [FromQuery] int page = 1, [FromQuery] int pageSize = 5)
+        {
+            // assign the logged-in EmployeeId with the helper method (EmployeeSession from AuthMiddleware)
+            var loggedInEmployeeId = GetLoggedInEmployeeId();
+            if (loggedInEmployeeId == null)
+                return Unauthorized();
+
+            if (page <= 0) page = 1;
+            if (pageSize <= 0) pageSize = 5;
+
+            var flight = _context.FlightBookingDetails
+            .Include(f => f.BookingDetail)
+                .ThenInclude(b => b.AppUser)
+            .Include(f => f.FlightDetail)
+                .ThenInclude(fd => fd.Aircraft)
+            .Where(f => f.FlightDetail.Aircraft.FlightNumber == flightNumber && f.BookingDetail != null);
+
+            var totalPassengers = await flight.CountAsync();
+
+            var pagedPassengers = await flight
+                .OrderBy(f => f.SeatNumber)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var passengers = new List<PassengerDetailsDTO>();
+            foreach (var f in pagedPassengers)
+            {
+                var checkin = await _context.CheckInDetails
+                            .FirstOrDefaultAsync(c => c.FlightBookingDetail.Id == f.Id);
+
+                passengers.Add(new PassengerDetailsDTO
+                {
+                    PassengerName = f.BookingDetail.AppUser.FirstName + " " + f.BookingDetail.AppUser.LastName,
+                    SeatNumber = f.SeatNumber != null ? f.SeatNumber.SeatNumber : null,
+                    BookingStatus = f.BookingStatus.ToString(),
+                    CheckinStatus = f.BookingStatus == BookingStatus.CheckedIn
+                                ? "Checked-in"
+                                : f.BookingStatus == BookingStatus.Confirmed
+                                    ? "Not Checked-in"
+                                    : "No Show",
+                    MembershipTier = f.BookingDetail?.AppUser?.MembershipTier ?? "",
+                    BookingDate = f.BookingDate,
+                    CheckinTime = checkin?.CheckInTime,
+                    Prediction = f.Prediction?.ToString() ?? "No Prediction",
+                    SpecialRequests = f.SpecialRequest?.ToString() ?? ""
+                });
+            }
+
+            var response = new
+            {
+                status = "success",
+                flightId = flightNumber,
+                page = page,
+                pageSize = pageSize,
+                totalPassengers = totalPassengers,
+                passengers = passengers
+            };
+
+            return Ok(response);
+        }
+    }
 }
+

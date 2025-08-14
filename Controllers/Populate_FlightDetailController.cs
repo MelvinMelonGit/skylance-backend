@@ -25,7 +25,11 @@ namespace skylance_backend.Controllers
             var airports = db.Airports.ToDictionary(ap => ap.IataCode, ap => ap);
 
             List<FlightDetail> flightDetailList = new List<FlightDetail>
+<<<<<<< HEAD
             {
+=======
+            {                
+>>>>>>> main
                 new FlightDetail {                          // flightDetails[1] - for overbooked scenario
                     Aircraft = aircrafts["SQ322"],
                     OriginAirport = airports["SIN"],
@@ -113,7 +117,11 @@ namespace skylance_backend.Controllers
                     PredictedCheckInCount = null,
                     Probability = null
                 },
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> main
                 new FlightDetail {                          // flightDetails[6] - for normal check-in scenario
                     Aircraft = aircrafts["SQ12"],
                     OriginAirport = airports["SIN"],
@@ -278,7 +286,11 @@ namespace skylance_backend.Controllers
                     CheckInCount = 150,
                     OverbookingCount = 0,
                     SeatsSold = 140,
+<<<<<<< HEAD
                     Distance = 5300,
+=======
+                    Distance = 5300,        
+>>>>>>> main
                     NumberOfCrew = 8,
                     PredictedCheckInCount = null,
                     Probability = null
@@ -414,7 +426,11 @@ namespace skylance_backend.Controllers
                     CheckInCount = 120,
                     OverbookingCount = 0,
                     SeatsSold = 150,
+<<<<<<< HEAD
                     Distance = 1150,
+=======
+                    Distance = 1150,        
+>>>>>>> main
                     NumberOfCrew = 6,
                     PredictedCheckInCount = null,
                     Probability = null
@@ -424,15 +440,26 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["KL605"],
                     OriginAirport = airports["AMS"],
                     DestinationAirport = airports["ZRH"],
+<<<<<<< HEAD
                     DepartureTime = new DateTime(2025, 3, 25, 9, 45, 0),
                     ArrivalTime = new DateTime(2025, 3, 25, 11, 15, 0),
+=======
+                    DepartureTime = new DateTime(2025, 3, 25, 9, 45, 0),   
+                    ArrivalTime = new DateTime(2025, 3, 25, 11, 15, 0),    
+>>>>>>> main
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 180,
                     OverbookingCount = 0,
+<<<<<<< HEAD
                     SeatsSold = 300,
                     Distance = 615,
                     NumberOfCrew = 10,
+=======
+                    SeatsSold = 300,            
+                    Distance = 615,             
+                    NumberOfCrew = 10,          
+>>>>>>> main
                     PredictedCheckInCount = null,
                     Probability = null
                   },
@@ -441,15 +468,26 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["LA8070"],
                     OriginAirport = airports["LHR"],
                     DestinationAirport = airports["SIN"],
+<<<<<<< HEAD
                     DepartureTime = new DateTime(2025, 3, 28, 21, 30, 0),
                     ArrivalTime = new DateTime(2025, 3, 28, 17, 15, 0),
+=======
+                    DepartureTime = new DateTime(2025, 3, 28, 21, 30, 0),  
+                    ArrivalTime = new DateTime(2025, 3, 28, 17, 15, 0),   
+>>>>>>> main
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 280,
                     OverbookingCount = 0,
+<<<<<<< HEAD
                     SeatsSold = 310,
                     Distance = 10845,
                     NumberOfCrew = 15,
+=======
+                    SeatsSold = 310,           
+                    Distance = 10845,          
+                    NumberOfCrew = 15,         
+>>>>>>> main
                     PredictedCheckInCount = null,
                     Probability = null
                   },
@@ -458,15 +496,26 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["QF1"],
                     OriginAirport = airports["GRU"],
                     DestinationAirport = airports["KUL"],
+<<<<<<< HEAD
                     DepartureTime = new DateTime(2025, 4, 8, 22, 0, 0),
                     ArrivalTime = new DateTime(2025, 4, 8, 18, 0, 0),
+=======
+                    DepartureTime = new DateTime(2025, 4, 8, 22, 0, 0),  
+                    ArrivalTime = new DateTime(2025, 4, 8, 18, 0, 0),    
+>>>>>>> main
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 250,
                     OverbookingCount = 0,
+<<<<<<< HEAD
                     SeatsSold = 240,
                     Distance = 13350,
                     NumberOfCrew = 12,
+=======
+                    SeatsSold = 240,               
+                    Distance = 13350,              
+                    NumberOfCrew = 12,             
+>>>>>>> main
                     PredictedCheckInCount = null,
                     Probability = null
                   },
@@ -475,15 +524,26 @@ namespace skylance_backend.Controllers
                     Aircraft = aircrafts["VN50"],
                     OriginAirport = airports["HAN"],
                     DestinationAirport = airports["MAD"],
+<<<<<<< HEAD
                     DepartureTime = new DateTime(2025, 4, 10, 23, 30, 0),
                     ArrivalTime = new DateTime(2025, 4, 11, 6, 15, 0),
+=======
+                    DepartureTime = new DateTime(2025, 4, 10, 23, 30, 0), 
+                    ArrivalTime = new DateTime(2025, 4, 11, 6, 15, 0),    
+>>>>>>> main
                     IsHoliday = false,
                     FlightStatus = "Landed",
                     CheckInCount = 230,
                     OverbookingCount = 0,
+<<<<<<< HEAD
                     SeatsSold = 245,
                     Distance = 10250,
                     NumberOfCrew = 14,
+=======
+                    SeatsSold = 245,                
+                    Distance = 10250,               
+                    NumberOfCrew = 14,              
+>>>>>>> main
                     PredictedCheckInCount = null,
                     Probability = null
                   },

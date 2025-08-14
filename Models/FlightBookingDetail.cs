@@ -23,9 +23,9 @@ public class FlightBookingDetail
     [Required]
     public required double BaggageAllowance { get; set; }
     public double BaggageChecked { get; set; }
-
+    public DateTime BookingDate { get; set; }
     public TravelPurpose? TravelPurpose { get; set; }
-    public string? Class { get; set; }
+    public Class? Class { get; set; }
 
     [MaxLength(50)]
     public virtual Seat? SeatNumber { get; set; }
