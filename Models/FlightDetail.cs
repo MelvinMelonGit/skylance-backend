@@ -9,7 +9,7 @@ public class FlightDetail
 {
     [Key]
     [MaxLength(255)]
- 
+
     public int Id { get; set; }
 
     [Required]
@@ -39,6 +39,7 @@ public class FlightDetail
 
     [Required]
     public required int CheckInCount { get; set; }
+    public int? PredictedCheckInCount { get; set; }
 
     [Required]
     public required int SeatsSold { get; set; }
@@ -48,15 +49,14 @@ public class FlightDetail
 
     public int? NumberOfCrew { get; set; }
 
-    public Prediction? Prediction { get; set; }     
-
     public float? Probability { get; set; }
+    public int? OverbookingCount { get; set; }
 
-    [NotMapped] 
+    [NotMapped]
     public double Compensation => Distance / 4;
 
     [NotMapped]
-    public double RebookingCompensation => 1.5*Distance / 4;
+    public double RebookingCompensation => 1.5 * Distance / 4;
 
 
 }
