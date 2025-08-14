@@ -39,7 +39,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 1200,
                     Prediction = null,
                     Class = Class.First,
-                    SpecialRequest = SpecialRequest.AisleSeat
+                    SpecialRequest = SpecialRequest.AisleSeat,
+                    BookingDate = new DateTime(2025, 1, 17, 15, 30, 0)
                 },
 
                 new FlightBookingDetail
@@ -54,7 +55,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 2000,
                     Prediction = null,
                     Class = Class.Business,
-                    SpecialRequest = SpecialRequest.Vegan
+                    SpecialRequest = SpecialRequest.Vegan,
+                    BookingDate = new DateTime(2024, 2, 17, 15, 0, 0)
                 },
 
                 new FlightBookingDetail
@@ -69,8 +71,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 2300,
                     Prediction = Prediction.No_Show,
                     Class =  Class.PremiumEconomy,
-                    SpecialRequest = SpecialRequest.Diabetic
-
+                    SpecialRequest = SpecialRequest.Diabetic,
+                    BookingDate = new DateTime(2024, 5, 20, 10, 30, 0)
                 },
 
                 new FlightBookingDetail
@@ -85,7 +87,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 1700,
                     Prediction = null,
                     Class = Class.Economy,
-                    SpecialRequest = SpecialRequest.UMNR
+                    SpecialRequest = SpecialRequest.UMNR,
+                    BookingDate = new DateTime(2024, 5, 29, 5, 30, 0)
                 },
 
                 new FlightBookingDetail
@@ -100,7 +103,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 800,
                     Prediction = null,
                     Class = Class.PremiumEconomy,
-                    SpecialRequest = SpecialRequest.Wheelchair
+                    SpecialRequest = SpecialRequest.Wheelchair,
+                    BookingDate = new DateTime(2024, 9, 20, 7, 30, 0)
                 },
 
                  new FlightBookingDetail
@@ -115,7 +119,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 1200,
                     Prediction = null,
                     Class = Class.Economy,
-                    SpecialRequest = null
+                    SpecialRequest = null,
+                    BookingDate = new DateTime(2024, 10, 10, 5, 30, 0)
                 },
 
                 new FlightBookingDetail
@@ -130,7 +135,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 2000,
                     Prediction = Prediction.No_Show,
                     Class = Class.PremiumEconomy,
-                    SpecialRequest = null
+                    SpecialRequest = null,
+                    BookingDate = new DateTime(2024, 11, 20, 8, 30, 0)
                 },
 
                 new FlightBookingDetail
@@ -145,7 +151,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 2300,
                     Prediction = null,
                     Class = Class.Economy,
-                    SpecialRequest = null
+                    SpecialRequest = null,
+                    BookingDate = new DateTime(2025, 3, 20, 11, 30, 0)
                 },
 
                 new FlightBookingDetail
@@ -160,7 +167,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 1700,
                     Prediction = null,
                     Class = Class.Economy,
-                    SpecialRequest = SpecialRequest.Vegan
+                    SpecialRequest = SpecialRequest.Vegan,
+                    BookingDate = new DateTime(2024, 7, 29, 9, 0, 0)
                 },
 
                 new FlightBookingDetail
@@ -175,7 +183,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 800,
                     Prediction = null,
                     Class = Class.Economy,
-                    SpecialRequest = null
+                    SpecialRequest = null,
+                    BookingDate = new DateTime(2024, 11, 20, 3, 30, 0)
                 },
 
                  new FlightBookingDetail
@@ -190,7 +199,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 1200,
                     Prediction = null,
                     Class = Class.First,
-                    SpecialRequest = SpecialRequest.AisleSeat
+                    SpecialRequest = SpecialRequest.AisleSeat,
+                    BookingDate = new DateTime(2025, 3, 11, 8, 10, 0)
                 },
 
                   new FlightBookingDetail
@@ -205,7 +215,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 1200,
                     Prediction = null,
                     Class = Class.First,
-                    SpecialRequest = SpecialRequest.AisleSeat
+                    SpecialRequest = SpecialRequest.AisleSeat,
+                    BookingDate = new DateTime(2024, 8, 30, 6, 30, 0)
                 },
 
                   new FlightBookingDetail
@@ -220,7 +231,8 @@ namespace skylance_backend.Controllers
                     Fareamount = 1700,
                     Prediction = null,
                     Class = Class.Economy,
-                    SpecialRequest = SpecialRequest.UMNR
+                    SpecialRequest = SpecialRequest.UMNR,
+                    BookingDate = new DateTime(2024, 11, 8, 3, 0, 0)
                 },
 
                   new FlightBookingDetail
