@@ -33,6 +33,9 @@ namespace skylance_backend.Controllers
                 .ToListAsync();
         }
 
+
+
+
         // GET: api/Flights/5
         [HttpGet("{id}")]
         public async Task<ActionResult<FlightDetail>> GetFlightDetail(int id)
@@ -50,8 +53,39 @@ namespace skylance_backend.Controllers
 
             return flightDetail;
         }
+        /*
+         [HttpGet]
+public async Task<ActionResult<IEnumerable<FlightDetail>>> GetFlightDetails(
+    [FromQuery] int originalFlightId
+)
+{
+    var currentTime = DateTime.Now;
+    var originalFlight = await _context.FlightDetails
+        .Include(f => f.OriginAirport)
+        .Include(f => f.DestinationAirport)
+        .FirstOrDefaultAsync(f => f.Id == originalFlightId);
 
-       
+    if (originalFlight == null)
+    {
+        return NotFound();
+    }
+
+    return await _context.FlightDetails
+        .Include(f => f.Aircraft)
+        .Include(f => f.OriginAirport)
+        .Include(f => f.DestinationAirport)
+        .Where(f => 
+            f.Id != originalFlightId && 
+            f.OriginAirport.Id == originalFlight.OriginAirport.Id && 
+            f.DestinationAirport.Id == originalFlight.DestinationAirport.Id &&
+            f.DepartureTime > currentTime &&
+            f.CheckInCount < f.Aircraft.SeatCapacity)
+        .OrderBy(f => f.DepartureTime) 
+        .ToListAsync();
+}
+         */
+
+
 
 
     }
