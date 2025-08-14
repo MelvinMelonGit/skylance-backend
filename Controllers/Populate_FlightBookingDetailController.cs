@@ -4,7 +4,6 @@ using skylance_backend.Models;
 using skylance_backend.Enum;
 using Castle.Components.DictionaryAdapter.Xml;
 
-// For Joshua to add on his new records
 namespace skylance_backend.Controllers
 {
     [ApiController]
@@ -30,7 +29,7 @@ namespace skylance_backend.Controllers
             {
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[1],                    // overbooked flight (teng@gmail.com for John Smith)
+                    FlightDetail = flightDetails[2],                    // Scenario 3 overbooked flight JL1 (teng@gmail.com for John Smith)
                     BookingDetail = bookingDetails["G66666"],
                     BaggageAllowance = 35,
                     TravelPurpose = TravelPurpose.Business,
@@ -45,7 +44,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[2],                    // overbooked flight (seng@gmail.com for Linda Too)
+                    FlightDetail = flightDetails[9],                    // overbooked flight (seng@gmail.com for Linda Too)
                     BookingDetail = bookingDetails["G66688"],
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Emergency,
@@ -60,7 +59,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[3],                    // normal flight for check-in (beng@gmail.com for Elsie Bong)
+                    FlightDetail = flightDetails[3],                    // Scenario 1 normal flight MH1 for check-in (beng@gmail.com for Elsie Bong)
                     BookingDetail = bookingDetails["J01927"],
                     BaggageAllowance = 45,
                     TravelPurpose = TravelPurpose.Family,
@@ -91,7 +90,7 @@ namespace skylance_backend.Controllers
 
                 new FlightBookingDetail
                 {
-                    FlightDetail = flightDetails[5],                    // overbooked flight (leng@gmail.com for Rocky Lim)
+                    FlightDetail = flightDetails[2],                    // Scenario 4 overbooked flight JL1 (leng@gmail.com for Rocky Lim)
                     BookingDetail = bookingDetails["L76543"],
                     BaggageAllowance = 25,
                     TravelPurpose = TravelPurpose.Business,
@@ -106,7 +105,7 @@ namespace skylance_backend.Controllers
 
                  new FlightBookingDetail
             {
-                    FlightDetail = flightDetails[9],                    // overbooked flight (seng@gmail.com for Linda Too)
+                    FlightDetail = flightDetails[3],                    // Scenario 2 normal flight MH1 for check-in (seng@gmail.com for Linda Too)
                     BookingDetail = bookingDetails["A00835"],
                     BaggageAllowance = 35,
                     TravelPurpose = TravelPurpose.Leisure,
@@ -360,6 +359,34 @@ namespace skylance_backend.Controllers
                 },
                    new FlightBookingDetail
                 {
+                    FlightDetail = flightDetails[24],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67556"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1900,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                   new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[25],                    // past flight (seng@gmail.com for Rocky Lim)     
+                    BookingDetail = bookingDetails["H67556"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1900,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+                   new FlightBookingDetail
+                {
                     FlightDetail = flightDetails[34],                    // past flight (seng@gmail.com for Rocky Lim)     
                     BookingDetail = bookingDetails["H67524"],
                     BaggageAllowance = 45,
@@ -569,6 +596,125 @@ namespace skylance_backend.Controllers
                     SpecialRequest = null
                 },
 
+                 new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[49],                    // For dashboard summary - Today's flight, 14 Aug 2025     
+                    BookingDetail = bookingDetails["H37721"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.Confirmed,
+                    Fareamount = 1500,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[52],                    // For dashboard summary - Today's flight, 14 Aug 2025     
+                    BookingDetail = bookingDetails["H67523"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.Confirmed,
+                    Fareamount = 1080,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[51],                    // For dashboard summary - Today's flight, 14 Aug 2025     
+                    BookingDetail = bookingDetails["H37724"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.Confirmed,
+                    Fareamount = 800,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[51],                    // For dashboard summary - Today's flight, 14 Aug 2025     
+                    BookingDetail = bookingDetails["U24821"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.Confirmed,
+                    Fareamount = 2160,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[49],                    // For dashboard summary - Today's flight, 14 Aug 2025     
+                    BookingDetail = bookingDetails["U24820"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.Confirmed,
+                    Fareamount = 900,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[54],                    // For dashboard summary - Yesterday's flight, 13 Aug 2025     
+                    BookingDetail = bookingDetails["J01927"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2000,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[56],                    // For dashboard summary - Yesterday's flight, 13 Aug 2025     
+                    BookingDetail = bookingDetails["L76543"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 1860,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
+
+                new FlightBookingDetail
+                {
+                    FlightDetail = flightDetails[56],                    // For dashboard summary - Yesterday's flight, 13 Aug 2025     
+                    BookingDetail = bookingDetails["A00835"],
+                    BaggageAllowance = 45,
+                    TravelPurpose = TravelPurpose.Leisure,
+                    SeatNumber = null,
+                    RequireSpecialAssistance = false,
+                    BookingStatus = BookingStatus.CheckedIn,
+                    Fareamount = 2450,
+                    Prediction = null,
+                    Class = Class.Economy,
+                    SpecialRequest = null
+                },
 
             };
 
