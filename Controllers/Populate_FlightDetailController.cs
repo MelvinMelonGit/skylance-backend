@@ -39,7 +39,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 190,
                     Distance=6200,
                     NumberOfCrew = 6,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -57,7 +57,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 165,
                     Distance=5300,
                     NumberOfCrew = 5,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -75,7 +75,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 205,
                     Distance=4500,
                     NumberOfCrew = 15,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -93,7 +93,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 325,
                     Distance=7800,
                     NumberOfCrew = 14,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -110,7 +110,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 128,
                     Distance=6200,
                     NumberOfCrew = 4,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
                 
@@ -127,7 +127,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -144,7 +144,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,
                     Distance = 12000,
                     NumberOfCrew = 13,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -161,7 +161,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 496,
                     Distance = 4800,
                     NumberOfCrew = 5,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -178,7 +178,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 350,
                     Distance = 9200,
                     NumberOfCrew = 4,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -195,7 +195,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 305,
                     Distance = 2200,
                     NumberOfCrew = 10,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -212,7 +212,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 140,
                     Distance = 5300,
                     NumberOfCrew = 8,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -229,7 +229,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 140,
                     Distance = 5300,
                     NumberOfCrew = 8,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null,
                 },
 
@@ -246,7 +246,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 140,
                     Distance = 5300,
                     NumberOfCrew = 8,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -263,7 +263,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 140,
                     Distance = 5300,
                     NumberOfCrew = 8,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -280,7 +280,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 140,
                     Distance = 5300,        
                     NumberOfCrew = 8,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                  },
 
@@ -297,7 +297,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 155,
                     Distance = 6300,
                     NumberOfCrew = 7,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                  },
 
@@ -314,7 +314,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 170,
                     Distance = 3700,
                     NumberOfCrew = 9,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                  },
 
@@ -331,7 +331,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 225,
                     Distance = 10300,
                     NumberOfCrew = 11,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                  },
 
@@ -348,7 +348,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 225,
                     Distance = 10300,
                     NumberOfCrew = 11,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                  },
 
@@ -365,7 +365,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 250,
                     Distance = 2200,
                     NumberOfCrew = 10,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -382,7 +382,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 250,
                     Distance = 2200,
                     NumberOfCrew = 10,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -399,7 +399,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 250,
                     Distance = 2200,
                     NumberOfCrew = 10,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -416,7 +416,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 150,
                     Distance = 1150,        
                     NumberOfCrew = 6,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -433,7 +433,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 300,            
                     Distance = 615,             
                     NumberOfCrew = 10,          
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -450,7 +450,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 310,           
                     Distance = 10845,          
                     NumberOfCrew = 15,         
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -467,7 +467,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 240,               
                     Distance = 13350,              
                     NumberOfCrew = 12,             
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -484,7 +484,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,                
                     Distance = 10250,               
                     NumberOfCrew = 14,              
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -501,7 +501,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 320,
                     Distance = 9715,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -518,7 +518,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,
                     Distance = 18000,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -535,7 +535,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 320,
                     Distance = 10560,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -552,7 +552,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 250,
                     Distance = 9350,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -569,7 +569,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 310,
                     Distance = 4640,
                     NumberOfCrew = 14,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -586,7 +586,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,
                     Distance = 13200,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[34]         
@@ -602,7 +602,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,
                     Distance = 13200,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                      new FlightDetail {                           // flightDetails[35]                                      
@@ -618,7 +618,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,
                     Distance = 18000,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                       new FlightDetail {                           // flightDetails[36]                                    
@@ -634,7 +634,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 320,
                     Distance = 10560,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                      new FlightDetail {                           // flightDetails[37]                          
@@ -650,7 +650,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 310,
                     Distance = 4640,
                     NumberOfCrew = 14,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[38]  
@@ -666,7 +666,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 250,
                     Distance = 9350,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[39]                                    
@@ -682,7 +682,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 320,
                     Distance = 10560,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[40]                                      
@@ -698,7 +698,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,
                     Distance = 18000,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[41]  
@@ -714,7 +714,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 250,
                     Distance = 9350,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[42]                                    
@@ -730,7 +730,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 320,
                     Distance = 10560,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[43]                                      
@@ -746,7 +746,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,
                     Distance = 18000,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[44]  
@@ -762,7 +762,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 250,
                     Distance = 9350,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[45]                                    
@@ -778,7 +778,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 320,
                     Distance = 10560,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[46]                                      
@@ -794,7 +794,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 245,
                     Distance = 18000,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[47]  
@@ -810,7 +810,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 250,
                     Distance = 9350,
                     NumberOfCrew = 18,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
                     new FlightDetail {                           // flightDetails[48]                                    
@@ -826,7 +826,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 320,
                     Distance = 10560,
                     NumberOfCrew = 16,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                   },
 
@@ -843,7 +843,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -860,7 +860,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -877,7 +877,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -894,7 +894,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -911,7 +911,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -928,7 +928,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -945,7 +945,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
@@ -962,7 +962,7 @@ namespace skylance_backend.Controllers
                     SeatsSold = 303,
                     Distance = 6300,
                     NumberOfCrew = 22,
-                    Prediction = null,
+                    PredictedCheckInCount = null,
                     Probability = null
                 },
 
